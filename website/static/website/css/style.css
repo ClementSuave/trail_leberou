@@ -36,6 +36,11 @@ h1 {
   font-size: 2em !important;
   font-family: 'Maiandra GD', sans-serif;
 }
+h1black {
+  color: black;
+  font-size: 2em !important;
+  font-family: 'Maiandra GD', sans-serif;
+}
 h2{
     color: #FFF1DA !important;
     font-size: 3em;
@@ -56,6 +61,14 @@ h5 {
   margin-top: -3em; /*same height as header*/
   visibility: hidden;
 }
+.document {
+  text-align:start;
+  display: block;
+}
+.document p {
+  font-size: 1em !important;
+}
+
 
 #head, #social_media {
   background-image: url(../images/leberou_background.jpg);

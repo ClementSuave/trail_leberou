@@ -56,7 +56,7 @@
 
       <ul class="navbar-nav ml-auto text-center">
         <li class="nav-item">
-          <a class="nav-link nav-link-click hover-underline" href="" data-target="#contact">Contact</a>
+          <a class="nav-link nav-link-click hover-underline" href="" data-target="#contact">Résultats</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-link-click hover-underline" href="">Galerie</a>
@@ -114,13 +114,13 @@
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Politique de Confidentialité</a>
+              <a href="{% url 'RGPD' %}">Politique de Confidentialité</a>
             </li>
             <li>
-              <a href="#!">Conditions générales</a>
+              <a href="{% url 'CGU' %}">Conditions générales</a>
             </li>
             <li>
-              <a href="#!">Mentions légales</a>
+              <a href="{% url 'mentions_legales' %}">Mentions légales</a>
             </li>
           </ul>
         </div>
