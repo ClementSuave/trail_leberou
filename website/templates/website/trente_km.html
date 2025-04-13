@@ -1,0 +1,34 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div id="bg_30km" class="jumbotron text-center m-0 d-flex justify-content-center">
+
+      <div class="container text-white">
+
+        <div id="head_title">
+          <div id="Trail_du_lébérou">Les 30 KM</div>
+          <div id="counter_km_10" class="counter-container"></div>
+          <div class="pr-4">km</div>
+          <div id="counter_d_10" class="counter-container"></div>
+          <div class="pr-4">D+</div>
+          <div class="box">
+            <div class="btn-inscription">
+              <span>INSCRIPTION</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

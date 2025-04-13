@@ -1,0 +1,156 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+<style>
+  .nav-link {color: white !important;}
+  .navbar-brand {display:none;}
+  .dropdown-menu {background-color: transparent !important;color: white !important;}
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- video -->
+    <div id="head" class="jumbotron text-center m-0 d-flex justify-content-center">
+  
+
+      <div class="container text-white">
+        <img id="head_image" class="img-responsive" src="{% static 'website/images/Logo_leberou_trail_blanc_personnage.svg' %}" alt="Trail du Léberou" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
+        <div id="head_title">
+          <div id="Trail_du_lébérou">Trail du Lébérou</div>
+          <div id="premiere_edition"><span class="fast-flicker">P</span>remière éd<span class="flicker">i</span>tion</div>
+          <div id="date_event">Le <span class="fast-flicker">31</span> octobre</div>
+          <div class="box">
+            <div class="btn-inscription">
+              <span>INSCRIPTION</span>
+            </div>
+          </div>
+        </div>
+
+        
+
+      </div>
+
+      <a href="{% url 'accueil' %}#accueil"><img id="arrow_down" src="{% static 'website/images/arrow_down.svg' %}" style="max-width:10%;max-height:10%;"></a>
+
+    </div>
+
+    <!-- /.jumbotron -->
+    </br>
+
+    <div class="container-fluid" style="width: 70%;">
+      <span id="accueil" class="anchor"></span>
+      <div class="row section justify-content-center">
+            <div class="section_title">
+            <h1>L'histoire</h1>
+            </div>
+            <br/><br/>
+            <p class="animate-on-scroll">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+      </div>
+      <span id="programme" class="anchor"></span>
+      <div class="row section justify-content-center slant slant1">
+            <div class="section_title">
+            <h1>Le programme</h1>
+            </div>
+            <br/><br/>
+            <p class="animate-on-scroll" style="color: #EFEEEC;">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+
+      </div>
+      <span id="les_courses" class="anchor"></span>
+      <div class="row section justify-content-center">
+            <div class="section_title">
+            <h1>Les courses</h1>
+            </div>
+            <br/><br/>
+            <p class="animate-on-scroll">estabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum,
+            </p>
+            <br/>
+            <section class="articles row animate-on-scroll">
+
+              <div class="col-md-4 col-sm-12 p-4">
+                <article>
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/1011/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <span class="article_title">Les 30</span>
+                      <p>
+                        30 km
+                      </p>
+                      <a href="{% url 'trente_km' %}" class="read-more">
+                        En savoir plus <span class="sr-only"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-4 col-sm-12 p-4">
+                <article>
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/1005/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <span class="article_title">Les 10</span>
+                      <p>
+                        10 km
+                      </p>
+                      <a href="{% url 'dix_km' %}" class="read-more">
+                        En savoir plus <span class="sr-only"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-md-4 col-sm-12 p-4">
+                <article>
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/103/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <span class="article_title">La marche</span>
+                      <p>
+                        5 km
+                      </p>
+                      <a href="{% url 'marche' %}" class="read-more">
+                        En savoir plus <span class="sr-only"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              </section>
+
+      </div>
+      <span id="informations" class="anchor"></span>
+      <div class="row section justify-content-center slant slant2">
+            <div class="section_title">
+            <h1>Informations</h1>
+            </div>
+            <br/><br/>
+            <p class="animate-on-scroll">estabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum,
+            </p>
+
+        </div>
+        
+      </div>
+
+    </div> <!-- Container  -->
+
+{% endblock %}
