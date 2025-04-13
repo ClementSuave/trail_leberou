@@ -16,3 +16,5 @@ def CGU(request):
 	return render(request, "website/conditions_générales_utilisation.html")
 def mentions_legales(request):
 	return render(request, "website/mentions_légales.html")
+def reglement(request):
+	return render(request, "website/reglement.html")

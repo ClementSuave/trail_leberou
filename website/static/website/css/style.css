@@ -34,25 +34,27 @@ a, a:visited, a:hover {
 h1 {
   color: #EFEEEC;
   font-size: 2em !important;
-  font-family: 'Maiandra GD', sans-serif;
+  font-family: 'Navara', sans-serif;
 }
 h1black {
   color: black;
   font-size: 2em !important;
-  font-family: 'Maiandra GD', sans-serif;
+  font-family: 'Navara', sans-serif;
 }
 h2{
     color: #FFF1DA !important;
     font-size: 3em;
+    font-family: 'Navara', sans-serif;
     font-weight: bold !important;
 }
 h3{
     color: black !important;
     font-size: 1.3em !important;
+    font-family: 'Navara', sans-serif;
 }
 h5 {
-  font-size: 1.2em !important;
-  font-family: 'Maiandra GD', sans-serif;
+  font-size: 1.5em !important;
+  font-family: 'Navara', sans-serif;
   color:#FFA54C;
 }
 .anchor{
@@ -93,12 +95,12 @@ h5 {
   animation: shine 2s forwards, flicker 3s infinite;
   color: #FFF1DA;
   font-size: 1.5em;
-  font-family: 'Maiandra GD';
+  font-family: 'Navara';
 }
 #Trail_du_lébérou {
   color: #FFA54C;
   font-size: 4em;
-  font-family: 'Caveat';
+  font-family: 'Navara';
   animation: lights 5s 750ms linear infinite;
 }
 .box {
