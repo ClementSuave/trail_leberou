@@ -10,14 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 
-    <link rel="shortcut icon" href="{% static 'website/images/Logo.svg' %}" />    
+    <link rel="shortcut icon" href="{% static 'website/images/Logo_black.svg' %}" />    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.cdnfonts.com/css/maiandra-gd" rel="stylesheet">
-    
-
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="{% static 'website/css/style.css' %}" />
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="{% static 'website/js/brasserie.js' %}"></script>
     {% block css %}
     {% endblock %}
@@ -56,15 +58,15 @@
 
       <ul class="navbar-nav ml-auto text-center">
         <li class="nav-item">
-          <a class="nav-link nav-link-click hover-underline" href="" data-target="#contact">Résultats</a>
+          <a class="nav-link nav-link-click hover-underline" href="">Résultats</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-click hover-underline" href="">Galerie</a>
+          <a class="nav-link nav-link-click hover-underline" href="{% url 'galerie' %}">Galerie</a>
         </li>
       </ul>
       <ul id="logo-top-container" class="navbar-nav text-center align-items-center">
 
-        <a class="navbar-brand nav-link-click" href="" style="width: 5%;">
+        <a class="navbar-brand nav-link-click" href="{% url 'accueil' %}" style="width: 5%;">
           <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/Logo.svg' %}" alt="Trail du Léberou" style="max-width:90%;max-height:100%;">
         </a>
 
@@ -99,10 +101,10 @@
               <a href="{% url 'reglement' %}">Réglement</a>
             </li>
             <li>
-              <a href="#!">L'association</a>
+              <a href="{% url 'association' %}">L'association</a>
             </li>
             <li>
-              <a href="#!">Sponsors</a>
+              <a href="{% url 'sponsors' %}">Sponsors</a>
             </li>
           </ul>
         </div>
@@ -145,9 +147,11 @@
             <h5>Rejoignez-nous</h5>
             <br/>
             <div class="box">
+              <a href="" style="text-decoration: none;">
               <div class="btn-inscription" style="background:#FFC0CB;">
                 <span>INSCRIPTION</span>
               </div>
+              </a>
             </div>
           <div class="form-outline form-white mb-4">
             

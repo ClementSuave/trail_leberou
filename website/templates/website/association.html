@@ -1,0 +1,34 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid" >
+  <div id="bg_10km">
+
+    <div class="row justify-content-center align-items-center">
+      
+      <img id="amicale_de_leberou" class="img-fluid" src="{% static 'website/images/Logo_amicale_du_leberou.svg' %}" alt="Amicale du Lébérou" style="max-width: 70%;">
+    </div>
+  </div>
+  <div class="row justify-content-center px-5 pt-4">
+
+      <p>Le trail du Lébérou est organisé par l'association 'l'Amicale du Lébérou' - association loi 1901 - fondée en 2025.</p>
+      <p>Adhérer à notre association vous permettra de soutenir l'organisation du trail du Lébérou ! Un événement qui promouvoi le sport, la culture et la bonne ambiance au cœur du Périgord !</p>
+      <a href="https://www.helloasso.com/associations/amicale-du-leberou/adhesions/adhesion-2025-2026" style="text-decoration: none;">
+      <div class="btn-inscription m-4" style="background: pink;">
+          <span>ADHERER</span>
+      </div>
+      </a>
+      <a href="https://www.helloasso.com/associations/amicale-du-leberou/adhesions/adhesion-2025-2026" style="text-decoration: none;">
+      <div class="btn-inscription m-4" style="background: pink;">
+          <span>FAIRE UN DON</span>
+      </div>
+      </a>
+
+  </div>
+</div>
+
+{% endblock %}

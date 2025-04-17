@@ -5,8 +5,9 @@
 
 {% block css %}
 <style>
-  .nav-link {color: white !important;}
+  .navbar-fixed-top .nav-link {color: white !important;}
   .navbar-brand {display:none;}
+  .hover-underline:after {background: white !important;}
   .dropdown-menu {background-color: transparent !important;color: white !important;}
 </style>
 {% endblock %}
@@ -16,21 +17,20 @@
     <!-- video -->
     <div id="head" class="jumbotron text-center m-0 d-flex justify-content-center">
   
-
       <div class="container text-white">
-        <img id="head_image" class="img-responsive" src="{% static 'website/images/Logo_leberou_trail_blanc_personnage.svg' %}" alt="Trail du Léberou" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
+        <img id="head_image" class="img-fluid" src="{% static 'website/images/Logo_leberou_trail_blanc_personnage.svg' %}" alt="Lébérou" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
         <div id="head_title">
-          <div id="Trail_du_lébérou">TRAIL DU LEBEROU</div>
+          <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/Logo_trail_du_leberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
           <div id="premiere_edition"><span class="fast-flicker">P</span>REMIERE ED<span class="flicker">I</span>TION</div>
           <div id="date_event">LE SAMEDI <span class="fast-flicker">1er</span> NOVEMBRE</div>
           <div class="box">
+            <a href="" style="text-decoration: none;">
             <div class="btn-inscription">
               <span>INSCRIPTION</span>
             </div>
+            </a>
           </div>
         </div>
-
-        
 
       </div>
 
@@ -41,30 +41,91 @@
     <!-- /.jumbotron -->
     </br>
 
-    <div class="container-fluid" style="width: 70%;">
-      <span id="accueil" class="anchor"></span>
-      <div class="row section justify-content-center">
-            <div class="section_title">
-            <h1>ACCUEIL</h1>
-            </div>
-            <br/><br/>
-            <p class="animate-on-scroll">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
-      </div>
-      <span id="programme" class="anchor"></span>
-      <div class="row section justify-content-center slant slant1">
-            <div class="section_title">
-            <h1>LE PROGRAMME</h1>
-            </div>
-            <br/><br/>
-            <p class="animate-on-scroll" style="color: #EFEEEC;">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+    <span id="accueil" class="anchor"></span>
 
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="section_title">
+            <h1>ACCUEIL</h1>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4 text-white text-center animate-on-scroll p-4" style="background:pink;">
+            <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/Clocher-Audrix.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+            <h3 class="text-white">L'HISTOIRE</h3>
+            <div>Veilo cort com un leberou! Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cu</div>
+          </div>
+          <div class="col-8 px-5">
+            <br/>
+            <p class="animate-on-scroll p-4">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+          </div>
+              
+              
+        </div>
       </div>
-      <span id="les_courses" class="anchor"></span>
-      <div class="row section justify-content-center">
-            <div class="section_title">
-            <h1>LES COURSES</h1>
+    </div>
+
+    <span id="programme" class="anchor"></span>
+
+    <div class="jumbotron" style="background: pink;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="section_title">
+            <h1>LE PROGRAMME</h1>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 p-4">
+            <div class="card">
+              <div class="card-body">
+                              
+                <div id="content">
+                  <ul class="timeline">
+                    <li class="event animate-on-scroll" data-date="14h">
+                      <h5>RETRAIT DES DOSSARDS</h5>
+                      <p>Jusqu'à une heure avant le départ des courses.</p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="16h">
+                      <h5>DEPART TRENTE KM</h5>
+                      <p></p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="18h">
+                      <h5>DEPART DIX KM</h5>
+                      <p></p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="20h">
+                      <h5>DEBUT DE LA SOIREE</h5>
+                      <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="21h30">
+                      <h5>CONCERT</h5>
+                      <p></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <br/><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <span id="les_courses" class="anchor" style="background:pink"></span>
+    
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="section_title">
+            <h1>LES COURSES</h1>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 p-4 animate-on-scroll">
             <p class="animate-on-scroll">estabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum,
             </p>
             <br/>
@@ -136,21 +197,51 @@
                 </article>
               </div>
               </section>
-
-      </div>
-      <span id="informations" class="anchor"></span>
-      <div class="row section justify-content-center slant slant2">
-            <div class="section_title">
-            <h1>INFORMATIONS</h1>
             </div>
-            <br/><br/>
-            <p class="animate-on-scroll">estabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum,
-            </p>
-
+          </div>
         </div>
-        
       </div>
 
-    </div> <!-- Container  -->
+      <span id="informations" class="anchor"></span>
+
+      <div class="jumbotron text-center" style="background:white;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="section_title">
+              <h1>INFORMATIONS</h1>
+            </div>
+          </div>
+        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-6 align-middle p-4 animate-on-scroll">
+            <div class="animate-on-scroll">
+              <h2>QUAND?</h2>
+              <p>Le samedi 1 Novembre 2025</p>
+            </div>
+            <div>
+              <h2>PARKING</h2>
+              <p>Parking disponible devant la salle des fêtes.</p>
+            </div>
+            <div>
+              <h2>REPAS</h2>
+              <p>Repas végétarien (soupe + plat).</p>
+              <p>Possibilité d'acheter sur place.</p>
+            </div>
+            <div>
+              <h2>LOGEMENT</h2>
+              <p>Zone de bivouac disponible.</p>
+            </div>
+          </div>
+          <div class="col-6 animate-on-scroll p-4">
+            <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6">Salle des fêtes d'Audrix (24260)</a></p>
+
+            <iframe width="70%" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=0.5245864698204629%2C44.721336005156886%2C1.3705337354454628%2C45.036623205697566&amp;layer=mapnik&amp;marker=44.879195562585195%2C0.9475601026329059"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=44.8792&amp;mlon=0.9476#map=11/44.8792/0.9476">Agrandir</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div> <!-- Container  -->
 
 {% endblock %}
