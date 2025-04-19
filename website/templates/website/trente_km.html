@@ -5,27 +5,41 @@
 
 {% block content %}
 
-<div class="container-fluid" >
-  <div id="bg_10km">
+<div id="bg_30km" class="container-fluid" >
 
-    <div class="row justify-content-center align-items-center">
-      
-      <div class="section_title"><h1>LES 7 CLOCHERS</h1></div>
+  <div class="row justify-content-center">
+    <div class="section_title"><h1>LES 3 CLOCHERS</h1></div>
+  </div>
+  <div class="row justify-content-center p-4">
+    <div class="col-3 d-flex justify-content-center">
+      <div id="counter_km_30" class="counter-container"></div><span class="d-flex align-items-center text-white">km</span>
     </div>
-    <div class="row justify-content-center align-items-center">
-      <div id="counter_km_10" class="counter-container"></div>
-      <div class="pr-4">km</div>
-      <div id="counter_d_10" class="counter-container"></div>
-      <div class="pr-4">D+</div>
-      <div class="box">
-            <div class="btn-inscription pr-4">
-              <span>INSCRIPTION</span>
-            </div>
-          </div>
+    <div class="col-3 d-flex justify-content-center">
+      <div id="counter_d_30" class="counter-container"></div><span class="d-flex align-items-center text-white">D+</span>
     </div>
   </div>
-  <div class="row justify-content-center px-5 pt-4">
-      <p>Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+  <div class="row justify-content-center p-4">
+    <div class="btn-inscription btn-inscription-courses">
+      <span>INSCRIPTION</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row animate-on-scroll p-5">
+    <div class="col-5">
+      <img class="img-fluid" src="{% static 'website/images/les3clocherstrace.png' %}">
+    </div>
+    <div class="col-7">
+      <p>Le départ se fera sur le place d’Audrix dominée par le premier clocher de l’église Saint-Pierre du XIIIème siècle. La première descente emmènera le Lébérou dans la combe de l’Ouital à travers un chemin encadré de murets de pierres sèches et après être passé devant le lavoir de Gravard. Sur les versants exposés au sud de la Combe s'étalaient des vignobles détruits par le phylloxéra à la fin du XIXème siècle.</p>
+      <p>La première montée par le Muscle laissera un aperçu sur la Vézère et emmenera le Lébérou à traverser les hameaux du Muscle, de la Fage et des Égals où de nombreux lavoirs sont présents.</p> 
+      <p>La descente s’ensuit vers la Mélonie ...</p>
+      <p>Le Lébérou arrivera alors à l’église Saint-Jean de Bigaroque du XIVème et enchainera avec la cote des Clottes qui l’emmenera vers le 3ème clocher: l’église de Saint-Chamassy.</p>
+      <p>La dernière descente débouche sur le château de Perdigat puis la remontée vers Audrix se fera par le chemin des Amoureux et Lescot.</p>
+    </div>
+  </div>
+  <div class="row animate-on-scroll justify-content-center px-5 pb-5">
+    <img class="img-fluid" src="{% static 'website/images/les3clochersdeniv.png' %}">
   </div>
 </div>
 

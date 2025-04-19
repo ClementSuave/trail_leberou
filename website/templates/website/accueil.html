@@ -5,10 +5,7 @@
 
 {% block css %}
 <style>
-  .navbar-fixed-top .nav-link {color: white !important;}
   .navbar-brand {display:none;}
-  .hover-underline:after {background: white !important;}
-  .dropdown-menu {background-color: transparent !important;color: white !important;}
 </style>
 {% endblock %}
 
@@ -18,12 +15,14 @@
     <div id="head" class="jumbotron text-center m-0 d-flex justify-content-center">
   
       <div class="container text-white">
-        <img id="head_image" class="img-fluid" src="{% static 'website/images/Logo_leberou_trail_blanc_personnage.svg' %}" alt="Lébérou" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
+
+        <img id="head_image" class="img-fluid p-4" src="{% static 'website/images/LogoLeberouTrailBlancPersonnage.svg' %}" alt="Lébérou" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
         <div id="head_title">
-          <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/Logo_trail_du_leberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
-          <div id="premiere_edition"><span class="fast-flicker">P</span>REMIERE ED<span class="flicker">I</span>TION</div>
-          <div id="date_event">LE SAMEDI <span class="fast-flicker">1er</span> NOVEMBRE</div>
-          <div class="box">
+          <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/LogoTrailDuLeberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+          <div id="date_event">LE SAMEDI 1er NOVEMBRE</div>
+          <div id="year_event">2025</div>
+          <div id="premiere_edition" class="pt-4">PREMIERE EDITION</div>
+          <div class="box pt-4">
             <a href="" style="text-decoration: none;">
             <div class="btn-inscription">
               <span>INSCRIPTION</span>
@@ -34,7 +33,7 @@
 
       </div>
 
-      <a href="{% url 'accueil' %}#accueil"><img id="arrow_down" src="{% static 'website/images/arrow_down.svg' %}" style="max-width:10%;max-height:10%;"></a>
+      <a href="{% url 'accueil' %}#accueil"><img id="arrow_down" src="{% static 'website/images/arrowdown.svg' %}" style="max-width:10%;max-height:10%;"></a>
 
     </div>
 
@@ -51,14 +50,16 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-4 text-white text-center animate-on-scroll p-4" style="background:pink;">
-            <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/Clocher-Audrix.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+          <div class="col-lg-5 text-white text-center animate-on-scroll p-4" style="background:pink;">
+            <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/ClocherAudrix.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
             <h3 class="text-white">L'HISTOIRE</h3>
             <div>Veilo cort com un leberou! Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cu</div>
           </div>
-          <div class="col-8 px-5">
+          <div class="col-lg-7 px-5 animate-on-scroll">
             <br/>
-            <p class="animate-on-scroll p-4">Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cum Bithyniam introisset, in statione quae Caenos Gallicanos appellatur, absumpta est vi febrium repentina. cuius post obitum maritus contemplans cecidisse fiduciam qua se fultum existimabat, anxia cogitatione, quid moliretur haerebat.</p>
+            <p>Bienvenue au Trail du Lébérou, un trail ambiance au coeur du Périgord Noir ! </p>
+            <p>Pour cette première édition, nous proposons trois circuits ; le Trail des trois clochers (30 km), le Tour des fontaines (12 km) et la Balade au clair de Lune (7 km).</p>
+            <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins. A la fin des épreuves, nous proposons aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
           </div>
               
               
@@ -89,11 +90,15 @@
                       <p>Jusqu'à une heure avant le départ des courses.</p>
                     </li>
                     <li class="event animate-on-scroll" data-date="16h">
-                      <h5>DEPART TRENTE KM</h5>
+                      <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
                       <p></p>
                     </li>
                     <li class="event animate-on-scroll" data-date="18h">
-                      <h5>DEPART DIX KM</h5>
+                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+                      <p></p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="18h">
+                      <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                       <p></p>
                     </li>
                     <li class="event animate-on-scroll" data-date="20h">
@@ -125,9 +130,8 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-12 p-4 animate-on-scroll">
-            <p class="animate-on-scroll">estabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum,
-            </p>
+          <div class="col-12 p-4 text-center animate-on-scroll">
+            <p class="animate-on-scroll">Les trois parcours proposés sont les suivants :</p>
             <br/>
             <section class="articles row animate-on-scroll">
 
@@ -135,10 +139,10 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="https://picsum.photos/id/1011/800/450" alt="" />
+                      <img src="{% static 'website/images/traildestroisclochers.jpg' %}">
                     </figure>
                     <div class="article-body">
-                      <span class="article_title">Les 30</span>
+                      <span class="article_title">TRAIL DES TROIS CLOCHERS</span>
                       <p>
                         30 km
                       </p>
@@ -157,12 +161,12 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="https://picsum.photos/id/1005/800/450" alt="" />
+                      <img src="{% static 'website/images/tourdesfontaines.jpg' %}">
                     </figure>
                     <div class="article-body">
-                      <span class="article_title">Les 10</span>
+                      <span class="article_title">TOUR DES FONTAINES</span>
                       <p>
-                        10 km
+                        12 km
                       </p>
                       <a href="{% url 'dix_km' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
@@ -179,12 +183,12 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="https://picsum.photos/id/103/800/450" alt="" />
+                      <img src="{% static 'website/images/baladeauclairdelune.jpg' %}">
                     </figure>
                     <div class="article-body">
-                      <span class="article_title">La marche</span>
+                      <span class="article_title">BALADE AU CLAIR DE LUNE</span>
                       <p>
-                        5 km
+                        7 km
                       </p>
                       <a href="{% url 'marche' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
@@ -225,16 +229,20 @@
             </div>
             <div>
               <h2>REPAS</h2>
-              <p>Repas végétarien (soupe + plat).</p>
-              <p>Possibilité d'acheter sur place.</p>
+              <p>Repas végétarien (soupe + plat + dessert)</p>
+              <p>Réservation obligatoire.</p>
             </div>
             <div>
-              <h2>LOGEMENT</h2>
-              <p>Zone de bivouac disponible.</p>
+              <h2>COMMODITES</h2>
+              <p>Douche disponible à la salle des fêtes.</p>
+              <p>Zone de bivouac mise à disposition par l'Amicale. </p>
+              <p>Possibilité de nuit sur place pour les vans/voitures emménagées.</p>
+              <p>Hébergements possibles aux alentours : XXXX</p>
             </div>
           </div>
           <div class="col-6 animate-on-scroll p-4">
-            <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6">Salle des fêtes d'Audrix (24260)</a></p>
+            <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6"><u>Salle des fêtes d'Audrix (24260)</u></a></p>
+            <p>Offre de covoiturage dédiée</p>
 
             <iframe width="70%" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=0.5245864698204629%2C44.721336005156886%2C1.3705337354454628%2C45.036623205697566&amp;layer=mapnik&amp;marker=44.879195562585195%2C0.9475601026329059"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=44.8792&amp;mlon=0.9476#map=11/44.8792/0.9476">Agrandir</a></small>
           </div>

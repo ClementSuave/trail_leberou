@@ -45,9 +45,11 @@
           <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Les courses</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'trente_km' %}">30 km</a>
-            <a class="dropdown-item" href="{% url 'dix_km' %}">10 km</a>
-            <a class="dropdown-item" href="{% url 'marche' %}">Marche</a>
+            <a class="dropdown-item" href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a>
+            <a class="dropdown-item" href="{% url 'dix_km' %}">TOUR DES FONTAINES</a>
+            <a class="dropdown-item" href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'reglement' %}">Réglement</a>
             <div class="dropdown-divider"></div>
           </div>
         </li>
@@ -77,7 +79,7 @@
   {% block content %}
   {% endblock %}
 
-<footer class="text-center text-lg-start border border-white mt-xl-5">
+<footer class="text-center text-lg-start border border-white">
       <section id="social_media" class="p-4">
       <!-- Facebook -->
       <a class="btn btn-floating m-1 btn-inscription" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
@@ -94,7 +96,7 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h5>A propos</h5>
+          <h6>A PROPOS</h6>
 
           <ul class="list-unstyled mb-4">
             <li>
@@ -112,7 +114,7 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h5>Informations</h5>
+          <h6>INFORMATIONS</h6>
 
           <ul class="list-unstyled">
             <li>
@@ -130,7 +132,7 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h5>Contact</h5>
+          <h6>CONTACT</h6>
 
           <ul class="list-unstyled">
             <li>
@@ -144,7 +146,7 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <h5>Rejoignez-nous</h5>
+            <h6>REJOIGNEZ-NOUS</h6>
             <br/>
             <div class="box">
               <a href="" style="text-decoration: none;">
