@@ -18,9 +18,10 @@
 
         <img id="head_image" class="img-fluid p-4" src="{% static 'website/images/LogoLeberouTrailBlancPersonnage.svg' %}" alt="Lébérou" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
         <div id="head_title">
-          <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/LogoTrailDuLeberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
-          <div id="date_event">LE SAMEDI 1er NOVEMBRE</div>
-          <div id="year_event">2025</div>
+          <p id="veillocort">VEIL LO CORT COMO UN LEBEROU !</p>
+          <img id="trail_du_leberou" class="img-fluid pb-4" src="{% static 'website/images/LogoTrailDuLeberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+          <div id="date_event">LE SAMEDI 1er NOVEMBRE 2025</div>
+          
           <div id="premiere_edition" class="pt-4">PREMIERE EDITION</div>
           <div class="box pt-4">
             <a href="" style="text-decoration: none;">
@@ -79,8 +80,8 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-12 p-4">
-            <div class="card">
+          <div class="col-md-12">
+            <div class="card display-lg">
               <div class="card-body">
                               
                 <div id="content">
@@ -113,6 +114,34 @@
                 </div>
               </div>
             </div>
+
+
+            <div class="card display-sm">
+              <div class="card-body">
+                              
+                <div id="content">
+                      <p>14h</p>
+                      <h5>RETRAIT DES DOSSARDS</h5>
+                      <p>Jusqu'à une heure avant le départ des courses.</p>
+                      <p>16h</p>
+                      <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
+
+                      <p>18h</p>
+                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+
+                      <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
+                      <p></p>
+                      <p>20h</p>
+                      <h5>DEBUT DE LA SOIREE</h5>
+                      <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
+                      <p>21h30</p>
+                      <h5>CONCERT</h5>
+
+
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -218,7 +247,7 @@
         </div>
       <div class="container">
         <div class="row">
-          <div class="col-6 align-middle p-4 animate-on-scroll">
+          <div class="col-md-6 col-sm-12 align-middle p-4 animate-on-scroll">
             <div class="animate-on-scroll">
               <h2>QUAND?</h2>
               <p>Le samedi 1 Novembre 2025</p>
@@ -240,7 +269,7 @@
               <p>Hébergements possibles aux alentours : XXXX</p>
             </div>
           </div>
-          <div class="col-6 animate-on-scroll p-4">
+          <div class="col-md-6 col-sm-12 animate-on-scroll p-4">
             <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6"><u>Salle des fêtes d'Audrix (24260)</u></a></p>
             <p>Offre de covoiturage dédiée</p>
 

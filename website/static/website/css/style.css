@@ -78,37 +78,6 @@ h6 {
 .document p {
   font-size: 1em !important;
 }
-
-.document-header, #head, #social_media {
-  background-image: url(../images/leberoubackground.jpg);
-  position: relative;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: 2s ease-out 0s 1 FadeIn;
-}
-#head_image {
-  animation: blur 4s;
-  background-image: url(../images/Logoleberoutrailblancbackground.svg);
-  background-size: cover;
-}
-
-#premiere_edition, #date_event {
-  color: var(--color2);
-  font-size: 2em;
-  font-family: var(--font2);
-}
-#year_event {
-  color: var(--color2);
-  font-size: 1.5em;
-  font-family: var(--font1);
-}
-#Trail_du_lébérou {
-  color: var(--color3);
-  font-size: 4em;
-  font-family: var(--font2);
-}
 .box {
   height: 33.33%;
   width: 100%; 
@@ -233,6 +202,12 @@ h6 {
   #page-container {
     padding-top: 0px !important;
   }
+  #premiere_edition, #date_event {
+    font-size: 1em !important;
+  }
+  #head_image, #trail_du_leberou {
+    max-width:80% !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -261,6 +236,12 @@ h6 {
   }
   .text_overlay {
     display: none !important;
+  }
+  .display-lg {
+    display: none !important;
+  }
+  .display-sm {
+    display: block !important;
   }
 }
 
@@ -451,6 +432,32 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 
 /*---------------------- HOME ---------------------- */
 
+.document-header, #head, #social_media {
+  background-image: url(../images/leberoubackground.jpg);
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: 2s ease-out 0s 1 FadeIn;
+  animation: zoom 30s infinite;
+  -webkit-animation: zoom 30s infinite;
+}
+#head_image {
+  animation: blur 4s;
+  background-image: url(../images/Logoleberoutrailblancbackground.svg);
+  background-size: cover;
+}
+
+#premiere_edition, #date_event {
+  color:var(--color2);
+  font-size: 1.3em;
+  font-family: var(--font1);
+  animation: cinematicInOut 4s;
+}
+#trail_du_leberou {
+  animation: blur 4s;
+}
 #head {
   position: relative;
   overflow: hidden;
@@ -458,7 +465,6 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   transition: 0.4s; 
   height: 100vh;
 }
-
 #head .container {
   z-index: 2;
   position: relative;
@@ -468,6 +474,17 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 #logo {
   -webkit-transition: all 0.6s;
   transition: all 0.6s;
+}
+#veillocort {
+  background: linear-gradient(90deg, #000, var(--color2), #000);
+  -webkit-background-clip: text;
+  font-family: var(--font2);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 5s linear;
+  position: relative;
 }
 .animate-on-scroll {
   opacity: 0;
@@ -494,7 +511,9 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 }
 
 /*---------------------- timeline ---------------------- */
-
+.display-sm {
+    display: none;
+}
 .timeline {
     border-left: 3px solid white;
     border-bottom-right-radius: 4px;
@@ -574,6 +593,7 @@ article {
   --title-color:grey;
   --link-icon-translate: -20px;
   --link-icon-opacity: 0;
+  --img-light:100%;
   position: relative;
 
   box-shadow: none;
@@ -605,6 +625,7 @@ article img {
   transform-origin: center;
   transform: scale(var(--img-scale));
   transition: transform 0.4s ease-in-out;
+  filter: brightness(var(--img-light));
 }
 .article-body {
   padding: 1em;
@@ -634,6 +655,7 @@ article:has(:hover, :focus) {
   --title-color: var(--color3);
   --link-icon-translate: 0;
   --link-icon-opacity: 1;
+  --img-light:130%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 .articles {
@@ -785,7 +807,26 @@ footer {
 }
 
 /* -------------------------- KEYFRAMES ------------------------------------ */
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
+}
+@keyframes zoom {
+  0% {
+    background-size: 100%;
 
+  }
+  50% {
+    background-size: 150%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
 @keyframes FadeIn {
     0% {
       opacity:0;
@@ -823,4 +864,29 @@ footer {
 }
 @keyframes counter_d_30 {
   from {--num: 0;}to {--num: 500;}
+}
+
+@keyframes cinematicInOut {
+  0% {
+    text-shadow:0 0 1em var(--color1);
+    opacity:0;
+    margin-left:-.5em;
+    color: transparent;
+  }
+  25% {
+    text-shadow:0 0 0 var(--color1);
+    opacity:1;
+    margin-left:0;
+    color: transparent;
+  }
+  80% {
+    text-shadow:0 0 1em var(--color1);
+    opacity:1;
+    margin-left:0;
+  }
+  100% {
+    text-shadow:0 0 0 var(--color1);
+    opacity:1;
+    margin-left:0;
+  }
 }
