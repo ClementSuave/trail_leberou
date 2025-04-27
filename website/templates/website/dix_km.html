@@ -5,16 +5,16 @@
 
 {% block content %}
 
-<div id="bg_10km" class="container-fluid" >
-
+<div id="bg_10km" class="jumbotron text-center m-0 d-flex justify-content-center">
+  <div class="container title_courses">
   <div class="row justify-content-center">
     <div class="section_title"><h1>TOUR DES FONTAINES</h1></div>
   </div>
   <div class="row justify-content-center p-4">
-    <div class="col-md-3 col-sm-12 d-flex justify-content-center">
+    <div class="col-6 d-flex justify-content-center">
       <div id="counter_km_10" class="counter-container"></div><span class="d-flex align-items-center text-white">km</span>
     </div>
-    <div class="col-md-3 col-sm-12 d-flex justify-content-center">
+    <div class="col-6 d-flex justify-content-center">
       <div id="counter_d_10" class="counter-container"></div><span class="d-flex align-items-center text-white">D+</span>
     </div>
   </div>
@@ -23,19 +23,21 @@
       <span>INSCRIPTION</span>
     </div>
   </div>
+  </div>
 </div>
 
-<div class="container">
-  <div class="row animate-on-scroll p-5">
-    <div class="col-md-5 col-sm-12 pb-4">
-      <img class="img-fluid" src="{% static 'website/images/tourdesfontainestrace.png' %}">
+<div class="container pt-4">
+  <div class="row p-lg-5 p-md-2 p-sm-2 p-xs-2">
+    <div class="col-md-5 col-sm-12 pb-4 order-2">
+      <img class="img-fluid" src="{% static 'website/images/tourdesfontainestrace.PNG' %}">
     </div>
-    <div class="col-md-7 col-sm-12">
-      <p></p>
+    <div class="col-md-7 col-sm-12 order-1">
+      <p>Juste après la départ de la place d'Audrix, le Lébérou sera emmené a faire une petit boucle avec des vues sur la vallée de la Dordogne pour découvrir en remontant sur le point de départ le lavoir de la Servantie. Une descente l'emmènera ensuite vers l'entrée naturelle du Gouffre de Proumeyssac. S'ensuivra la côte du Muscle avec des vues sur la Vézère puis le passage par deux lavoirs juste après le hameau. Le Lébérou redescendra ensuite vers la combe de l'Ouital, cheminera le long du cours d'eau pour arriver sur la dernière montée vers le lavoir de Gravard.</p>
+      <p>Un parcours avec 95% de chemins sur le thème de l'eau.</p>
     </div>
   </div>
   <div class="row animate-on-scroll justify-content-center px-5 pb-5">
-    <img class="img-fluid" src="{% static 'website/images/tourdesfontainesdeniv.png' %}">
+    <img class="img-fluid" src="{% static 'website/images/tourdesfontainesdeniv.PNG' %}">
   </div>
 </div>
 

@@ -22,6 +22,8 @@ def association(request):
 	return render(request, "website/association.html")
 def sponsors(request):
 	return render(request, "website/sponsors.html")
+def resultats(request):
+	return render(request, "website/resultats.html")
 def galerie(request):
     # Create a dictionary
     context = {}

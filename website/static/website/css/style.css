@@ -19,9 +19,7 @@ body{
   -webkit-font-smoothing: antialiased;
   animation: 0.8s ease-out 0s 1 FadeIn;
   background-color: var(--color1);
-}
-p, td, span, i {
-  font-size: 1.2em !important;
+  font-size: 1rem !important;
 }
 a, a:visited, a:hover {
   color: inherit;
@@ -64,7 +62,7 @@ h6 {
 }
 .anchor{
   display: block;
-  height: 70px; /*same height as header*/
+  height: 50px; /*same height as header*/
   margin-top: -3em; /*same height as header*/
 }
 .document-header {
@@ -173,13 +171,13 @@ h6 {
     justify-content: center;
   }
   .navbar-fixed-top .nav-link {
-    color:var(--color1); !important;
+    color:var(--color1) !important;
   }
 
   /* when scrolled */
   .navbar-fixed-top.scrolled .nav-link {
     color:black !important;
-    background-color: var(--color1);
+    background-color: white;
   }
   .navbar-brand {
     display: none;
@@ -432,8 +430,8 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 
 /*---------------------- HOME ---------------------- */
 
-.document-header, #head, #social_media {
-  background-image: url(../images/leberoubackground.jpg);
+.document-header, #head {
+  background-image: url(../images/leberoubackground.JPG);
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -585,6 +583,10 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
     left: 0;
     right: -55.8px;
 }
+.event-small {
+  border-bottom: dashed white;
+  padding-top: 1em;
+}
 
 
 /*---------------------- CARD Courses ---------------------- */
@@ -612,7 +614,7 @@ article a::after {
 .article_title {
   margin: 0 0 18px 0;
   font-family: var(--font2);
-  font-size: 1.9rem;
+  font-size: 1.3rem;
   letter-spacing: 0.06em;
   color: var(--title-color);
   transition: color 0.3s ease-out;
@@ -698,6 +700,10 @@ article:has(:hover, :focus) {
 }
 
 /*---------------------- COURSES ---------------------- */
+.title_courses {
+  max-width: 540px !important;
+}
+
 @property --num {
   syntax: "<integer>";
   initial-value: 0;
@@ -709,20 +715,20 @@ article:has(:hover, :focus) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 450px;
+  min-height: 300px;
   padding-top: 150px;"
 }
 #bg_30km {
-  background-image: url(../images/traildestroisclochersheader.jpg);
+  background-image: url(../images/traildestroisclochersheader.JPG);
 }
 #bg_10km {
-  background-image: url(../images/tourdesfontainesheader.jpg);
+  background-image: url(../images/tourdesfontainesheader.JPG);
 }
 #bg_marche {
-  background-image: url(../images/baladeauclairdeluneheader.jpg);
+  background-image: url(../images/baladeauclairdeluneheader.JPG);
 }
 #bg_association {
-  background-image: url(../images/associationheader.jpg);
+  background-image: url(../images/associationheader.JPG);
 }
 .counter-container {
   counter-reset: num var(--num);
@@ -750,6 +756,14 @@ article:has(:hover, :focus) {
 }
 footer {
   background-color: white;
+}
+#social_media {
+  background-image: url(../images/leberoubackground.JPG);
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* -------------------------- GALLERIE ------------------------------------ */

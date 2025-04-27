@@ -5,25 +5,28 @@
 
 {% block content %}
 
-<div class="container-fluid" >
-  <div id="bg_association">
-
-    <div class="row justify-content-center align-items-center">
-      <img class="img-fluid" src="{% static 'website/images/Logoamicaleduleberou.svg' %}" alt="Amicale du Lébérou" style="max-width: 70%;">
+<div id="bg_association" class="jumbotron text-center m-0 d-flex justify-content-center">
+  <div class="container">
+    <div class=" row justify-content-center align-items-center">
+      <img class="img-fluid" src="{% static 'website/images/Logoamicaleduleberou.svg' %}" alt="Amicale du Lébérou" style="max-width: 50%;max-height: 50%;">
     </div>
   </div>
 </div>
+
 <div class="container">
-  <div class="row px-5 pt-4">
-    <p>Le trail du Lébérou est organisé par l'association 'l'Amicale du Lébérou' - association loi 1901 - fondée en 2025.</p>
-    <p style="font-family: var(--font2);">LE MOT DU PRESIDENT</p>
-    <p>L'idée de trail à thème a germée après avoir lu pour la première fois la légénde du Lébérou. Une histoire de malédiction avec un être condamné à courir la nuit et parcourir les chemins du Périgord pour expier ses péchers. Travaillant dans le milieu de l'éclairage et de la nuit, trailer le jour et interessé par l'histoire et le patrimoine, tous les éléments étaient au rendez-vous pour monter ce projet. Encouragé par les copains et l'entourage, ce projet va enfin voir le jour en 2025.</p>
-  </div>
-  <div class="row px-5 pt-4">
-    <div class="col-5">
-        <img class="img-fluid" src="{% static 'website/images/amicalefondateurs.jpg' %}">
+  <div class="row pt-2">
+    <div class="col">
+      <p>Le trail du Lébérou est organisé par l'association <strong>l'Amicale du Lébérou</strong> - association loi 1901 - fondée en 2025.</p>
+      <p></p>
+      <h2>LE MOT DU PRESIDENT</h2>
+      <p>L'idée de trail à thème a germée après avoir lu pour la première fois la légénde du Lébérou. Une histoire de malédiction avec un être condamné à courir la nuit et parcourir les chemins du Périgord pour expier ses péchers. Travaillant dans le milieu de l'éclairage et de la nuit, trailer le jour et interessé par l'histoire et le patrimoine, tous les éléments étaient au rendez-vous pour monter ce projet. Encouragé par les copains et l'entourage, ce projet va enfin voir le jour en 2025.</p>
     </div>
-    <div class="col-7">
+  </div>
+  <div class="row pt-2">
+    <div class="col-lg-5 col-sm-12 pb-2">
+        <img class="img-fluid" src="{% static 'website/images/amicalefondateurs.JPG' %}">
+    </div>
+    <div class="col-lg-7 col-sm-12">
       <p>Passionnés par le sport en plein air (rando, trail, escalade ...) et sachant apprécier les ambiances festives (soirées entre amis, concerts, festivals ...) notre objectif et de réconcilier les milieux du sport et de la fête.</p>
       <p>Soucieux de préserver l'environnement, tout sera réfléchi pour avoir un impact minimal sur ce dernier:</p>
       <ul>
@@ -32,7 +35,9 @@
         <li>Proposer un repas végétarien, fait maison avec des produits locaux et de saisons</li>
       </ul>
     </div>
-    <div class="row px-5 pt-4">
+  </div>
+  <div class="row pt-4">
+    <div class="col">
       <p>Adhérer à notre association vous permettra de soutenir l'organisation du trail du Lébérou ! Un événement qui promouvoi le sport, la culture et la bonne ambiance au cœur du Périgord !</p>
     </div>
   </div>

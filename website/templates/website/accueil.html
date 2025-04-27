@@ -11,12 +11,11 @@
 
 {% block content %}
 
-    <!-- video -->
     <div id="head" class="jumbotron text-center m-0 d-flex justify-content-center">
   
       <div class="container text-white">
 
-        <img id="head_image" class="img-fluid p-4" src="{% static 'website/images/LogoLeberouTrailBlancPersonnage.svg' %}" alt="Lébérou" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+        <img id="head_image" class="img-fluid" src="{% static 'website/images/LogoLeberouTrailBlancPersonnage.svg' %}" alt="Lébérou" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
         <div id="head_title">
           <p id="veillocort">VEIL LO CORT COMO UN LEBEROU !</p>
           <img id="trail_du_leberou" class="img-fluid pb-4" src="{% static 'website/images/LogoTrailDuLeberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
@@ -56,7 +55,7 @@
             <h3 class="text-white">L'HISTOIRE</h3>
             <div>Veilo cort com un leberou! Restabat ut Caesar post haec properaret accitus et abstergendae causa suspicionis sororem suam, eius uxorem, Constantius ad se tandem desideratam venire multis fictisque blanditiis hortabatur. quae licet ambigeret metuens saepe cruentum, spe tamen quod eum lenire poterit ut germanum profecta, cu</div>
           </div>
-          <div class="col-lg-7 px-5 animate-on-scroll">
+          <div class="col-lg-7 px-lg-5 animate-on-scroll">
             <br/>
             <p>Bienvenue au Trail du Lébérou, un trail ambiance au coeur du Périgord Noir ! </p>
             <p>Pour cette première édition, nous proposons trois circuits ; le Trail des trois clochers (30 km), le Tour des fontaines (12 km) et la Balade au clair de Lune (7 km).</p>
@@ -117,27 +116,31 @@
 
 
             <div class="card display-sm">
-              <div class="card-body">
-                              
+              <div class="card-body">         
                 <div id="content">
-                      <p>14h</p>
-                      <h5>RETRAIT DES DOSSARDS</h5>
-                      <p>Jusqu'à une heure avant le départ des courses.</p>
-                      <p>16h</p>
-                      <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
-
-                      <p>18h</p>
-                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
-
-                      <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
-                      <p></p>
-                      <p>20h</p>
-                      <h5>DEBUT DE LA SOIREE</h5>
-                      <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
-                      <p>21h30</p>
-                      <h5>CONCERT</h5>
-
-
+                  <div class="event-small">
+                    <p>14h</p>
+                    <h5>RETRAIT DES DOSSARDS</h5>
+                    <p>Jusqu'à une heure avant le départ des courses.</p>
+                  </div>
+                  <div class="event-small">
+                    <p>16h</p>
+                    <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
+                  </div>
+                  <div class="event-small">
+                    <p>18h</p>
+                    <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+                    <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
+                  </div>
+                  <div class="event-small">
+                    <p>20h</p>
+                    <h5>DEBUT DE LA SOIREE</h5>
+                    <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
+                  </div>
+                  <div class="event-small">
+                    <p>21h30</p>
+                    <h5>CONCERT</h5>
+                  </div>                  
                 </div>
               </div>
             </div>
@@ -159,16 +162,16 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-12 p-4 text-center animate-on-scroll">
+          <div class="col-12 p-lg-4 text-center animate-on-scroll">
             <p class="animate-on-scroll">Les trois parcours proposés sont les suivants :</p>
             <br/>
             <section class="articles row animate-on-scroll">
 
-              <div class="col-md-4 col-sm-12 p-4">
+              <div class="col-md-4 col-sm-12 p-4 p-xs-2">
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/traildestroisclochers.jpg' %}">
+                      <img src="{% static 'website/images/traildestroisclochers.JPG' %}">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">TRAIL DES TROIS CLOCHERS</span>
@@ -186,11 +189,11 @@
                 </article>
               </div>
 
-              <div class="col-md-4 col-sm-12 p-4">
+              <div class="col-md-4 col-sm-12 p-4 p-xs-2">
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/tourdesfontaines.jpg' %}">
+                      <img src="{% static 'website/images/tourdesfontaines.JPG' %}">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">TOUR DES FONTAINES</span>
@@ -208,11 +211,11 @@
                 </article>
               </div>
 
-              <div class="col-md-4 col-sm-12 p-4">
+              <div class="col-md-4 col-sm-12 p-4 p-xs-2">
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/baladeauclairdelune.jpg' %}">
+                      <img src="{% static 'website/images/baladeauclairdelune.JPG' %}">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">BALADE AU CLAIR DE LUNE</span>
