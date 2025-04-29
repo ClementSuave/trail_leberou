@@ -431,7 +431,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 /*---------------------- HOME ---------------------- */
 
 .document-header, #head {
-  background-image: url(../images/LeberouBackground.JPG);
+  background-image: url(../images/leberou_background.JPG);
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -455,7 +455,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 }
 #head_image {
   animation: blur 4s;
-  background-image: url(../images/LogoLeberouTrailBlancBackground.svg);
+  background-image: url(../images/logo_leberou_trail_blanc_background.svg);
   background-size: cover;
 }
 
@@ -718,16 +718,16 @@ article:has(:hover, :focus) {
   padding-top: 150px;"
 }
 #bg_30km {
-  background-image: url(../images/traildestroisclochersheader.JPG);
+  background-image: url(../images/trail_des_trois_clochers_header.JPG);
 }
 #bg_10km {
-  background-image: url(../images/tourdesfontainesheader.JPG);
+  background-image: url(../images/tour_des_fontaines_header.JPG);
 }
 #bg_marche {
-  background-image: url(../images/baladeauclairdeluneheader.JPG);
+  background-image: url(../images/balade_au_clair_de_lune_header.JPG);
 }
 #bg_association {
-  background-image: url(../images/associationheader.JPG);
+  background-image: url(../images/association_header.JPG);
 }
 .counter-container {
   counter-reset: num var(--num);
@@ -757,7 +757,7 @@ footer {
   background-color: white;
 }
 #social_media {
-  background-image: url(../images/LeberouBackground.JPG);
+  background-image: url(../images/leberou_background.JPG);
   position: relative;
   background-attachment: fixed;
   background-position: center;
