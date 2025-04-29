@@ -431,7 +431,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 /*---------------------- HOME ---------------------- */
 
 .document-header, #head {
-  background-image: url(../images/leberou_background.JPG);
+  background-image: url(../images/black_background.jpg);
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -757,7 +757,7 @@ footer {
   background-color: white;
 }
 #social_media {
-  background-image: url(../images/leberou_background.JPG);
+  background-image: url(../images/black_background.jpg);
   position: relative;
   background-attachment: fixed;
   background-position: center;
