@@ -480,7 +480,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   -webkit-text-fill-color: transparent;
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: shine 5s linear;
+  animation: shine 4s linear infinite;
   position: relative;
 }
 .animate-on-scroll {
