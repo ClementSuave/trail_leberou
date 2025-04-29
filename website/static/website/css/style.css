@@ -431,7 +431,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 /*---------------------- HOME ---------------------- */
 
 .document-header, #head {
-  background-image: url(../images/leberoubackground.JPG);
+  background-image: url(../images/LeberouBackground.JPG);
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -440,21 +440,6 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   animation: 2s ease-out 0s 1 FadeIn;
   animation: zoom 30s infinite;
   -webkit-animation: zoom 30s infinite;
-}
-#head_image {
-  animation: blur 4s;
-  background-image: url(../images/Logoleberoutrailblancbackground.svg);
-  background-size: cover;
-}
-
-#premiere_edition, #date_event {
-  color:var(--color2);
-  font-size: 1.3em;
-  font-family: var(--font1);
-  animation: cinematicInOut 4s;
-}
-#trail_du_leberou {
-  animation: blur 4s;
 }
 #head {
   position: relative;
@@ -468,7 +453,21 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   position: relative;
   margin: auto;
 }
+#head_image {
+  animation: blur 4s;
+  background-image: url(../images/LogoLeberouTrailBlancBackground.svg);
+  background-size: cover;
+}
 
+#premiere_edition, #date_event {
+  color:var(--color2);
+  font-size: 1.3em;
+  font-family: var(--font1);
+  animation: cinematicInOut 4s;
+}
+#trail_du_leberou {
+  animation: blur 4s;
+}
 #logo {
   -webkit-transition: all 0.6s;
   transition: all 0.6s;
@@ -758,7 +757,7 @@ footer {
   background-color: white;
 }
 #social_media {
-  background-image: url(../images/LeberouBackground.jpg);
+  background-image: url(../images/LeberouBackground.JPG);
   position: relative;
   background-attachment: fixed;
   background-position: center;
