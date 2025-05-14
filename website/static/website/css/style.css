@@ -472,17 +472,6 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   -webkit-transition: all 0.6s;
   transition: all 0.6s;
 }
-#veillocort {
-  background: linear-gradient(90deg, #000, var(--color2), #000);
-  -webkit-background-clip: text;
-  font-family: var(--font2);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  animation: shine 4s linear infinite;
-  position: relative;
-}
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(50px);
