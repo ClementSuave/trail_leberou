@@ -248,6 +248,10 @@ h6 {
 nav ul li a, nav ul li a:after,nav ul li a:before {
   transition: all .5s;
 }
+.navbar {
+  background-color: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
+}
 .navbar-light .navbar-toggler {
     color: rgba(0,0,0,.5);
     border-color: rgba(0,0,0,0);
@@ -256,10 +260,12 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
     font-size: 150%;
     color: var(--color1) !important;
 }
-.navbar a {
+.navbar a, .dropdown-item {
+  background: transparent;
   opacity: 0.7;
 }
-.navbar a:hover {
+.navbar a:hover, .dropdown-item:hover {
+  background-color: transparent;
   opacity: 1;
 }
 .navbar-toggler {
@@ -276,14 +282,14 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   transform: translateX(-50%);
 }
 .dropdown-menu {
-  background-color: transparent;
+  color: var(--color1) !important;
+  background-color: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(10px);
   border: none;
   text-align: center;
-  color: var(--color1) !important;
 }
-.dropdown-item:active {
-  color:var(--color3);
-  background-color: rgba(0,0,0,.7);
+.navbar-fixed-top .dropdown-item {
+  color: var(--color1) !important;
 }
 .hover-underline {
   position: relative;
@@ -401,10 +407,12 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   color: #7D797A !important;
 }
 .navbar-fixed-top.scrolled .dropdown-item {
-  color:var(--color3); !important;
+  color:var(--color3) !important;
+  background: white;
 }
 .navbar-fixed-top.scrolled .dropdown-item:active {
-  color:#7D797A;
+  color:var(--color3) !important;
+  background: white;
 }
 .navbar-fixed-top.scrolled .icon-bar {
   background-color: #7D797A !important;
