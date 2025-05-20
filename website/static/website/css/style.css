@@ -54,6 +54,11 @@ h6 {
   font-family: var(--font2);
   color:var(--color3);
 }
+h7 {
+  font-size: 1em !important;
+  font-family: var(--font2);
+  color:gray;
+}
 .jumbotron {
   padding-top: 0;
   background-color: transparent;
