@@ -90,6 +90,23 @@
   {% block content %}
   {% endblock %}
 
+  <!--Inqcriptions non ouvertes-->
+  <div class="modal fade" id="inscriptions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">INSCRIPTIONS</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Les inscriptions ne sont pas encore ouvertes. Elles ouvriront prochainement.
+        </div>
+      </div>
+    </div>
+  </div>
+
 <footer class="text-center text-lg-start border border-white">
       <section id="social_media" class="p-4">
       <!-- Facebook -->
@@ -115,9 +132,6 @@
             </li>
             <li>
               <a href="{% url 'association' %}">L'association</a>
-            </li>
-            <li>
-              <a href="{% url 'sponsors' %}">Sponsors</a>
             </li>
           </ul>
         </div>
@@ -172,32 +186,31 @@
         <!--Grid column-->
       </div>
       <!--Grid row-->
-
-      <!--Inqcriptions non ouvertes-->
-      <div class="modal fade" id="inscriptions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel">INSCRIPTIONS</h2>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Les inscriptions ne sont pas encore ouvertes. Elles ouvriront prochainement.
-          </div>
-          <div class="modal-footer">
-
-          </div>
+      <div class="row text-center">
+        <div class="col">
+        <h6>PARTENAIRES</h6>
         </div>
       </div>
-    </div>
+      <div class="row text-center justify-content-center">
+        <!--
+        <div class="col sponsor p-4">
+          <a href="https://www.akkey.com/fr/accueil/" target="_blank"><img src="https://www.akkey.com/wp-content/uploads/elementor/thumbs/akkey-logo-complet-001-01--qamaq4bdq5gud08epud23a3klxtxpq97cmw9v75gai.png" class="img-fluid"></a>
+        </div>
+        -->
+        <div class="col sponsor p-4">
+          <a href="https://www.cc-valleedelhomme.fr" target="_blank"><img src="https://image.jimcdn.com/app/cms/image/transf/dimension=640x10000:format=png/path/s49df13e050a509ed/image/i9f664cc2ec09cd1c/version/1641567181/image.png" class="img-fluid"></a>
+        </div>
+        <div class="col sponsor p-4">
+          <a href="https://www.saint-chamassy.fr" target="_blank"><img src="https://static.wixstatic.com/media/00511c_772b5f85f7294f6299266cd484cfdbc2~mv2.png/v1/fill/w_90,h_99,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/931px-Blason_ville_fr_Saint-Chamassy_(Dordogne)_svg_PNG.png"  class="img-fluid" style="width:50%;"></a>
+        </div>
+
+      </div>
 
     </div>
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3 border-top border-white">
+    <div class="text-center p-3" style="background: var(--color1);">
       Trail du Lébérou 2025
     </div>
     <!-- Copyright -->

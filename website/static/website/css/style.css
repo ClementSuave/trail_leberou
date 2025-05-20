@@ -761,6 +761,10 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.sponsor {
+  max-width: 150px;
+  align-content: center;
+}
 
 /* -------------------------- GALLERIE ------------------------------------ */
 
