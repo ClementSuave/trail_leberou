@@ -861,10 +861,10 @@ footer {
 }
 
 @keyframes counter_km_10 {
-  from {--num: 0;}to {--num: 10;}
+  from {--num: 0;}to {--num: 12;}
 }
 @keyframes counter_km_30 {
-  from {--num: 0;}to {--num: 30;}
+  from {--num: 0;}to {--num: 31;}
 }
 @keyframes counter_km_marche {
   from {--num: 0;}to {--num: 5;}
