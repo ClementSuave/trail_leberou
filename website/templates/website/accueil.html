@@ -15,10 +15,10 @@
   
       <div class="container text-white">
 
-        <img id="head_image" class="img-fluid" src="{% static 'website/images/logo_leberou_trail_blanc_personnage.svg' %}" alt="Lébérou" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+        <img id="head_image" class="img-fluid" src="{% static 'website/images/logo_leberou_trail_blanc_personnage.svg' %}" alt="Dessin du Lébérou avec églises derrière" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
         <div id="head_title">
 
-          <img id="trail_du_leberou" class="img-fluid pb-4" src="{% static 'website/images/logo_trail_du_leberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
+          <img id="trail_du_leberou" class="img-fluid pb-4" src="{% static 'website/images/logo_trail_du_leberou.svg' %}" alt="titre TRAIL DU LEBEROU stylisé" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
           <div id="date_event">LE SAMEDI 1er NOVEMBRE 2025</div>
           
           <div id="premiere_edition" class="pt-4">PREMIERE EDITION</div>
@@ -31,7 +31,7 @@
 
       </div>
 
-      <a href="{% url 'accueil' %}#accueil"><img id="arrow_down" src="{% static 'website/images/arrow_down.svg' %}" style="max-width:10%;max-height:10%;"></a>
+      <a href="{% url 'accueil' %}#accueil"><img id="arrow_down" src="{% static 'website/images/arrow_down.svg' %}" alt="flèche pour scroller vers le bas" style="max-width:10%;max-height:10%;"></a>
 
     </div>
 
@@ -48,23 +48,23 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-lg-5 text-white text-center animate-on-scroll p-4" style="background:pink;">
-            <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/clocher_audrix.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
-            <h3 class="text-white">L'HISTOIRE</h3>
-            <div>Le Lébérou (en occitan Lebero), comme dans l'expression populaire "veilo, còrt coma un Lebero" (vois-le, il court comme un Lébérou) est une créature fantastique des contes et légendes du
-            Périgord. Il fait partie du bestiaire mythologique périgordin.
-            Le Lébérou a acquis ses traits surnaturels à la suite d'une malédiction, pouvant être due à une faute commise par la personne maudite.
-            Celle-ci consiste notamment à l'empêcher à jamais de dormir dans son lit. Il entame sa métamorphose bestiale à la tombée du jour, nécessairement près d'une fontaine. La créature erre ainsi la nuit entière sur les routes et à travers les champs de la campagne. La malédiction du Lébérou le pousse, chaque nuit, à devoir se rendre dans sept paroisses différentes, et passer, selon certaines versions à quatre pattes, sous sept clochers ou fontaines.
-            L'ampleur de son parcours l'oblige donc à passer la majeure partie de ses nuits à courir de village envillage, d'église en fontaines, finissant le matin venu épuisé quand les humains se réveillent après une nuit réparatrice. Ce rituel sans fin et inévitable imposé au Lébérou a pour vocation l'expiation de ses fautes.</div>
-          </div>
-          <div class="col-lg-7 px-lg-5 animate-on-scroll">
+          <div class="col-lg-4 text-center animate-on-scroll text-white" style="background: pink;">
             <br/>
+            <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="logo du trail du lébérou" style="max-width:20%;max-height:20%;">
+            <br/><br/>
             <p>Bienvenue au Trail du Lébérou, un trail ambiance au coeur du Périgord Noir ! </p>
-            <p>Pour cette première édition, nous proposons trois circuits ; le Trail des trois clochers (30 km), le Tour des fontaines (12 km) et la Balade au clair de Lune (7 km).</p>
-            <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins. A la fin des épreuves, nous proposons aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
+            <p>Pour cette première édition, nous proposons trois circuits ; <a href="{% url 'trente_km' %}">le Trail des trois clochers (30 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (7 km)</a>.</p>
+            <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins.</p>
+            <p>A la fin des épreuves, nous proposons aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
           </div>
-              
-              
+          <div class="col-lg-8 text-center animate-on-scroll">
+            <img id="trail_du_leberou" class="img-fluid" src="{% static 'website/images/clocher_audrix.svg' %}" alt="dessin du clocher d'Audrix" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
+            <h3>L'HISTOIRE</h3>
+            <p>Le Lébérou (en occitan Lebero), comme dans l'expression populaire "veilo, còrt coma un Lebero" (vois-le, il court comme un Lébérou) est une créature fantastique des contes et légendes du Périgord. Il fait partie du bestiaire mythologique périgordin.</p>
+            <p>Le Lébérou a acquis ses traits surnaturels à la suite d'une malédiction, pouvant être due à une faute commise par la personne maudite.
+            Celle-ci consiste notamment à l'empêcher à jamais de dormir dans son lit. Il entame sa métamorphose bestiale à la tombée du jour, nécessairement près d'une fontaine. La créature erre ainsi la nuit entière sur les routes et à travers les champs de la campagne. La malédiction du Lébérou le pousse, chaque nuit, à devoir se rendre dans sept paroisses différentes, et passer, selon certaines versions à quatre pattes, sous sept clochers ou fontaines.</p>
+            <p>L'ampleur de son parcours l'oblige donc à passer la majeure partie de ses nuits à courir de village envillage, d'église en fontaines, finissant le matin venu épuisé quand les humains se réveillent après une nuit réparatrice. Ce rituel sans fin et inévitable imposé au Lébérou a pour vocation l'expiation de ses fautes.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -173,7 +173,7 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/trail_des_trois_clochers.JPG' %}">
+                      <img src="{% static 'website/images/trail_des_trois_clochers.JPG' %}" alt="photo de la porte de l'église d'Audrix">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">TRAIL DES TROIS CLOCHERS</span>
@@ -195,7 +195,7 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/tour_des_fontaines.JPG' %}">
+                      <img src="{% static 'website/images/tour_des_fontaines.JPG' %}" alt="photo d'une source">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">TOUR DES FONTAINES</span>
@@ -217,7 +217,7 @@
                 <article>
                   <div class="article-wrapper">
                     <figure>
-                      <img src="{% static 'website/images/balade_au_clair_de_lune.JPG' %}">
+                      <img src="{% static 'website/images/balade_au_clair_de_lune.JPG' %}" alt="photo d'un champ à Audrix">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">BALADE AU CLAIR DE LUNE</span>
@@ -278,7 +278,7 @@
             <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6"><u>Salle des fêtes d'Audrix (24260)</u></a></p>
             <p>Offre de covoiturage dédiée</p>
 
-            <img id="head_image" class="img-fluid" src="{% static 'website/images/situation.png' %}">
+            <img id="head_image" class="img-fluid" src="{% static 'website/images/situation.png' %}" alt="carte dordogne simplifiée; Bergerac, Sarlat, Périgueux depuis Audrix">
           </div>
         </div>
       </div>

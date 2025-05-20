@@ -3,9 +3,13 @@
   {% load static %}
   {% load crispy_forms_tags %}
   <head>
+    <title>Trail du Lébérou</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Trail ambiance dans le Périgord Noir. Première édition le 1er Novembre 2025 à Audrix.">
+    <meta name="keywords" content="lébérou, trail, course, leberou, périgord, noir, audrix, 01/11/2025, fontaines, clochers, églises, lebero"> 
 
     <meta property="og:title" content="Trail du Léberou"/>
     <meta property="og:image" content="https://i.ibb.co/rGpWP2hg/trail-pres.jpg"/>
@@ -15,7 +19,6 @@
     <meta property="og:image:height" content="1080"/>
     <meta property="og:type" content="website"/>
 
-    <title>Trail du Lébérou</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 
@@ -78,7 +81,7 @@
       <ul id="logo-top-container" class="navbar-nav text-center align-items-center">
 
         <a class="navbar-brand nav-link-click" href="{% url 'accueil' %}" style="width: 5%;">
-          <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="" style="max-width:90%;max-height:100%;">
+          <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="logo du trail du lébérou" style="max-width:90%;max-height:100%;">
         </a>
       </ul>
     </div>
