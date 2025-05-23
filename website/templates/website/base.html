@@ -126,21 +126,6 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h6>A PROPOS</h6>
-
-          <ul class="list-unstyled mb-4">
-            <li>
-              <a href="{% url 'reglement' %}">Réglement</a>
-            </li>
-            <li>
-              <a href="{% url 'association' %}">L'association</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
           <h6>INFORMATIONS</h6>
 
           <ul class="list-unstyled">
@@ -152,6 +137,9 @@
             </li>
             <li>
               <a href="{% url 'mentions_legales' %}">Mentions légales</a>
+            </li>
+            <li>
+              <a href="{% url 'reglement' %}">Réglement</a>
             </li>
           </ul>
         </div>
@@ -174,15 +162,16 @@
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <h6>REJOIGNEZ-NOUS</h6>
-            <br/>
-            <div class="box">
-              <div class="btn-inscription" data-toggle="modal" data-target="#inscriptions" style="background:#FFC0CB;">
-                <span>INSCRIPTION</span>
-              </div>
-            </div>
-          <div class="form-outline form-white mb-4">
+
+            <ul>
+              <li>
+                <a href="{% url 'association' %}">L'association</a>
+              </li>
+            </ul>
+        </div>
+        <div class="form-outline form-white mb-4">
             
-          </div>
+        </div>
 
         </div>
         <!--Grid column-->
