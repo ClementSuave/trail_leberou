@@ -50,8 +50,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-4 animate-on-scroll text-white px-4 align-self-center" style="background: pink;">
             <div class="p-4">
-            <h3 style="color:white !important;">BIENVENUE AU TRAIL DU LEBEROU, UN TRAIL AMBIANCE AU COEUR DU PERIGORD NOIR !</h3>
-            <p>Pour cette première édition, nous proposons trois circuits ; <a href="{% url 'trente_km' %}">le Trail des trois clochers (30 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (7 km)</a>.</p>
+            <h3 style="color:white !important;">BIENVENUE AU TRAIL DU LEBEROU, UN TRAIL NOCTURNE AU COEUR DU PERIGORD NOIR INSPIRE D’UNE LEGENDE !</h3>
+            <p>Venez incarner l’être mythologique périgordin et parcourir les chemins de nuit à travers la campagne.</p>
+            <p>Pour cette première édition, nous proposons trois circuits ; <a href="{% url 'trente_km' %}">Les 3 clochers (31 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (6 km)</a>.</p>
             <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins.</p>
             <p>A la fin des épreuves, nous proposons aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
             </div>
@@ -59,10 +60,9 @@
           <div class="col-lg-8 animate-on-scroll px-4">
             <img id="trail_du_leberou" class="img-fluid mx-auto d-block" src="{% static 'website/images/clocher_audrix.svg' %}" alt="dessin du clocher d'Audrix" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;">
             <h3 class="text-center">L'HISTOIRE</h3>
-            <p>Le Lébérou (en occitan Lebero), comme dans l'expression populaire "veilo, còrt coma un Lebero" (vois-le, il court comme un Lébérou) est une créature fantastique des contes et légendes du Périgord. Il fait partie du bestiaire mythologique périgordin.</p>
-            <p>Le Lébérou a acquis ses traits surnaturels à la suite d'une malédiction, pouvant être due à une faute commise par la personne maudite.
-            Celle-ci consiste notamment à l'empêcher à jamais de dormir dans son lit. Il entame sa métamorphose bestiale à la tombée du jour, nécessairement près d'une fontaine. La créature erre ainsi la nuit entière sur les routes et à travers les champs de la campagne. La malédiction du Lébérou le pousse, chaque nuit, à devoir se rendre dans sept paroisses différentes, et passer, selon certaines versions à quatre pattes, sous sept clochers ou fontaines.</p>
-            <p>L'ampleur de son parcours l'oblige donc à passer la majeure partie de ses nuits à courir de village envillage, d'église en fontaines, finissant le matin venu épuisé quand les humains se réveillent après une nuit réparatrice. Ce rituel sans fin et inévitable imposé au Lébérou a pour vocation l'expiation de ses fautes.</p>
+            <p>La nuit tombe doucement sur les collines du Périgord. Le calme qui l’accompagne est rompu par un bruit étrange en provenance de la fontaine... Une métamorphose opère, le Lébérou va commencer sa course au clair de Lune. Cet être maudit, qui prend l’apparence d’un lièvre (en occitan 'La Lebre' se traduit par 'le lièvre'), s’élance sur les chemins afin de rompre la malédiction qui l’a touché pour ses mauvais agissements.
+            <p>Afin de se purifier, il devra passer à quatre pattes, à l’ombre de la Lune, sous sept clochers avant l’aube. 
+            <p>La lourdeur de sa tache à inspirée l’expression occitane «Veilo, cort coma un Lebero» se traduisant par «Regarde le, il court comme un Lébérou» pour désigner quelqu’un de pressé.</p>
           </div>
         </div>
       </div>
@@ -86,27 +86,33 @@
                               
                 <div id="content">
                   <ul class="timeline">
-                    <li class="event animate-on-scroll" data-date="14h">
+                    <li class="event animate-on-scroll" data-date="31 octobre: 18h à 20h">
                       <h5>RETRAIT DES DOSSARDS</h5>
-                      <p>Jusqu'à une heure avant le départ des courses.</p>
+                      <p>A la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67"><u>salle des fêtes d'Audrix (24260)</u></a></p>
                     </li>
-                    <li class="event animate-on-scroll" data-date="16h">
-                      <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
+                    <li class="event animate-on-scroll" data-date="1 novembre: 11h à 15h30">
+                      <h5>RETRAIT DES DOSSARDS</h5>
+                      <p>A la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67"><u>salle des fêtes d'Audrix (24260)</u></a></p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="1 novembre: 16h">
+                      <h5>DEPART <a href="{% url 'trente_km' %}">LES 3 CLOCHERS</a></h5>
                       <p></p>
                     </li>
-                    <li class="event animate-on-scroll" data-date="18h">
-                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
-                      <p></p>
-                    </li>
-                    <li class="event animate-on-scroll" data-date="18h">
+                    <li class="event animate-on-scroll" data-date="1 novembre: 17h">
                       <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                       <p></p>
                     </li>
-                    <li class="event animate-on-scroll" data-date="20h">
-                      <h5>DEBUT DE LA SOIREE</h5>
-                      <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
+                    <li class="event animate-on-scroll" data-date="1 novembre: 18h">
+                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+                      <p></p>
                     </li>
-                    <li class="event animate-on-scroll" data-date="21h30">
+
+                    <li class="event animate-on-scroll" data-date="1 novembre: 20h">
+                      <h5>DEBUT DE LA SOIREE</h5>
+                      <p>Tourrain périgourdin (soupe) pour tous les participants et verre de vin (ou soft) offert.</p>
+                      <p>Restauration sur place. Repas à réserver en avance. Buvette disponible.</p>
+                    </li>
+                    <li class="event animate-on-scroll" data-date="1 novembre: 20h30">
                       <h5>CONCERT</h5>
                       <p></p>
                     </li>
@@ -120,23 +126,32 @@
               <div class="card-body">         
                 <div id="content">
                   <div class="event-small">
-                    <p>14h</p>
+                    <p>31 octobre: 18h à 20h</p>
                     <h5>RETRAIT DES DOSSARDS</h5>
-                    <p>Jusqu'à une heure avant le départ des courses.</p>
+                    <<p>A la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67"><u>salle des fêtes d'Audrix (24260)</u></a></p>
+                  </div>
+                  <div class="event-small">
+                    <p>1 novembre: 11h à 15h30</p>
+                    <h5>RETRAIT DES DOSSARDS</h5>
+                    <p>A la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67"><u>salle des fêtes d'Audrix (24260)</u></a></p>
                   </div>
                   <div class="event-small">
                     <p>16h</p>
-                    <h5>DEPART <a href="{% url 'trente_km' %}">TRAIL DES TROIS CLOCHERS</a></h5>
+                    <h5>DEPART <a href="{% url 'trente_km' %}">LES 3 CLOCHERS</a></h5>
+                  </div>
+                  <div class="event-small">
+                    <p>17h</p>
+                    <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                   </div>
                   <div class="event-small">
                     <p>18h</p>
                     <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
-                    <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                   </div>
                   <div class="event-small">
                     <p>20h</p>
                     <h5>DEBUT DE LA SOIREE</h5>
-                    <p>Restauration sur place. Possibilité d'acheter à manger pour les accompagnants. Buvette disponible.</p>
+                    <p>Tourrain périgourdin (soupe) pour tous les participants et verre de vin (ou soft) offert.</p>
+                    <p>Restauration sur place. Repas à réserver en avance. Buvette disponible.</p>
                   </div>
                   <div class="event-small">
                     <p>21h30</p>
@@ -175,9 +190,9 @@
                       <img src="{% static 'website/images/trail_des_trois_clochers.JPG' %}" alt="photo de la porte de l'église d'Audrix">
                     </figure>
                     <div class="article-body">
-                      <span class="article_title">TRAIL DES TROIS CLOCHERS</span>
+                      <span class="article_title">LES 3 CLOCHERS</span>
                       <p>
-                        30 km
+                        31 km
                       </p>
                       <a href="{% url 'trente_km' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
@@ -221,7 +236,7 @@
                     <div class="article-body">
                       <span class="article_title">BALADE AU CLAIR DE LUNE</span>
                       <p>
-                        7 km
+                        6 km
                       </p>
                       <a href="{% url 'marche' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
@@ -274,7 +289,7 @@
             </div>
           </div>
           <div class="col-md-6 col-sm-12 animate-on-scroll p-4">
-            <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/4BQPtkNwHRHQC3iX6"><u>Salle des fêtes d'Audrix (24260)</u></a></p>
+            <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67"><u>Salle des fêtes d'Audrix (24260)</u></a></p>
             <p>Offre de covoiturage dédiée</p>
 
             <img id="head_image" class="img-fluid" src="{% static 'website/images/situation.png' %}" alt="carte dordogne simplifiée; Bergerac, Sarlat, Périgueux depuis Audrix">

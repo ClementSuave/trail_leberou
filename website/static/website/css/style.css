@@ -876,13 +876,13 @@ footer {
   from {--num: 0;}to {--num: 31;}
 }
 @keyframes counter_km_marche {
-  from {--num: 0;}to {--num: 5;}
+  from {--num: 0;}to {--num: 6;}
 }
 @keyframes counter_d_10 {
-  from {--num: 0;}to {--num: 200;}
+  from {--num: 0;}to {--num: 360;}
 }
 @keyframes counter_d_30 {
-  from {--num: 0;}to {--num: 500;}
+  from {--num: 0;}to {--num: 730;}
 }
 
 @keyframes cinematicInOut {
