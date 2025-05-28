@@ -59,6 +59,7 @@ h7 {
   font-family: var(--font2);
   color:gray;
 }
+
 .jumbotron {
   padding-top: 0;
   background-color: transparent;
@@ -749,7 +750,7 @@ article:has(:hover, :focus) {
 #counter_d_30 {
   animation: counter_d_30 2s forwards ease-in-out;
 }
-#counter_marche {
+#counter_km_marche {
   animation: counter_km_marche 2s forwards ease-in-out;
 }
 .counter-container::after {
@@ -876,7 +877,7 @@ footer {
   from {--num: 0;}to {--num: 31;}
 }
 @keyframes counter_km_marche {
-  from {--num: 0;}to {--num: 6;}
+  from {--num: 0;}to {--num: 7;}
 }
 @keyframes counter_d_10 {
   from {--num: 0;}to {--num: 360;}
