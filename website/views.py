@@ -25,7 +25,7 @@ def sponsors(request):
 	return render(request, "website/sponsors.html")
 def galerie(request):
     context = {}
-    flags = os.listdir(os.path.join(settings.STATIC_ROOT, "photos/"))
+    flags = os.listdir(os.path.join(settings.STATIC_ROOT, "website/photos/"))
     flags = ['website/photos/'+ fl for fl in flags]
     context['flags'] = flags
     
