@@ -1,16 +1,166 @@
 {% extends 'website/base.html' %}
 
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block content %}
+<div class="container-fluid document-header"></div>
+<div class="container">
 
-<div class="container-fluid" style="padding-top: 150px;width: 80%;">
+    <div class="row p-4 document">
 
-  <div class="row p-4 document">
+        <img id="trail_du_leberou" class="img-fluid mb-4" src="{% static 'website/images/logo_trail_du_leberou.svg' %}" alt="TRAIL DU LEBEROU" style="max-width:40%;max-height:40%;">
+        
+        <h1 style="color: #2c3e50;">RESULTATS DES COURSES</h1>
 
-    <h1black>RESULTATS</h1black>
-    
+        {% if courses %}
+            <ul class="nav nav-tabs" id="courseTabs" role="tablist">
+                {% for course in courses %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if forloop.first %}active{% endif %} courseResultatTab" id="course-tab-{{ course.id }}-link" data-bs-toggle="tab" data-bs-target="#course-tab-{{ course.id }}" type="button" role="tab" aria-controls="course-tab-{{ course.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                            {{ course.nom }}
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content p-3" id="courseTabsContent">
+                {% for course in courses %}
+                    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}"
+                            id="course-tab-{{ course.id }}"
+                            role="tabpanel"
+                            aria-labelledby="course-tab-{{ course.id }}-link"
+                            tabindex="0">
+
+                        {# Access coureurs for this course directly from the course object #}
+                        {% if course.ordered_participants %}
+                            <div class="filter-section mt-3 mb-4">
+                                <div class="mb-3">
+                                    <label for="searchInput-{{ course.id }}" class="form-label">Rechercher (Nom, Prénom ou Dossard) :</label>
+                                    <input type="text" class="form-control course-search-input" id="searchInput-{{ course.id }}"
+                                            data-target-table="classementTable-{{ course.id }}" placeholder="Tapez pour filtrer...">
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="classementTable-{{ course.id }}" class="table table-hover table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Pos. Gén.</th>
+                                            <th>Dossard</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Sexe</th>
+                                            <th>Temps de Course</th>
+                                            <th>Catégorie</th>
+                                            <th>Pos. Cat.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {# Loop directly over coureur objects attached to this course #}
+                                        {% for coureur in course.ordered_participants %}
+                                            <tr>
+                                                <td>{{ coureur.position_generale }}</td>
+                                                <td>{{ coureur.dossard }}</td>
+                                                <td>{{ coureur.nom }}</td>
+                                                <td>{{ coureur.prenom }}</td>
+                                                <td>{{ coureur.get_sexe_display }}</td>
+                                                <td>{{ coureur.get_temps_formate }}</td>
+                                                <td>{{ coureur.categorie_age }}</td>
+                                                <td>{{ coureur.position_par_categorie }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <p class="alert alert-info mt-3">Aucun coureur n'a encore terminé cette course.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <p class="alert alert-warning">Aucune course enregistrée pour le moment.</p>
+        {% endif %}
+
+    </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Bootstrap Tabs
+        var tabButtons = document.querySelectorAll('#courseTabs button');
+        tabButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                var targetTabId = this.getAttribute('data-bs-target');
+                var activePane = document.querySelector('.tab-pane.show.active');
+                if (activePane) {
+                    activePane.classList.remove('show', 'active');
+                }
+                var targetPane = document.querySelector(targetTabId);
+                if (targetPane) {
+                    targetPane.classList.add('show', 'active');
+                }
+
+                tabButtons.forEach(function(btn) {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                const searchInput = targetPane.querySelector('.course-search-input');
+                if (searchInput) {
+                    const targetTableId = searchInput.getAttribute('data-target-table');
+                    filterTable(searchInput.id, targetTableId);
+                }
+            });
+        });
+
+        function filterTable(searchInputId, tableId) {
+            const searchInput = document.getElementById(searchInputId);
+            const classementTable = document.getElementById(tableId);
+
+            if (!searchInput || !classementTable) return;
+
+            const filter = searchInput.value.toLowerCase();
+            const tr = classementTable.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                let rowText = '';
+                const cellsToSearch = [1, 2]; 
+
+                cellsToSearch.forEach(index => {
+                    if (tr[i].cells[index]) {
+                        rowText += (tr[i].cells[index].textContent || tr[i].cells[index].innerText) + ' ';
+                    }
+                });
+                rowText = rowText.toLowerCase();
+
+                if (rowText.indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+
+        document.querySelectorAll('.course-search-input').forEach(input => {
+            input.addEventListener('keyup', function() {
+                const targetTableId = this.getAttribute('data-target-table');
+                filterTable(this.id, targetTableId);
+            });
+        });
+
+        const firstTabLink = document.querySelector('#courseTabs .nav-link.active');
+        if (firstTabLink) {
+            const firstTabContentId = firstTabLink.getAttribute('data-bs-target');
+            const searchInput = document.querySelector(firstTabContentId + ' .course-search-input');
+            if (searchInput) {
+                const targetTableId = searchInput.getAttribute('data-target-table');
+                filterTable(searchInput.id, targetTableId);
+            }
+        }
+    });
+</script>
 {% endblock %}

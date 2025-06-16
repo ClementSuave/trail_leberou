@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="container-fluid" style="padding-top: 100px;">
+<div class="container-fluid document-header"></div>
 
   <div class="container gallery-container">
 
@@ -16,10 +16,15 @@
         <div class="row">
           {% for flag in flags %}
           <div class="col-sm-12 col-md-4 animate-on-scroll">
-                <a class="lightbox" href="{% static flag %}">
-                    <img src="{% static flag %}" alt="problem" class="img-fluid" />
-                </a>
-            </div>
+            <a class="lightbox" href="{% static flag %}">
+              <img src="{% static flag %}" alt="problem" class="img-fluid" />
+            </a>
+          </div>
+          {% empty %}
+          <div class="col-12 text-center">
+            <p class="lead">Les photos n'ont pas encore étés chargées!</p>
+            <p>Veuillez revenir plus tard.</p>
+          </div>
           {% endfor %}
 
         </div>
@@ -28,9 +33,6 @@
 
 </div>
     
-
-</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
     baguetteBox.run('.tz-gallery');

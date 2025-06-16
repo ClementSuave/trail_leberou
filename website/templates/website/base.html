@@ -49,13 +49,13 @@
  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav text-center">
-        <li class="nav-item active">
+        <li class="nav-item active nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#accueil">Accueil<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#programme">Programme</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item nav-item-main-navbar dropdown">
           <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Les courses</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div class="dropdown-divider"></div>
@@ -67,16 +67,16 @@
             <div class="dropdown-divider"></div>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#informations">Informations</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ml-auto text-center">
-        <li class="nav-item">
+        <li class="nav-item nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'resultats' %}">Résultats</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'galerie' %}">Galerie</a>
         </li>
       </ul>
@@ -92,7 +92,7 @@
   {% block content %}
   {% endblock %}
 
-  <!--Inqcriptions non ouvertes-->
+  <!--Inqcriptions non ouvertes
   <div class="modal fade" id="inscriptions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -108,16 +108,14 @@
       </div>
     </div>
   </div>
-
+  -->
 <footer class="text-center text-lg-start border border-white">
-      <section id="social_media" class="p-4">
+    <section id="social_media" class="p-4">
       <!-- Facebook -->
-      <a class="btn btn-floating m-1 btn-inscription" href="https://www.facebook.com/share/16NXZbnc6S/?mibextid=wwXIfr" role="button"><i class="fab fa-facebook-f"></i></a>
+      <a class="btn btn-floating m-1 btn-inscription" href="https://www.facebook.com/share/16NXZbnc6S/?mibextid=wwXIfr" role="button" target="_blank"><i class="fab fa-facebook-f"></i></a>
 
       <!-- Instagram -->
-      <a class="btn btn-floating m-1 btn-inscription" href="https://www.instagram.com/trail_leberou?igsh=MXNkYTIxdnBnYTY3MQ==" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a class="btn btn-floating m-1 btn-inscription" href="https://www.instagram.com/trail_leberou?igsh=MXNkYTIxdnBnYTY3MQ==" role="button" target="_blank"><i class="fab fa-instagram"></i></a>
     </section>
 
     <!-- Grid container -->
@@ -165,7 +163,7 @@
 
             <ul class="list-unstyled">
               <li>
-                <a href="{% url 'association' %}">L'association</a>
+                <a href="{% url 'association' %}" target="_blank">L'association</a>
               </li>
             </ul>
         </div>

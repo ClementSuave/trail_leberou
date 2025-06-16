@@ -14,13 +14,13 @@ $(document).ready(function() {
 
   if (window.matchMedia("(max-width: 991px)").matches) {
     //autoclose navbar 
-    $(".nav-item").attr("data-toggle", "collapse");
-    $(".nav-item").attr("data-target", "#navbarSupportedContent");
+    $(".nav-item-main-navbar").attr("data-toggle", "collapse");
+    $(".nav-item-main-navbar").attr("data-target", "#navbarSupportedContent");
     //remove underline 
     $(".nav-link").removeClass("hover-underline");
   } else {
-    $(".nav-item").removeAttr("data-toggle");
-    $(".nav-item").removeAttr("data-target");
+    $(".nav-item-main-navbar").removeAttr("data-toggle");
+    $(".nav-item-main-navbar").removeAttr("data-target");
   }
   //hamburger button top
   $('.third-button').on('click', function () {

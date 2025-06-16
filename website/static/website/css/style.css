@@ -440,11 +440,14 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   background-color: white !important;
   color: black !important;
 }
+#nonClasseTable, #classementTable {
+  background-color: white !important;
+}
 
 
 /*---------------------- HOME ---------------------- */
 
-.document-header, #head {
+#head {
   background-image: url(../images/black_background.jpg);
   position: relative;
   background-attachment: fixed;
@@ -759,7 +762,7 @@ article:has(:hover, :focus) {
 footer {
   background-color: white;
 }
-#social_media {
+#social_media, .document-header {
   background-image: url(../images/black_background.jpg);
   position: relative;
   background-attachment: fixed;
@@ -824,6 +827,19 @@ footer {
 
 .baguetteBox-button {
     background-color: transparent !important;
+}
+
+
+/* -------------------------- RESULTATS ------------------------------------ */
+
+#courseTabsContent {
+  background-color: white !important;
+}
+.courseResultatTab {
+  color: white !important;
+}
+.courseResultatTab.active {
+  color: var(--color3) !important;
 }
 
 /* -------------------------- KEYFRAMES ------------------------------------ */

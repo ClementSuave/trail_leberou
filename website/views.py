@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 import os
 from django.conf import settings
+from .models import Course, Coureur
 
 def accueil(request):
 	return render(request, "website/accueil.html")
@@ -22,13 +23,25 @@ def association(request):
 	return render(request, "website/association.html")
 def sponsors(request):
 	return render(request, "website/sponsors.html")
-def resultats(request):
-	return render(request, "website/resultats.html")
 def galerie(request):
-    # Create a dictionary
     context = {}
     flags = os.listdir(os.path.join(settings.STATIC_ROOT, "photos/"))
     flags = ['website/photos/'+ fl for fl in flags]
     context['flags'] = flags
     
     return render(request, "website/galerie.html", context)
+
+def resultats(request):
+    courses = Course.objects.all().order_by('-date_course')
+
+    for course in courses:
+        course.ordered_participants = Coureur.objects.filter(
+            course=course,
+            temps_course__isnull=False
+        ).order_by('temps_course')
+
+    context = {
+        'courses': courses,
+    }
+    
+    return render(request, 'website/resultats.html', context)
