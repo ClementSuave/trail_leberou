@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-o$+bw-ibebcaa7t0)f0_ww8qz_ks(z*45h7!gvf^jsucdpl1a3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',       # Allows requests from localhost
+    '127.0.0.1',       # Allows requests from the local machine (loopback address)
+    'trailduleberou', # Replace with your actual domain
+    'trailduleberou.fr'
+    ]
 
 
 # Application definition
