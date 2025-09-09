@@ -11,7 +11,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Coureur)
 class CoureurAdmin(admin.ModelAdmin):
-    list_display = ('prenom', 'nom', 'sexe', 'dossard', 'course', 'temps_course', 'categorie_age', 'position_generale', 'position_par_categorie')
+    list_display = ('prenom', 'nom', 'sexe', 'dossard', 'course', 'club', 'temps_course', 'categorie_age', 'position_generale', 'position_par_categorie', 'telephone')
     list_filter = ('sexe','course',CategorieAgeFilter)
     search_fields = ('nom', 'prenom', 'dossard', 'email')
     readonly_fields = ('dossard', 'position_generale', 'position_par_categorie')
@@ -19,7 +19,7 @@ class CoureurAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('nom', 'prenom','sexe', 'email', 'anniversaire', 'course', 'temps_course')
+            'fields': ('nom', 'prenom','sexe', 'email', 'date_naissance', 'course', 'temps_course')
         }),
         ('Informations de course calculées', {
             'fields': ('dossard', 'position_generale', 'position_par_categorie'),

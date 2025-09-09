@@ -59,10 +59,10 @@ class Coureur(models.Model):
         return f"{self.dossard or 'N/A'}: {self.prenom} {self.nom}  - {self.course.nom})"
 
     def categorie_age(self):
-        if not self.anniversaire:
+        if not self.date_naissance:
             return "Inconnu"
         
-        annee_naissance = self.anniversaire.year
+        annee_naissance = self.date_naissance.year
         annee_actuelle = date.today().year
         age = annee_actuelle - annee_naissance
 
