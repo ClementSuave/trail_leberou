@@ -14,4 +14,5 @@ urlpatterns = [
     path("sponsors/", views.sponsors, name="sponsors"),
     path("galerie/", views.galerie, name="galerie"),
     path("resultats/", views.resultats, name="resultats"),
+    path('import-data/', views.import_data, name='import_data'),
 ]

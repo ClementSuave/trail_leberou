@@ -19,19 +19,19 @@ class Course(models.Model):
         ordering = ['-date_course', 'nom']
 
     def __str__(self):
-        return f"{self.nom} : {self.distance or 'N/A'} km / {self.deniv or 'N/A'} d+"
+        return f"{self.nom}"
 
 class Coureur(models.Model):
 
     SEXE_CHOICES = [
-        ('H', 'Homme'),
+        ('M', 'Homme'),
         ('F', 'Femme'),
         ('A', 'Autre'),
     ]
 
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
-    email = models.EmailField(unique=True, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
     emailcontact = models.EmailField(unique=True, blank=True, null=True)
     date_naissance = models.DateField(blank=True, null=True)
     sexe = models.CharField(max_length=1,choices=SEXE_CHOICES,help_text="Sexe du coureur")
@@ -75,7 +75,7 @@ class Coureur(models.Model):
             base_categorie = "MA"  # Master
         
         # Combine base_categorie with sex
-        if base_categorie != "N/A" and self.sexe in ['H', 'F']:
+        if base_categorie != "N/A" and self.sexe in ['M', 'F']:
             return f"{base_categorie} {self.get_sexe_display()}" # e.g., "ES Homme", "SE Femme"
         return "Inconnu"
 
@@ -150,3 +150,10 @@ def set_dossard(sender, instance, **kwargs):
             else:
                 from django.core.exceptions import ValidationError
                 raise ValidationError(f"La plage de dossards pour la course '{instance.course.nom}' est pleine (Dossard {instance.course.dossard_start} à {instance.course.dossard_end}). Impossible d'attribuer un nouveau dossard automatiquement.")
+
+class Extract(models.Model):
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to='extracts/')
+
+    def __str__(self):
+        return f"{self.title}"
