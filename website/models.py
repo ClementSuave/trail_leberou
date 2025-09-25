@@ -32,7 +32,7 @@ class Coureur(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
-    emailcontact = models.EmailField(unique=True, blank=True, null=True)
+    emailcontact = models.EmailField(blank=True, null=True)
     date_naissance = models.DateField(blank=True, null=True)
     sexe = models.CharField(max_length=1,choices=SEXE_CHOICES,help_text="Sexe du coureur")
     pays = models.CharField(max_length=100,blank=True, null=True)
@@ -44,7 +44,6 @@ class Coureur(models.Model):
     date_inscription = models.DateField(blank=True, null=True)
     telephone = models.IntegerField(blank=True, null=True)
     repas = models.IntegerField(help_text="Nombre de repas")
-    
     
     dossard = models.IntegerField(null=True, blank=True, help_text="Numéro de dossard pour cette course")
     temps_course = models.DurationField(blank=True, null=True, help_text="Durée de la course (format HH:MM:SS)")
