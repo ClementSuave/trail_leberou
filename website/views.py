@@ -7,6 +7,7 @@ from .models import Course, Coureur, Extract
 from datetime import datetime, timedelta
 from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
+from PIL import Image
 
 def accueil(request):
 	return render(request, "website/accueil.html")
@@ -30,10 +31,43 @@ def sponsors(request):
 	return render(request, "website/sponsors.html")
 def galerie(request):
     context = {}
-    flags = os.listdir(os.path.join(settings.STATIC_ROOT, "website/photos/"))
-    flags = ['website/photos/'+ fl for fl in flags]
-    context['flags'] = flags
+    photos_dir = os.path.join(settings.STATIC_ROOT, "photos")
     
+    if not os.path.exists(photos_dir):
+        context['flags'] = []
+        return render(request, "website/galerie.html", context)
+        
+    all_files = os.listdir(photos_dir)
+    image_data = []
+
+    for fl in all_files:
+        full_path = os.path.join(photos_dir, fl)
+        
+        if fl.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+            try:
+                with Image.open(full_path) as img:
+                    width, height = img.size
+                    
+                    if width > height:
+                        orientation = 'landscape'
+                        col_class = 'col-md-4'
+                    elif height > width:
+                        orientation = 'portrait'
+                        col_class = 'col-md-3'
+                    else:
+                        orientation = 'square'
+                        col_class = 'col-md-4'
+                        
+                    image_data.append({
+                        'path': f'website/photos/{fl}',
+                        'orientation': orientation,
+                        'col_class': col_class,
+                    })
+            except Exception as e:
+                print(f"Skipping file {fl}: {e}")
+                pass
+
+    context['flags'] = image_data
     return render(request, "website/galerie.html", context)
 
 def resultats(request):

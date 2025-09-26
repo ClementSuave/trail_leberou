@@ -4,6 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
 
 <div class="container-fluid document-header"></div>
 
@@ -11,13 +12,13 @@
 
     <p class="page-description text-center"></p>
     
-    <div class="tz-gallery">
+    <div class="gallery">
 
         <div class="row">
           {% for flag in flags %}
-          <div class="col-sm-12 col-md-4 animate-on-scroll">
-            <a class="lightbox" href="{% static flag %}">
-              <img src="{% static flag %}" alt="problem" class="img-fluid" />
+          <div class="col-sm-12 {{ flag.col_class }} animate-on-scroll">
+            <a class="lightbox" href="{% static flag.path %}">
+              <img src="{% static flag.path %}" alt="No image found" class="img-fluid {{ flag.orientation }}" />
             </a>
           </div>
           {% empty %}
@@ -34,8 +35,6 @@
 </div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
-</script>
+<script>baguetteBox.run('.gallery', {animation: 'fadeIn',noScrollbars: true});</script>
 
 {% endblock %}
