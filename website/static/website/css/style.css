@@ -706,16 +706,16 @@ article:has(:hover, :focus) {
   padding-top: 150px;"
 }
 #bg_30km {
-  background-image: url(../images/HEADER_les_trois_clochers.JPG);
+  background-image: url(../images/HEADER_les_trois_clochers.jpg);
 }
 #bg_10km {
-  background-image: url(../images/HEADER_le_tour_des_fontaines.JPG);
+  background-image: url(../images/HEADER_le_tour_des_fontaines.jpg);
 }
 #bg_marche {
-  background-image: url(../images/HEADER_balade_au_clair_de_lune.JPG);
+  background-image: url(../images/HEADER_balade_au_clair_de_lune.jpg);
 }
 #bg_association {
-  background-image: url(../images/HEADER_association.JPG);
+  background-image: url(../images/HEADER_association.jpg);
 }
 .counter-container {
   counter-reset: num var(--num);
