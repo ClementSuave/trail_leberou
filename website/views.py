@@ -7,7 +7,6 @@ from .models import Course, Coureur, Extract
 from datetime import datetime, timedelta
 from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
-from PIL import Image
 
 def accueil(request):
 	return render(request, "website/accueil.html")
