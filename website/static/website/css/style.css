@@ -25,8 +25,8 @@ a, a:visited, a:hover {
   color: inherit;
 }
 h1 {
-  color: var(--color1);
-  font-size: 2em !important;
+  color: white;
+  font-size: 1.3em !important;
   font-family: var(--font2);
 }
 h1black {
@@ -58,6 +58,10 @@ h7 {
   font-size: 1em !important;
   font-family: var(--font2);
   color:gray;
+}
+title_course{
+  font-size: 5em;
+  font-family: var(--font2);
 }
 
 .jumbotron {
@@ -133,20 +137,6 @@ h7 {
   transform: scale(1,1);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
-#arrow_down {
-  animation: MoveUpDown 1s linear infinite;
-  position: absolute;
-  left: 0; 
-  right: 0; 
-  margin-inline: auto; 
-  width: fit-content;
-}
-#arrow_down:hover {
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
 
 /* very large */
 @media (min-width: 1024px) {
@@ -196,6 +186,14 @@ h7 {
   }
   .navbar-fixed-top.scrolled #logo-top-container {
     align-items: normal !important;
+  }
+  .navbar-collapse {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stacks the links vertically */
+    justify-content: center; /* Centers items vertically within the container */
+    align-items: center; /* Centers items horizontally (optional, but good practice) */
   }
   .text_overlay {
     position: absolute;
@@ -280,12 +278,6 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 }
 .navbar-toggler:focus {
   outline: 0px;
-}
-.navbar-brand
-{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .dropdown-menu {
   color: var(--color1) !important;
@@ -428,9 +420,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 }
 .navbar-brand.scrolled
 {
-  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
   display:block;
 }
 .navbar-fixed-top.scrolled .hover-underline:after {
@@ -454,9 +444,6 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  animation: 2s ease-out 0s 1 FadeIn;
-  animation: zoom 30s infinite;
-  -webkit-animation: zoom 30s infinite;
 }
 #head {
   position: relative;
@@ -499,10 +486,11 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   transform: translateY(0);
 }
 .section_title {
-  background-color:var(--color3);
-  padding: 2em;
+  font-size: 2em;
+  background-color: var(--color3);
   clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 80%);
   opacity: 0;
+  padding: 0.7em;
   transform: translateY(-50px);
   filter: blur(30px);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out;
@@ -624,9 +612,6 @@ article a::after {
   color: var(--title-color);
   transition: color 0.3s ease-out;
 }
-figure {
-  
-}
 article img {
   max-width: 100%;
   transform-origin: center;
@@ -705,9 +690,6 @@ article:has(:hover, :focus) {
 }
 
 /*---------------------- COURSES ---------------------- */
-.title_courses {
-  max-width: 540px !important;
-}
 
 @property --num {
   syntax: "<integer>";
@@ -724,22 +706,21 @@ article:has(:hover, :focus) {
   padding-top: 150px;"
 }
 #bg_30km {
-  background-image: url(../images/trail_des_trois_clochers_header.JPG);
+  background-image: url(../images/HEADER_les_trois_clochers.JPG);
 }
 #bg_10km {
-  background-image: url(../images/tour_des_fontaines_header.JPG);
+  background-image: url(../images/HEADER_le_tour_des_fontaines.JPG);
 }
 #bg_marche {
-  background-image: url(../images/balade_au_clair_de_lune_header.JPG);
+  background-image: url(../images/HEADER_balade_au_clair_de_lune.JPG);
 }
 #bg_association {
-  background-image: url(../images/association_header.JPG);
+  background-image: url(../images/HEADER_association.JPG);
 }
 .counter-container {
   counter-reset: num var(--num);
   font: 800 40px system-ui;
   padding: 0.5rem;
-  color:var(--color3); !important;
 }
 #counter_km_10 {
   animation: counter_km_10 2s forwards ease-in-out;
@@ -922,4 +903,41 @@ footer {
     opacity:1;
     margin-left:0;
   }
+}
+
+
+#head::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 100%;
+    z-index: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        rgba(255, 255, 255, 0.5) 0%, /* White, semi-transparent center */
+        rgba(255, 255, 255, 0.1) 50%, /* Fades out */
+        transparent 70% /* Fully transparent edges */
+    );
+    background-repeat: repeat-x; 
+    background-size: 50% 100%; /* Makes the repeating texture smaller */
+    filter: blur(2px); /* Softens the texture to look like smoke/mist */
+    opacity: 0.5; /* Adjust for intensity */
+
+    /* Animation */
+    animation: moveSmoke 30s linear infinite;
+}
+
+/* ----------------------------------------------------------------
+   The Animation Keyframes
+   ---------------------------------------------------------------- */
+@keyframes moveSmoke {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Moves all the way across the area */
+        transform: translateX(-66.66%); 
+    }
 }

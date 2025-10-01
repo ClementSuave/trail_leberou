@@ -8,14 +8,14 @@
 <div id="bg_10km" class="jumbotron text-center m-0 d-flex justify-content-center">
   <div class="container title_courses">
   <div class="row justify-content-center">
-    <div class="section_title"><h1>TOUR DES FONTAINES</h1></div>
+    <title_course style="color: pink;">TOUR DES FONTAINES</title_course>
   </div>
   <div class="row justify-content-center p-4">
     <div class="col-6 d-flex justify-content-center">
-      <div id="counter_km_10" class="counter-container"></div><span class="d-flex align-items-center text-white">km</span>
+      <div id="counter_km_10" class="counter-container" style="color: pink;"></div><span class="d-flex align-items-center text-white">km</span>
     </div>
     <div class="col-6 d-flex justify-content-center">
-      <div id="counter_d_10" class="counter-container"></div><span class="d-flex align-items-center text-white">D+</span>
+      <div id="counter_d_10" class="counter-container" style="color: pink;"></div><span class="d-flex align-items-center text-white">D+</span>
     </div>
   </div>
   <div class="row justify-content-center p-4">
@@ -32,6 +32,9 @@
   <div class="row p-lg-5 p-md-2 p-sm-2 p-xs-2">
     <div class="col-md-5 col-sm-12 pb-4 order-2">
       <iframe src="https://macarte.ign.fr/carte/gbjQ1F/Tour-des-fontaines" width="100%" height="480px" allow="geolocation clipboard-read; clipboard-write"></iframe>
+      <a href="{% static 'website/gpx/Le tour des fontaines.gpx' %}" download>
+        <button type="button" class="btn btn-outline-dark">GPX</button>
+      </a>
     </div>
     <div class="col-md-7 col-sm-12 order-1">
       <p>Juste après la départ de la place d'Audrix, le Lébérou sera emmené a faire une petit boucle avec des vues sur la vallée de la Dordogne pour découvrir en remontant sur le point de départ le lavoir de la Servantie. Une descente l'emmènera ensuite vers l'entrée naturelle du Gouffre de Proumeyssac. S'ensuivra la côte du Muscle avec des vues sur la Vézère puis le passage par deux lavoirs juste après le hameau. Le Lébérou redescendra ensuite vers la combe de l'Ouital, cheminera le long du cours d'eau pour arriver sur la dernière montée vers le lavoir de Gravard.</p>
@@ -39,7 +42,7 @@
     </div>
   </div>
   <div class="row justify-content-center px-5 pb-5">
-    <img class="img-fluid" src="{% static 'website/images/tour_des_fontaines_deniv.svg' %}" alt="profil altimétrique du tour des fontaines">
+    <img class="img-fluid" src="{% static 'website/images/DENIV_le_tour_des_fontaines.svg' %}" alt="profil altimétrique du tour des fontaines">
   </div>
 </div>
 

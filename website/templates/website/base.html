@@ -71,7 +71,16 @@
           <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#informations">Informations</a>
         </li>
       </ul>
-<!-- Comment the gallery and resultat tabs for now
+
+      <ul id="logo-top-container" class="navbar-nav text-center align-items-center">
+        <a class="navbar-brand nav-link-click" href="{% url 'accueil' %}" style="width: 5%;">
+          <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="logo du trail du lébérou" style="max-width:90%;max-height:100%;">
+        </a>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Comment the gallery and resultat tabs for now
       <ul class="navbar-nav ml-auto text-center">
         <li class="nav-item nav-item-main-navbar">
           <a class="nav-link nav-link-click hover-underline" href="{% url 'resultats' %}">Résultats</a>
@@ -81,14 +90,6 @@
         </li>
       </ul>
        -->
-      <ul id="logo-top-container" class="navbar-nav text-center align-items-center">
-
-        <a class="navbar-brand nav-link-click" href="{% url 'accueil' %}" style="width: 5%;">
-          <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="logo du trail du lébérou" style="max-width:90%;max-height:100%;">
-        </a>
-      </ul>
-    </div>
-  </nav>
 
   {% block content %}
   {% endblock %}
@@ -181,7 +182,7 @@
         </div>
       </div>
       <div class="row text-center justify-content-center">
-        <div class="col sponsor p-2">
+        <div class="col-auto sponsor p-2">
           <a href="https://www.akkey.com/fr/accueil/" target="_blank"><img src="https://www.akkey.com/wp-content/uploads/elementor/thumbs/akkey-logo-complet-001-01--qamaq4bdq5gud08epud23a3klxtxpq97cmw9v75gai.png" alt="AKKEY" class="img-fluid"></a>
         </div>
         <div class="col-auto sponsor p-2">
