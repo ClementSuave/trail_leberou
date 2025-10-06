@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /import-data.html
+Disallow: /admin/*
