@@ -750,6 +750,8 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
 }
+#fb_button:hover{color: #3b5998;}
+#insta_button:hover{color: #DD2A7B;}
 .sponsor {
   max-width: 150px;
   align-content: center;
