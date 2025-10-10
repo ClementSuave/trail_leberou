@@ -750,13 +750,30 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#fb_button:hover{color: #3b5998;}
-#insta_button:hover{color: #DD2A7B;}
+#fb_button:hover{
+  color: #3b5998;
+}
+#insta_button:hover{
+  color: #DD2A7B;
+}
 .sponsor {
   max-width: 150px;
   align-content: center;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  filter: grayscale(80%);
+  -webkit-filter: grayscale(80%);
+  -moz-filter: grayscale(80%);
 }
-
+.sponsor:hover{
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+}
 /* -------------------------- GALLERIE ------------------------------------ */
 
 .container.gallery-container {
