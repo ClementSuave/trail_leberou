@@ -45,54 +45,46 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="150">
 
 <!-- NAVBAR -->
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-fixed-top navbar-brand-center">
-    <button class="navbar-toggler third-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="hamburger"><span></span><span></span><span></span></div>
-    </button>
- 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav text-center">
-        <li class="nav-item active nav-item-main-navbar">
-          <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#accueil">Accueil<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item nav-item-main-navbar">
-          <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#programme">Programme</a>
-        </li>
-        <li class="nav-item nav-item-main-navbar dropdown">
-          <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Les courses</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item hover-underline" href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a>
-            <a class="dropdown-item hover-underline" href="{% url 'dix_km' %}">TOUR DES FONTAINES</a>
-            <a class="dropdown-item hover-underline" href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item hover-underline" href="{% url 'reglement' %}">REGLEMENT</a>
-            <div class="dropdown-divider"></div>
-          </div>
-        </li>
-        <li class="nav-item nav-item-main-navbar">
-          <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#informations">Informations</a>
-        </li>
-      </ul>
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-fixed-top navbar-brand-center">
+  <button class="navbar-toggler third-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </button>
 
-      <ul id="logo-top-container" class="navbar-nav text-center align-items-center">
-        <a class="navbar-brand nav-link-click" href="{% url 'accueil' %}" style="width: 5%;">
-          <img id="logo-top" class="img-responsive p-2" src="{% static 'website/images/logo_transparent.svg' %}" alt="logo du trail du lébérou" style="max-width:90%;max-height:100%;">
-        </a>
-      </ul>
-    </div>
-  </nav>
+  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item active nav-item-main-navbar">
+        <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#accueil">Accueil<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item nav-item-main-navbar">
+        <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#programme">Programme</a>
+      </li>
+      <li class="nav-item nav-item-main-navbar dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Les courses</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item hover-underline" href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a>
+          <a class="dropdown-item hover-underline" href="{% url 'dix_km' %}">TOUR DES FONTAINES</a>
+          <a class="dropdown-item hover-underline" href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item hover-underline" href="{% url 'reglement' %}">REGLEMENT</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item nav-item-main-navbar">
+        <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#informations">Informations</a>
+      </li>
+      <li class="nav-item nav-item-main-navbar">
+        <a class="nav-link nav-link-click hover-underline" href="{% url 'resultats' %}">Résultats</a>
+      </li>
+      <li class="nav-item nav-item-main-navbar">
+        <a class="nav-link nav-link-click hover-underline" href="{% url 'galerie' %}">Galerie</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- Comment the gallery and resultat tabs for now
-      <ul class="navbar-nav ml-auto text-center">
-        <li class="nav-item nav-item-main-navbar">
-          <a class="nav-link nav-link-click hover-underline" href="{% url 'resultats' %}">Résultats</a>
-        </li>
-        <li class="nav-item nav-item-main-navbar">
-          <a class="nav-link nav-link-click hover-underline" href="{% url 'galerie' %}">Galerie</a>
-        </li>
-      </ul>
-       -->
+
+
 
   {% block content %}
   {% endblock %}

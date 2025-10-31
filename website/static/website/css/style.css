@@ -472,7 +472,7 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   animation: cinematicInOut 4s;
 }
 #trail_du_leberou {
-  animation: blur 4s;
+  animation: blur 1s;
 }
 #logo {
   -webkit-transition: all 0.6s;
