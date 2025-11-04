@@ -31,7 +31,7 @@ def sponsors(request):
 	return render(request, "website/sponsors.html")
 def galerie(request):
     context = {}
-    photos_dir = os.path.join(settings.MEDIA_ROOT, "website/photos")
+    photos_dir = os.path.join(settings.MEDIA_ROOT, "photos")
     
     if not os.path.exists(photos_dir):
         context['flags'] = []
