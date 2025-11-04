@@ -31,7 +31,7 @@ def sponsors(request):
 	return render(request, "website/sponsors.html")
 def galerie(request):
     context = {}
-    photos_dir = os.path.join(settings.STATIC_ROOT, "photos")
+    photos_dir = os.path.join(settings.MEDIA_ROOT, "website/photos")
     
     if not os.path.exists(photos_dir):
         context['flags'] = []
@@ -69,6 +69,7 @@ def galerie(request):
                 pass
 
     context['flags'] = image_data
+    context['MEDIA_URL'] = settings.MEDIA_URL
     return render(request, "website/galerie.html", context)
 
 def resultats(request):

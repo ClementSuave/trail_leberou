@@ -17,8 +17,8 @@
         <div class="row">
           {% for flag in flags %}
           <div class="col-sm-12 {{ flag.col_class }} animate-on-scroll" style="object-fit: cover;">
-            <a class="lightbox" href="{% static flag.path %}">
-              <img src="{% static flag.path %}" alt="No image found" class="img-fluid {{ flag.orientation }}"/>
+            <a class="lightbox" href="{{ MEDIA_URL }}{{ flag.path }}">
+              <img src="{{ MEDIA_URL }}{{ flag.path }}" alt="No image found" class="img-fluid {{ flag.orientation }}"/>
             </a>
           </div>
           {% empty %}

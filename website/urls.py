@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.accueil, name="accueil"),
@@ -16,3 +18,5 @@ urlpatterns = [
     path("resultats/", views.resultats, name="resultats"),
     path('import-data/', views.import_data, name='import_data'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
