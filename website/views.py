@@ -7,6 +7,7 @@ from .models import Course, Coureur, Extract
 from datetime import datetime, timedelta
 from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
+from PIL import Image
 
 def accueil(request):
 	return render(request, "website/accueil.html")
@@ -37,6 +38,7 @@ def galerie(request):
         return render(request, "website/galerie.html", context)
         
     all_files = os.listdir(photos_dir)
+    all_files.sort()
     image_data = []
 
     for fl in all_files:
