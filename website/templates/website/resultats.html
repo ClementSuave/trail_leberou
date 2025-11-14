@@ -46,7 +46,7 @@
                                     <thead>
                                         <tr>
                                             <th>Pos. Gén.</th>
-                                            <th>Dossard</th>
+                                            <!--<th>Dossard</th>-->
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Sexe</th>
@@ -60,7 +60,7 @@
                                         {% for coureur in course.ordered_participants %}
                                             <tr>
                                                 <td>{{ coureur.position_generale }}</td>
-                                                <td>{{ coureur.dossard }}</td>
+                                                <!--<td>{{ coureur.dossard }}</td>-->
                                                 <td>{{ coureur.nom }}</td>
                                                 <td>{{ coureur.prenom }}</td>
                                                 <td>{{ coureur.get_sexe_display }}</td>
