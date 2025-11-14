@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .admin_filters import CategorieAgeFilter
 from .models import Course, Coureur, Extract
-from . import utils
+
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
 import os, csv

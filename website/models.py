@@ -57,6 +57,7 @@ class Coureur(models.Model):
     def __str__(self):
         return f"{self.dossard or 'N/A'}: {self.prenom} {self.nom}  - {self.course.nom})"
 
+    @property
     def categorie_age(self):
         if not self.date_naissance:
             return "Inconnu"
@@ -78,8 +79,6 @@ class Coureur(models.Model):
             return f"{base_categorie} {self.get_sexe_display()}" # e.g., "ES Homme", "SE Femme"
         return "Inconnu"
 
-
-    @property
     def position_generale(self):
         if self.temps_course is None:
             return None
