@@ -94,38 +94,33 @@ class Coureur(models.Model):
                 return i + 1
         return None
 
-    @property
-    def position_par_categorie(self):
-        if self.temps_course is None:
-            return None
-
-        categorie_du_coureur = self.categorie_age() # Call the method on self
-
-        if categorie_du_coureur in ["Inconnu", "N/A"]:
-            return None
-
-        # Filter coureurs for the same course and category, with times, ordered by time
-        coureurs_dans_categorie_classes = Coureur.objects.filter(
-            course=self.course,
-            temps_course__isnull=False
-        ).order_by('temps_course')
-
-        position_in_category = 0
-        for i, coureur_cat in enumerate(coureurs_dans_categorie_classes):
-            if coureur_cat.categorie_age() == categorie_du_coureur:
-                position_in_category += 1
-            if coureur_cat.pk == self.pk:
-                return position_in_category
+@property
+def position_par_categorie(self):
+    if self.temps_course is None:
         return None
 
-    def get_temps_formate(self):
-        if self.temps_course:
-            total_seconds = int(self.temps_course.total_seconds())
-            hours = total_seconds // 3600
-            minutes = (total_seconds % 3600) // 60
-            seconds = total_seconds % 60
-            return f"{hours:02}:{minutes:02}:{seconds:02}"
-        return "N/A"
+    # 1. Calculez la catégorie du coureur actuel
+    categorie_du_coureur = self.categorie_age
+
+    if categorie_du_coureur in ["Inconnu", "N/A"]:
+        return None
+
+    # 2. Récupérez TOUS les coureurs classés de la même course, ordonnés par temps
+    coureurs_classes = Coureur.objects.filter(
+        course=self.course,
+        temps_course__isnull=False
+    ).order_by('temps_course')
+
+    position_in_category = 0
+    # 3. Itérez et comptez SEULEMENT ceux de la même catégorie
+    for coureur_cat in coureurs_classes:
+        # Recalculer la catégorie pour chaque coureur
+        if coureur_cat.categorie_age == categorie_du_coureur:
+            position_in_category += 1
+            # 4. Si c'est NOTRE coureur, on retourne le compte actuel
+            if coureur_cat.pk == self.pk:
+                return position_in_category
+    return None
 
 
 @receiver(pre_save, sender=Coureur)
