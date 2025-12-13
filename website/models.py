@@ -3,6 +3,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 from datetime import date, timedelta
+from django.contrib import admin
 
 class Course(models.Model):
     nom = models.CharField(max_length=200, unique=True, help_text="Nom de la course")
@@ -95,6 +96,7 @@ class Coureur(models.Model):
         return None
 
 @property
+@admin.display(description="Pos. Catégorie")
 def position_par_categorie(self):
     if self.temps_course is None:
         return None
