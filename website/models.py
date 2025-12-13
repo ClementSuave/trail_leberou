@@ -3,7 +3,6 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 from datetime import date, timedelta
-from django.contrib import admin
 
 class Course(models.Model):
     nom = models.CharField(max_length=200, unique=True, help_text="Nom de la course")
@@ -95,34 +94,33 @@ class Coureur(models.Model):
                 return i + 1
         return None
 
-@property
-@admin.display(description="Pos. Catégorie")
-def position_par_categorie(self):
-    if self.temps_course is None:
+    @property
+    def position_par_categorie(self):
+        if self.temps_course is None:
+            return None
+
+        # 1. Calculez la catégorie du coureur actuel
+        categorie_du_coureur = self.categorie_age
+
+        if categorie_du_coureur in ["Inconnu", "N/A"]:
+            return None
+
+        # 2. Récupérez TOUS les coureurs classés de la même course, ordonnés par temps
+        coureurs_classes = Coureur.objects.filter(
+            course=self.course,
+            temps_course__isnull=False
+        ).order_by('temps_course')
+
+        position_in_category = 0
+        # 3. Itérez et comptez SEULEMENT ceux de la même catégorie
+        for coureur_cat in coureurs_classes:
+            # Recalculer la catégorie pour chaque coureur
+            if coureur_cat.categorie_age == categorie_du_coureur:
+                position_in_category += 1
+                # 4. Si c'est NOTRE coureur, on retourne le compte actuel
+                if coureur_cat.pk == self.pk:
+                    return position_in_category
         return None
-
-    # 1. Calculez la catégorie du coureur actuel
-    categorie_du_coureur = self.categorie_age
-
-    if categorie_du_coureur in ["Inconnu", "N/A"]:
-        return None
-
-    # 2. Récupérez TOUS les coureurs classés de la même course, ordonnés par temps
-    coureurs_classes = Coureur.objects.filter(
-        course=self.course,
-        temps_course__isnull=False
-    ).order_by('temps_course')
-
-    position_in_category = 0
-    # 3. Itérez et comptez SEULEMENT ceux de la même catégorie
-    for coureur_cat in coureurs_classes:
-        # Recalculer la catégorie pour chaque coureur
-        if coureur_cat.categorie_age == categorie_du_coureur:
-            position_in_category += 1
-            # 4. Si c'est NOTRE coureur, on retourne le compte actuel
-            if coureur_cat.pk == self.pk:
-                return position_in_category
-    return None
 
 
 @receiver(pre_save, sender=Coureur)
