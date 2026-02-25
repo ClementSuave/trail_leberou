@@ -6,14 +6,14 @@
   --color3: #FFA54C; /* orange */
   --color4: brown;
   --font1: 'Work Sans','Helvetica Neue' sans-serif;
-  --font2: "Montserrat", sans-serif;
+  --font2: .montserrat-<uniquifier> {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+  }
 }
 
-font-family: "Montserrat", sans-serif;
-           /* This triggers the Thin version */
-  font-style: normal;
-  text-transform: uppercase; /* To match your "TRAIL DU LEBEROU" preview */
-  letter-spacing: 2px;
 
 html {
   scroll-behavior: smooth;
@@ -34,40 +34,41 @@ a, a:visited, a:hover {
 }
 h1 {
   color: white;
-  font-size: 1.3em !important;
+  font-size: 2rem !important;
   font-family: var(--font2);
 }
 h1black {
   color: black;
-  font-size: 2em !important;
+  font-size: 2rem !important;
   font-family: var(--font2);
 }
 h2{
-    color: var(--col2); !important;
-    font-size: 2em;
+  color: var(--col2);
+  font-size: 1.5rem;
+  font-family: var(--font2);
 }
 h3{
-    color: gray !important;
-    font-size: 1.3em !important;
-    font-family: var(--font2);
+  color: gray !important;
+  font-size: 1.3rem !important;
+  font-family: var(--font2);
 }
 h5 {
-  font-size: 1.5em !important;
+  font-size: 1.5rem !important;
   font-family: var(--font2);
   color:white;
 }
 h6 {
-  font-size: 1.5em !important;
+  font-size: 1.5rem !important;
   font-family: var(--font2);
   color:var(--color3);
 }
 h7 {
-  font-size: 1em !important;
+  font-size: 1rem !important;
   font-family: var(--font2);
   color:gray;
 }
 title_course{
-  font-size: 5em;
+  font-size: 5rem;
   font-family: var(--font2);
 }
 
@@ -107,7 +108,7 @@ title_course{
   text-align: center;
   padding: 1em 2em 1em 2em;
   cursor: pointer;
-  color: white;
+  color: var(--color2);
   transition: all 0.5s;
   position: relative;
 }
@@ -198,9 +199,9 @@ title_course{
     height: 100vh;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stacks the links vertically */
-    justify-content: center; /* Centers items vertically within the container */
-    align-items: center; /* Centers items horizontally (optional, but good practice) */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .text_overlay {
     position: absolute;
@@ -210,9 +211,6 @@ title_course{
   }
   #page-container {
     padding-top: 0px !important;
-  }
-  #premiere_edition, #date_event {
-    font-size: 1em !important;
   }
   #head_image, #trail_du_leberou {
     max-width:80% !important;
@@ -233,6 +231,13 @@ title_course{
     }
     .timeline .event:after {
         left: -31.8px;
+    }
+    #head {
+        min-height: 100vh;
+    }
+    
+    #edition {
+      font-size: 0.5em !important;
     }
 }
 
@@ -445,36 +450,42 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
 /*---------------------- HOME ---------------------- */
 
 #head {
-  background-image: url(../images/black_background.jpg);
   position: relative;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#head {
-  position: relative;
+  width: 100%;
+  min-height: 100vh;
   overflow: hidden;
-  background-color:black;
-  transition: 0.4s; 
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bg-video {
+  position: absolute; /* This pulls it behind the text */
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  background: black;
 }
 #head .container {
   z-index: 2;
   position: relative;
   margin: auto;
 }
-#head_image {
-  animation: blur 4s;
-  background-image: url(../images/logo_leberou_trail_blanc_background.svg);
-  background-size: cover;
+#video_overlay {
+  margin-bottom: 5em;
 }
-
-#premiere_edition, #date_event {
-  color:var(--color2);
-  font-size: 1.3em;
-  font-family: var(--font1);
-  animation: cinematicInOut 4s;
+#edition {
+  font-size: 1.5em !important;
+  font-family: var(--font2);
+  color: var(--color3);
+}
+#date_event {
+  font-size: 2em !important;
+  font-family: var(--font2);
+  color: var(--color3);
 }
 #trail_du_leberou {
   animation: blur 1s;
@@ -648,10 +659,19 @@ article a .icon {
   transition: all 0.3s;
 }
 
-/* using the has() relational pseudo selector to update our custom properties */
+/*----- HOVER ------*/
+#TUILE_les_trois_clochers:has(:hover, :focus) {
+  --title-color: var(--color3);
+}
+#TUILE_le_tour_des_fontaines:has(:hover, :focus) {
+  --title-color: pink;
+}
+#TUILE_balade_au_clair_de_lune:has(:hover, :focus) {
+  --title-color: var(--color2);
+}
+
 article:has(:hover, :focus) {
   --img-scale: 1.1;
-  --title-color: var(--color3);
   --link-icon-translate: 0;
   --link-icon-opacity: 1;
   --img-light:130%;
@@ -709,8 +729,8 @@ article:has(:hover, :focus) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 300px;
-  padding-top: 150px;"
+  min-height: 445px;
+  padding-top: 150px;
 }
 #bg_30km {
   background-image: url(../images/HEADER_les_trois_clochers.jpg);
@@ -726,8 +746,16 @@ article:has(:hover, :focus) {
 }
 .counter-container {
   counter-reset: num var(--num);
-  font: 800 40px system-ui;
+  font-family: var(--font1);
+  font-size: 3rem;
   padding: 0.5rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50% !important;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #counter_km_10 {
   animation: counter_km_10 2s forwards ease-in-out;
@@ -740,6 +768,12 @@ article:has(:hover, :focus) {
 }
 #counter_d_30 {
   animation: counter_d_30 2s forwards ease-in-out;
+}
+#counter_rav_10 {
+  animation: counter_rav_10 2s forwards ease-in-out;
+}
+#counter_rav_30 {
+  animation: counter_rav_30 2s forwards ease-in-out;
 }
 #counter_km_marche {
   animation: counter_km_marche 2s forwards ease-in-out;
@@ -905,6 +939,12 @@ footer {
 @keyframes counter_d_30 {
   from {--num: 0;}to {--num: 730;}
 }
+@keyframes counter_rav_10 {
+  from {--num: 0;}to {--num: 2;}
+}
+@keyframes counter_rav_30 {
+  from {--num: 0;}to {--num: 3;}
+}
 
 @keyframes cinematicInOut {
   0% {
@@ -929,41 +969,4 @@ footer {
     opacity:1;
     margin-left:0;
   }
-}
-
-
-#head::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300%;
-    height: 100%;
-    z-index: 0;
-    background: radial-gradient(
-        ellipse at 50% 50%,
-        rgba(255, 255, 255, 0.5) 0%, /* White, semi-transparent center */
-        rgba(255, 255, 255, 0.1) 50%, /* Fades out */
-        transparent 70% /* Fully transparent edges */
-    );
-    background-repeat: repeat-x; 
-    background-size: 50% 100%; /* Makes the repeating texture smaller */
-    filter: blur(2px); /* Softens the texture to look like smoke/mist */
-    opacity: 0.5; /* Adjust for intensity */
-
-    /* Animation */
-    animation: moveSmoke 30s linear infinite;
-}
-
-/* ----------------------------------------------------------------
-   The Animation Keyframes
-   ---------------------------------------------------------------- */
-@keyframes moveSmoke {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Moves all the way across the area */
-        transform: translateX(-66.66%); 
-    }
 }

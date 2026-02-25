@@ -12,33 +12,33 @@
 {% block content %}
 
     <div id="head" class="jumbotron text-center m-0 d-flex justify-content-center">
+
+      <video autoplay muted playsinline class="bg-video">
+        <source src="{% static 'website/images/acceuil_mobile_2026.mp4' %}" type="video/mp4" media="(max-width: 767px)">
+        <source src="{% static 'website/images/acceuil_2026.mp4' %}" type="video/mp4">
+      </video>
   
-      <div class="container text-white">
+      <div class="container text-white" style="z-index: 2;">
 
-        <img id="head_image" class="img-fluid" src="{% static 'website/images/logo_leberou_trail_blanc_personnage.svg' %}" alt="Dessin du Lébérou avec églises derrière" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
-        <div id="head_title">
+        <div id="video_overlay">
 
-          <img id="trail_du_leberou" class="img-fluid pb-4" src="{% static 'website/images/logo_trail_du_leberou.svg' %}" alt="titre TRAIL DU LEBEROU stylisé" style="max-width:40%;max-height:40%;min-width:20%;min-height:20%;">
-          <div id="date_event">PROCHAINE EDITION VERS NOVEMBRE 2026!</div>
-          
-          <div id="premiere_edition" class="pt-4">> Date à confirmer <</div>
-          <!--<div class="box pt-4">
-            <a href="https://sport.ikinoa.com/fr/evt/trailduleberou" target="_blank">
-            <div class="btn-inscription">
-              <span>INSCRIPTION</span>
-            </div>
-            </a>
-          </div>-->
+          <img src="{% static 'website/images/logo_trail_du_leberou.svg' %}" style="max-width:100%;">
+ 
+          <div id="edition"><strong>2ème édition</strong></div>
+          <br/>
+          <div id="date_event"><strong>14 NOVEMBRE 2026</strong></div>
+
           <div class="box pt-4">
             <a href="https://trailduleberou.fr/galerie" target="_blank">
             <div class="btn-inscription">
-              <span>Photos 1ère édition</span>
+              <span><strong>Photos 1ère édition</strong></span>
             </div>
             </a>
           </div>
         </div>
 
       </div>
+    </div>
 
     </div>
 
@@ -57,9 +57,9 @@
         <div class="row justify-content-center">
           <div class="col-lg-4 animate-on-scroll text-white px-4 align-self-center" style="background: pink;">
             <div class="p-4">
-            <h3 style="color:white !important;">BIENVENUE AU TRAIL DU LEBEROU, UN TRAIL NOCTURNE AU COEUR DU PERIGORD NOIR INSPIRE D’UNE LEGENDE !</h3>
+            <h3 style="color:white !important;">BIENVENUE AU TRAIL DU LÉBÉROU, UN TRAIL NOCTURNE AU COEUR DU PÉRIGORD NOIR INSPIRÉ D’UNE LEGENDE !</h3>
             <p>Venez incarner l’être mythologique périgordin et parcourir les chemins de nuit à travers la campagne.</p>
-            <p>Pour cette première édition, trois circuits sont proposés; <a href="{% url 'trente_km' %}">Les trois clochers (31 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (7 km)</a>.</p>
+            <p>Pour cette deuxième édition, trois circuits sont proposés; <a href="{% url 'trente_km' %}">Les trois clochers (31 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (7 km)</a>.</p>
             <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins.</p>
             <p>A la fin des épreuves, il sera proposé aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
             </div>
@@ -97,28 +97,29 @@
                 <div id="content">
                   <ul class="timeline">
                     <li class="animate-on-scroll">
-                      <h2 style="text-align: center;">1 NOVEMBRE</h2></br></br>
+                      <h2 style="text-align: center;">A DEFINIR</h2></br></br>
                     </li>
+                    <!--
                     <li class="event animate-on-scroll" data-date="11h">
                       <h5>RETRAIT DES DOSSARDS</h5>
                       <p>A partir de 11h et jusqu'à 30 minutes avant la course</p>
                       <p>A la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67" target="_blank"><u>salle des fêtes d'Audrix (24260)</u></a></p>
                     </li>
                     <li class="event animate-on-scroll" data-date="16h">
-                      <h5>DEPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
+                      <h5>DÉPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
                       <p></p>
                     </li>
                     <li class="event animate-on-scroll" data-date="17h">
-                      <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
+                      <h5>DÉPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                       <p></p>
                     </li>
                     <li class="event animate-on-scroll" data-date="18h">
-                      <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+                      <h5>DÉPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
                       <p></p>
                     </li>
 
                     <li class="event animate-on-scroll" data-date="19h30">
-                      <h5>DEBUT DE LA SOIREE</h5>
+                      <h5>DÉBUT DE LA SOIRÉE</h5>
                       <p>Tourrain périgourdin (soupe) pour tous les participants et verre de vin (ou soft) offert.</p>
                       <p>Restauration sur place. Repas à réserver en avance. Buvette disponible.</p>
                     </li>
@@ -127,6 +128,7 @@
                       <p><a href="https://almostfive.bandcamp.com"><u>Almost Five</u></a>; Groupe de reprises Toulousain. Du rock au reggae en passant par le hip-hop avec toujours l'envie de faire bouger le public !</p>
                       <p></p>
                     </li>
+                    -->
                   </ul>
                 </div>
               </div>
@@ -136,7 +138,8 @@
             <div class="card display-sm">
               <div class="card-body">         
                 <div id="content">
-                  <h2 style="text-align: center;">1 NOVEMBRE:</h2></br>
+                  <h2 style="text-align: center;">A DÉFINIR</h2></br>
+                  <!--
                   <div class="event-small">
                     <p>11h</p>
                     <h5>RETRAIT DES DOSSARDS</h5>
@@ -145,19 +148,19 @@
                   </div>
                   <div class="event-small">
                     <p>16h</p>
-                    <h5>DEPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
+                    <h5>DÉPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
                   </div>
                   <div class="event-small">
                     <p>17h</p>
-                    <h5>DEPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
+                    <h5>DÉPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
                   </div>
                   <div class="event-small">
                     <p>18h</p>
-                    <h5>DEPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
+                    <h5>DÉPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
                   </div>
                   <div class="event-small">
                     <p>19h30</p>
-                    <h5>DEBUT DE LA SOIREE</h5>
+                    <h5>DÉBUT DE LA SOIRÉE</h5>
                     <p>Tourrain périgourdin (soupe) pour tous les participants et verre de vin (ou soft) offert.</p>
                     <p>Restauration sur place. Repas à réserver en avance. Buvette disponible.</p>
                   </div>
@@ -165,7 +168,8 @@
                     <p>21h</p>
                     <h5>CONCERT</h5>
                     <p><a href="https://almostfive.bandcamp.com"><u>Almost Five</u></a>; Groupe de reprises Toulousain. Du rock au reggae en passant par le hip-hop avec toujours l'envie de faire bouger le public !</p>
-                  </div>                  
+                  </div>
+                  -->                  
                 </div>
               </div>
             </div>
@@ -192,16 +196,14 @@
             <section class="articles row animate-on-scroll">
 
               <div class="col-md-4 col-sm-12 p-4 p-xs-2">
-                <article>
+                <article id="TUILE_les_trois_clochers">
                   <div class="article-wrapper">
                     <figure>
                       <img src="{% static 'website/images/TUILE_les_trois_clochers.png' %}" alt="photo de la porte de l'église d'Audrix">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">LES TROIS CLOCHERS</span>
-                      <p>
-                        31 km
-                      </p>
+                      <p>31 km</p>
                       <a href="{% url 'trente_km' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
@@ -214,16 +216,14 @@
               </div>
 
               <div class="col-md-4 col-sm-12 p-4 p-xs-2">
-                <article>
+                <article id="TUILE_le_tour_des_fontaines">
                   <div class="article-wrapper">
                     <figure>
                       <img src="{% static 'website/images/TUILE_le_tour_des_fontaines.png' %}" alt="photo d'une source">
                     </figure>
                     <div class="article-body">
                       <span class="article_title">TOUR DES FONTAINES</span>
-                      <p>
-                        12 km
-                      </p>
+                      <p>12 km</p>
                       <a href="{% url 'dix_km' %}" class="read-more">
                         En savoir plus <span class="sr-only"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
@@ -236,7 +236,7 @@
               </div>
 
               <div class="col-md-4 col-sm-12 p-4 p-xs-2">
-                <article>
+                <article id="TUILE_balade_au_clair_de_lune">
                   <div class="article-wrapper">
                     <figure>
                       <img src="{% static 'website/images/TUILE_balade_au_clair_de_lune.png' %}" alt="photo d'un champ à Audrix">
@@ -264,7 +264,7 @@
 
       <span id="informations" class="anchor"></span>
 
-      <div class="jumbotron text-center" style="background:white;">
+      <div class="jumbotron text-center bg-white">
         <div class="container">
           <div class="row justify-content-center">
             <div class="section_title">
@@ -277,7 +277,7 @@
           <div class="col-md-6 col-sm-12 p-4 animate-on-scroll">
             <div>
               <h2>QUAND?</h2>
-              <p>Le samedi 1 Novembre 2025.</p>
+              <p>Le samedi 14 Novembre 2026.</p>
             </div>
             <div>
               <h2>PARKINGS</h2>
@@ -289,11 +289,11 @@
             </div>
             <div>
               <h2>REPAS</h2>
-              <p>Repas uniquement végétarien (soupe + plat + dessert).</p>
-              <p>Réservation obligatoire.</p>
+              <p>A définir</p>
+              <p></p>
             </div>
             <div>
-              <h2>COMMODITES</h2>
+              <h2>COMMODITÉS</h2>
               <p>Douches disponibles:</p>
               <ul>
                 <li>à la <a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67" target="_blank" class="a_2">salle des fêtes</a></li>
