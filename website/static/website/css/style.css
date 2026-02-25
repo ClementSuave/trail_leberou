@@ -211,9 +211,20 @@ h3{
     #head {
         min-height: 100vh;
     }
-    
     #edition {
       font-size: 0.5em !important;
+    }
+    #bg_30km, #bg_10km, #bg_marche, #bg_association {
+      min-height: 225px !important;
+      padding-top: 90px !important;
+    }
+    .counter-container {
+      font-size: 1.2rem !important;
+      width: 4rem !important;
+      height: 4rem !important;
+    }
+    .counter_unit {
+      font-size: 0.9rem !important;
     }
 }
 
