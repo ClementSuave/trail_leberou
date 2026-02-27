@@ -851,10 +851,10 @@ footer {
 #courseTabsContent {
   background-color: white !important;
 }
-.courseResultatTab {
+.themeTab {
   color: white !important;
 }
-.courseResultatTab.active {
+.themeTab.active {
   color: var(--color3) !important;
 }
 

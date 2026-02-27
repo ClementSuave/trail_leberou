@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .admin_filters import CategorieAgeFilter
-from .models import Course, Coureur, Extract
+from .models import Course, Coureur, Extract, Edition
 
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
@@ -71,3 +71,7 @@ class CoureurAdmin(admin.ModelAdmin):
 @admin.register(Extract)
 class ExtractAdmin(admin.ModelAdmin):
     list_display = ('title', 'file')
+
+@admin.register(Edition)
+class EditionAdmin(admin.ModelAdmin):
+    list_display = ('annee','participants','benevoles')

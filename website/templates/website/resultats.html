@@ -16,7 +16,7 @@
             <ul class="nav nav-tabs" id="courseTabs" role="tablist">
                 {% for course in courses %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {% if forloop.first %}active{% endif %} courseResultatTab" id="course-tab-{{ course.id }}-link" data-bs-toggle="tab" data-bs-target="#course-tab-{{ course.id }}" type="button" role="tab" aria-controls="course-tab-{{ course.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                        <button class="nav-link {% if forloop.first %}active{% endif %} themeTab" id="course-tab-{{ course.id }}-link" data-bs-toggle="tab" data-bs-target="#course-tab-{{ course.id }}" type="button" role="tab" aria-controls="course-tab-{{ course.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
                             {{ course.nom }}
                         </button>
                     </li>

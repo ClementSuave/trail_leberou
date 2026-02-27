@@ -1,40 +1,60 @@
 {% extends 'website/base.html' %}
-
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
 
 <div class="container-fluid document-header"></div>
+<div class="container mt-5">
+    <ul class="nav nav-tabs justify-content-center mb-4" id="yearTab" role="tablist">
+        {% for item in gallery_data %}
+        <li class="nav-item">
+            <button class="nav-link {% if forloop.first %}active{% endif %} themeTab" id="tab-{{ item.info.annee }}" data-bs-toggle="tab" data-bs-target="#pane-{{ item.info.annee }}" type="button">{{ item.info.annee }}</button>
+        </li>
+        {% endfor %}
+    </ul>
 
-  <div class="container gallery-container">
+    <div class="tab-content" id="yearTabContent">
+        {% for item in gallery_data %}
+        <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
+             id="pane-{{ item.info.annee }}" role="tabpanel">
+            
+            <div class="row mb-5 align-items-center bg-light p-4 rounded">
+                <div class="col-md-4 text-center">
+                    {% if item.info.poster %}
+                        <img src="{{ item.info.poster.url }}" class="img-fluid rounded shadow" alt="Poster {{ item.info.annee }}" style="max-height: 300px;">
+                    {% else %}
+                        <div class="bg-secondary text-white p-5 rounded">No Poster</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <h2 class="display-4">Édition {{ item.info.annee }}</h2>
+                    <p class="lead"><i class="fas fa-users"></i> <strong>{{ item.info.participants }}</strong> participants</p>
+                    <p class="lead"><i class="fas fa-users"></i> <strong>{{ item.info.benevoles }}</strong> benevoles</p>
+                    {% if item.info.resultats_url %}
+                        <a href="{{ item.info.resultats_url }}" target="_blank" class="btn-inscription">Résultats</a>
+                    {% endif %}
+                </div>
+            </div>
 
-    <p class="page-description text-center"></p>
-    
-    <div class="gallery">
-
-        <div class="row">
-          {% for flag in flags %}
-          <div class="col-sm-12 {{ flag.col_class }} animate-on-scroll" style="object-fit: cover;">
-            <a class="lightbox" href="{{ MEDIA_URL }}{{ flag.path }}">
-              <img src="{{ MEDIA_URL }}{{ flag.path }}" alt="No image found" class="img-fluid {{ flag.orientation }}"/>
-            </a>
-          </div>
-          {% empty %}
-          <div class="col-12 text-center">
-            <p class="lead">Les photos n'ont pas encore étés chargées!</p>
-            <p>Veuillez revenir plus tard.</p>
-          </div>
-          {% endfor %}
-
+            <div class="gallery row">
+                {% for photo in item.photos %}
+                <div class="col-sm-12 {{ photo.col_class }} mb-4">
+                    <a class="lightbox" href="{% static photo.static_path %}">
+                        <img src="{% static photo.static_path %}" class="img-fluid rounded" loading="lazy" style="object-fit: cover; height: 250px; width: 100%;">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
+        {% endfor %}
     </div>
-
 </div>
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>baguetteBox.run('.gallery', {animation: 'fadeIn',noScrollbars: true});</script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        baguetteBox.run('.gallery');
+    });
+</script>
 {% endblock %}

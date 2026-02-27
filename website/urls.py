@@ -13,7 +13,6 @@ urlpatterns = [
     path("mentions-legales/", views.mentions_legales, name="mentions_legales"),
     path("reglement/", views.reglement, name="reglement"),
     path("association/", views.association, name="association"),
-    path("sponsors/", views.sponsors, name="sponsors"),
     path("galerie/", views.galerie, name="galerie"),
     path("resultats/", views.resultats, name="resultats"),
     path('import-data/', views.import_data, name='import_data'),

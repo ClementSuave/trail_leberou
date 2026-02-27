@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 import os, csv
 from django.conf import settings
-from .models import Course, Coureur, Extract
+from .models import Course, Coureur, Extract, Edition
 from datetime import datetime, timedelta
 from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
@@ -27,50 +27,41 @@ def reglement(request):
 	return render(request, "website/reglement.html")
 def association(request):
 	return render(request, "website/association.html")
-def sponsors(request):
-	return render(request, "website/sponsors.html")
 def galerie(request):
-    context = {}
-    photos_dir = os.path.join(settings.MEDIA_ROOT, "website/photos")
-    
-    if not os.path.exists(photos_dir):
-        context['flags'] = []
-        return render(request, "website/galerie.html", context)
-        
-    all_files = os.listdir(photos_dir)
-    all_files.sort()
-    image_data = []
+    years_queryset = Edition.objects.all()
+    gallery_data = []
 
-    for fl in all_files:
-        full_path = os.path.join(photos_dir, fl)
-        
-        if fl.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-            try:
-                with Image.open(full_path) as img:
-                    width, height = img.size
-                    
-                    if width > height:
-                        orientation = 'landscape'
+    static_photos_root = os.path.join(settings.BASE_DIR, "website/static/website/photos")
+
+    for year_obj in years_queryset:
+        year_str = str(year_obj.annee)
+        year_path = os.path.join(static_photos_root, year_str)
+        photos = []
+
+        if os.path.exists(year_path):
+            files = sorted(os.listdir(year_path))
+            for fl in files:
+                if fl.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
+                    # Just calculate orientation once for layout
+                    full_path = os.path.join(year_path, fl)
+                    try:
+                        with Image.open(full_path) as img:
+                            w, h = img.size
+                            col_class = 'col-md-4' if w >= h else 'col-md-3'
+                    except:
                         col_class = 'col-md-4'
-                    elif height > width:
-                        orientation = 'portrait'
-                        col_class = 'col-md-3'
-                    else:
-                        orientation = 'square'
-                        col_class = 'col-md-4'
-                        
-                    image_data.append({
-                        'path': f'website/photos/{fl}',
-                        'orientation': orientation,
-                        'col_class': col_class,
+
+                    photos.append({
+                        'static_path': f'website/photos/{year_str}/{fl}',
+                        'col_class': col_class
                     })
-            except Exception as e:
-                print(f"Skipping file {fl}: {e}")
-                pass
 
-    context['flags'] = image_data
-    context['MEDIA_URL'] = settings.MEDIA_URL
-    return render(request, "website/galerie.html", context)
+        gallery_data.append({
+            'info': year_obj,
+            'photos': photos
+        })
+
+    return render(request, "website/galerie.html", {'gallery_data': gallery_data})
 
 def resultats(request):
     courses = Course.objects.all().order_by('-date_course')

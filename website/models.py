@@ -150,3 +150,16 @@ class Extract(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+class Edition(models.Model):
+    annee = models.IntegerField(unique=True, help_text="e.g. 2025")
+    poster = models.ImageField(upload_to='website/posters/', blank=True, null=True)
+    participants = models.PositiveIntegerField(default=0)
+    benevoles = models.PositiveIntegerField(default=0)
+    resultats_url = models.URLField(blank=True, null=True)
+    
+    class Meta:
+        ordering = ['-annee']
+
+    def __str__(self):
+        return str(self.annee)
