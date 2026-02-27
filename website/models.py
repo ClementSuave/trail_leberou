@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models,transaction
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
@@ -12,6 +12,7 @@ class Course(models.Model):
     distance = models.IntegerField(blank=True, null=True, help_text="Distance (km)")
     dossard_start = models.IntegerField()
     dossard_end = models.IntegerField()
+    heure_depart = models.TimeField(null=True, blank=True, help_text="Heure de départ de la course (HH:MM:SS)")
 
     class Meta:
         verbose_name = "Course"
@@ -20,6 +21,47 @@ class Course(models.Model):
 
     def __str__(self):
         return f"{self.nom}"
+
+    def calculer_classements(self):
+
+        with transaction.atomic():
+            coureurs = list(self.coureurs.filter(temps_course__isnull=False).order_by('temps_course'))
+            cat_counters = {}
+
+            for i, coureur in enumerate(coureurs):
+                # Classement Général (Scratch)
+                coureur.position_generale = i + 1
+                
+                # Classement par Catégorie
+                cat = coureur.categorie_age
+                cat_counters[cat] = cat_counters.get(cat, 0) + 1
+                coureur.position_par_categorie = cat_counters[cat]
+
+            # 2. Sauvegarde massive pour la performance
+            Coureur.objects.bulk_update(coureurs, ['position_generale', 'position_par_categorie'])
+            return len(coureurs)
+
+    def assigner_dossards(self):
+
+        with transaction.atomic():
+            # 1. Trouver le dernier dossard déjà attribué pour cette course
+            last_coureur = self.coureurs.filter(dossard__isnull=False).order_by('-dossard').first()
+            
+            next_bib = last_coureur.dossard + 1 if last_coureur else self.dossard_start
+
+            coureurs_a_attribuer = self.coureurs.filter(dossard__isnull=True).order_by('date_inscription','nom','prenom')
+
+            updated_list = []
+            for coureur in coureurs_a_attribuer:
+                if next_bib <= self.dossard_end:
+                    coureur.dossard = next_bib
+                    updated_list.append(coureur)
+                    next_bib += 1
+                else:
+                    break
+            
+            Coureur.objects.bulk_update(updated_list, ['dossard'])
+            return len(updated_list)
 
 class Coureur(models.Model):
 
@@ -43,10 +85,12 @@ class Coureur(models.Model):
     club = models.CharField(max_length=100,blank=True, null=True)
     date_inscription = models.DateField(blank=True, null=True)
     telephone = models.IntegerField(blank=True, null=True)
-    repas = models.IntegerField(help_text="Nombre de repas")
     
     dossard = models.IntegerField(null=True, blank=True, help_text="Numéro de dossard pour cette course")
     temps_course = models.DurationField(blank=True, null=True, help_text="Durée de la course (format HH:MM:SS)")
+
+    position_generale = models.IntegerField(null=True, blank=True)
+    position_par_categorie = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Coureur"
@@ -78,7 +122,7 @@ class Coureur(models.Model):
         if base_categorie != "N/A" and self.sexe in ['M', 'F']:
             return f"{base_categorie} {self.get_sexe_display()}" # e.g., "ES Homme", "SE Femme"
         return "Inconnu"
-
+"""
     def position_generale(self):
         if self.temps_course is None:
             return None
@@ -143,7 +187,7 @@ def set_dossard(sender, instance, **kwargs):
             else:
                 from django.core.exceptions import ValidationError
                 raise ValidationError(f"La plage de dossards pour la course '{instance.course.nom}' est pleine (Dossard {instance.course.dossard_start} à {instance.course.dossard_end}). Impossible d'attribuer un nouveau dossard automatiquement.")
-
+"""
 class Extract(models.Model):
     title = models.CharField(max_length=255)
     file = models.FileField(upload_to='extracts/')

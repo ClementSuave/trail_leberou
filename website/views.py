@@ -4,10 +4,12 @@ from django.http import HttpResponse
 import os, csv
 from django.conf import settings
 from .models import Course, Coureur, Extract, Edition
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
 from PIL import Image
+from django.contrib import messages
+from .forms import ResultUpdateForm
 
 def accueil(request):
 	return render(request, "website/accueil.html")
@@ -63,14 +65,59 @@ def galerie(request):
 
     return render(request, "website/galerie.html", {'gallery_data': gallery_data})
 
+@staff_member_required
+def update_race_result(request):
+    if request.method == 'POST':
+        form = ResultUpdateForm(request.POST)
+        if form.is_valid():
+            dossard_saisi = form.cleaned_data['dossard']
+            
+            try:
+                # Find the runner across ALL courses
+                # Note: If two different races use the same bib number, 
+                # this will need a filter for 'active' races.
+                coureur = Coureur.objects.get(dossard=dossard_saisi)
+                course = coureur.course # Get the specific race for this runner
+
+                if coureur.temps_course:
+                    messages.warning(request, f"Dossard {dossard_saisi} ({coureur.prenom}) a déjà un temps.")
+                
+                elif not course.heure_depart:
+                    messages.error(request, f"L'heure de départ pour '{course.nom}' n'est pas définie.")
+                
+                else:
+                    # Calculation logic
+                    now = datetime.now()
+                    start_dt = datetime.combine(course.date_course, course.heure_depart)
+                    duration = now - start_dt
+                    duration_clean = timedelta(seconds=int(duration.total_seconds()))
+                    
+                    # Remove microseconds for a cleaner display (HH:MM:SS)
+                    coureur.temps_course = duration_clean
+                    coureur.save()
+                    
+                    messages.success(request, f"{coureur.prenom} {coureur.nom} ({course.nom}) : {str(duration).split('.')[0]}")
+
+                    return redirect('finish_line')
+            
+            except Coureur.DoesNotExist:
+                messages.error(request, f"Dossard {dossard_saisi} introuvable.")
+    else:
+        form = ResultUpdateForm()
+
+    # Get the last 15 recorded times to show on the dashboard
+    recent_arrivals = Coureur.objects.filter(temps_course__isnull=False).order_by('-temps_course')[:15]
+
+    return render(request, 'website/arrivées.html', {
+        'form': form, 
+        'recent_arrivals': recent_arrivals
+    })
+
 def resultats(request):
     courses = Course.objects.all().order_by('-date_course')
 
     for course in courses:
-        course.ordered_participants = Coureur.objects.filter(
-            course=course,
-            temps_course__isnull=False
-        ).order_by('temps_course')
+        course.ordered_participants = Coureur.objects.filter(course=course,temps_course__isnull=False).order_by('temps_course')
 
     context = {
         'courses': courses,
@@ -103,7 +150,7 @@ def import_data(request):
                         if date_naissance_str:
                             coureur_date_naissance = datetime.strptime(date_naissance_str, '%d/%m/%Y').strftime('%Y-%m-%d')
                         if date_inscription_str:
-                            coureur_date_inscription = datetime.strptime(date_naissance_str, '%d/%m/%Y').strftime('%Y-%m-%d')
+                            coureur_date_inscription = datetime.strptime(date_inscription_str, '%d/%m/%Y %H:%M').strftime('%Y-%m-%d')
                         
                         if not coureur_nom or not coureur_prenom:
                             continue
@@ -136,7 +183,6 @@ def import_data(request):
                                 club = row.get('CLUB'),
                                 date_inscription = coureur_date_inscription,
                                 telephone = row.get('TELEPHONE'),
-                                repas = row.get('Repas'),
                             )
                             data.save()
 
