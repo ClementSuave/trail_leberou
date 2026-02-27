@@ -7,3 +7,6 @@ class ExtractChoiceForm(forms.Form):
         label="Choose a csv file to import",
         empty_label="--- Select a file ---"
     )
+
+class ResultUpdateForm(forms.Form):
+    dossard = forms.IntegerField(label="Numéro de Dossard")
