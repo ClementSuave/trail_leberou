@@ -28,11 +28,15 @@
                     {% endif %}
                 </div>
                 <div class="col-md-8">
-                    <h2 class="display-4">Édition {{ item.info.annee }}</h2>
+                    <h3>Édition {{ item.info.annee }}</h3>
                     <p class="lead"><i class="fas fa-users"></i> <strong>{{ item.info.participants }}</strong> participants</p>
                     <p class="lead"><i class="fas fa-users"></i> <strong>{{ item.info.benevoles }}</strong> benevoles</p>
                     {% if item.info.resultats_url %}
-                        <a href="{{ item.info.resultats_url }}" target="_blank" class="btn-inscription">Résultats</a>
+                    <a href="{{ item.info.resultats_url }}" target="_blank">
+                      <div class="btn-inscription btn-inscription-courses text-white" style="width: 150px;">
+                        <span>RESULTATS</span>
+                      </div>
+                    </a>
                     {% endif %}
                 </div>
             </div>
