@@ -1,6 +1,19 @@
-trail_leberou/*
-requirements.txt
+# Django
+*.log
+local_settings.py
 db.sqlite3
-website/__pycache__/*
-website/migrations/__pycache__/*
-.venv/*
+db.sqlite3-journal
+media/
+
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Static files (if you collect them into a root folder)
+static/
