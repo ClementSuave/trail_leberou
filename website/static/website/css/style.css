@@ -210,9 +210,6 @@ h3{
     #head {
         min-height: 100vh;
     }
-    #edition {
-      font-size: 0.5em !important;
-    }
     #bg_30km, #bg_10km, #bg_marche, #bg_association {
       min-height: 225px !important;
       padding-top: 90px !important;
@@ -224,6 +221,12 @@ h3{
     }
     .counter_unit {
       font-size: 0.9rem !important;
+    }
+    #date_event {
+      font-size: 1rem !important;
+    }
+    #edition {
+      font-size: 0.8rem !important;
     }
 }
 
@@ -464,12 +467,12 @@ nav ul li a, nav ul li a:after,nav ul li a:before {
   margin-bottom: 5em;
 }
 #edition {
-  font-size: 1.5em !important;
+  font-size: 1.5rem;
   font-family: var(--font2);
-  color: var(--color3);
+  color: var(--color2);
 }
 #date_event {
-  font-size: 2em !important;
+  font-size: 2rem;
   font-family: var(--font2);
   color: var(--color3);
 }
