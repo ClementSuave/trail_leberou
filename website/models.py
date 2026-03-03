@@ -207,3 +207,18 @@ class Edition(models.Model):
 
     def __str__(self):
         return str(self.annee)
+
+class Benevole(models.Model):
+    nom = models.CharField(max_length=100)
+    prenom = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254)
+    adresse = models.CharField(max_length=100,blank=True, null=True)
+    CP = models.IntegerField(blank=True, null=True)
+    ville = models.CharField(blank=True, null=True)
+    telephone = models.IntegerField()
+    
+    class Meta:
+        ordering = ['nom']
+
+    def __str__(self):
+        return f"{self.prenom} {self.nom}"

@@ -17,6 +17,7 @@ urlpatterns = [
     path("resultats/", views.resultats, name="resultats"),
     path('import-data/', views.import_data, name='import_data'),
     path('arrivées/', views.update_race_result, name='finish_line'),
+    path('benevoles/', views.inscription_benevole, name='inscription_benevole'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

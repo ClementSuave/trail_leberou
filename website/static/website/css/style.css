@@ -860,6 +860,11 @@ footer {
   color: var(--color3) !important;
 }
 
+/* -------------------------- BENEVOLES ------------------------------------ */
+.form-label{
+  color: grey;
+}
+
 /* -------------------------- KEYFRAMES ------------------------------------ */
 @keyframes shine {
   0% {

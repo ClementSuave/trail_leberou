@@ -9,7 +9,7 @@ from .forms import ExtractChoiceForm
 from django.contrib.admin.views.decorators import staff_member_required
 from PIL import Image
 from django.contrib import messages
-from .forms import ResultUpdateForm
+from .forms import ResultUpdateForm, BenevoleForm
 
 def accueil(request):
 	return render(request, "website/accueil.html")
@@ -203,3 +203,14 @@ def import_data(request):
     else:
         form = ExtractChoiceForm()
         return render(request, 'website/import_data.html', {'form': form})
+
+def inscription_benevole(request):
+    if request.method == 'POST':
+        form = BenevoleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Merci de votre inscription en tant que bénévole ! Un email de confirmation vous a été envoyé.")
+            return redirect('accueil')
+    else:
+        form = BenevoleForm()
+    return render(request, 'website/benevoles.html', {'form': form})

@@ -1,0 +1,64 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container-fluid document-header"></div>
+<div class="container">
+  <br/>
+
+  {% load widget_tweaks %}
+
+  <div class="container py-5">
+      <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+              
+              <div class="card shadow-sm bg-white" style="--bs-bg-opacity: .5;">
+                  <div class="card-body p-4 p-md-5">
+                      <img src="{% static 'website/images/logo_transparent.svg' %}" class="img-fluid mx-auto d-block" alt="dessin du clocher d'Audrix" style="max-height: 50px;">
+                      <h2 class="text-center mb-2 pt-4" style="color:pink;">Devenez Bénévole !</h1>
+                      <p class="text-muted text-center mb-4">Rejoignez l'équipe du Lébérou</p>
+
+                      <form method="post" novalidate>
+                          {% csrf_token %}
+
+                          {% for field in form %}
+                              <div class="row mb-3 align-items-center">
+                                  <label for="{{ field.id_for_label }}" class="col-sm-3 form-label text-sm-end fw-bold">
+                                      {{ field.label }}
+                                  </label>
+                                  
+                                  <div class="col-sm-9">
+                                      {{ field }}
+                                      
+                                      {% if field.errors %}
+                                          <div class="text-danger small mt-1">
+                                              {{ field.errors|striptags }}
+                                          </div>
+                                      {% endif %}
+                                      
+                                      {% if field.help_text %}
+                                          <div class="form-text">{{ field.help_text }}</div>
+                                      {% endif %}
+                                  </div>
+                              </div>
+                          {% endfor %}
+
+                          <div class="row mt-4 justify-content-center">
+                              <div>
+                                  <button type="submit" class="btn btn-dark btn-lg shadow-sm">S'inscrire</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock %}

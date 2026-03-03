@@ -1,5 +1,6 @@
 from django import forms
-from .models import Extract
+from django.forms import ModelForm
+from .models import Extract, Benevole
 
 class ExtractChoiceForm(forms.Form):
     file_to_import = forms.ModelChoiceField(
@@ -10,3 +11,14 @@ class ExtractChoiceForm(forms.Form):
 
 class ResultUpdateForm(forms.Form):
     dossard = forms.IntegerField(label="Numéro de Dossard")
+
+class BenevoleForm(ModelForm):
+    class Meta:
+        model = Benevole
+        fields = ['nom', 'prenom', 'adresse','CP','ville','email', 'telephone']
+        widgets = {
+            'nom': forms.TextInput(attrs={'placeholder': 'Votre nom'}),
+            'prenom': forms.TextInput(attrs={'placeholder': 'Votre prénom'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'nom@exemple.com'}),
+            'telephone': forms.TextInput(attrs={'placeholder': '06 00 00 00 00'}),
+        }
