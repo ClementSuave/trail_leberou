@@ -1,6 +1,6 @@
 from django.contrib import admin, messages
 from .admin_filters import CategorieAgeFilter
-from .models import Course, Coureur, Extract, Edition
+from .models import Course, Coureur, Extract, Edition, Benevole
 
 from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
@@ -88,3 +88,7 @@ class ExtractAdmin(admin.ModelAdmin):
 @admin.register(Edition)
 class EditionAdmin(admin.ModelAdmin):
     list_display = ('annee','participants','benevoles')
+
+@admin.register(Benevole)
+class EditionAdmin(admin.ModelAdmin):
+    list_display = ('nom','prenom','email','ville','telephone','CP','adresse')
