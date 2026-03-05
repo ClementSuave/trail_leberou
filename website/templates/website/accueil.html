@@ -67,7 +67,7 @@
             <div class="p-4">
             <h3 style="color:white !important;">BIENVENUE AU TRAIL DU LÉBÉROU, UN TRAIL NOCTURNE AU COEUR DU PÉRIGORD NOIR INSPIRÉ D’UNE LEGENDE !</h3>
             <p>Venez incarner l’être mythologique périgordin et parcourir les chemins de nuit à travers la campagne.</p>
-            <p>Pour cette deuxième édition, trois circuits sont proposés; <a href="{% url 'trente_km' %}">Les trois clochers (31 km)</a>, <a href="{% url 'dix_km' %}">le Tour des fontaines (12 km)</a> et <a href="{% url 'marche' %}">la Balade au clair de Lune (7 km)</a>.</p>
+            <p>Pour cette deuxième édition, trois circuits sont proposés; Les trois clochers (31 km), le Tour des fontaines (12 km) et la Balade au clair de Lune (7 km)</a>.</p>
             <p>Pour chaque parcours, une partie se déroulera de nuit et des animations seront proposées pour accompagner les coureurs et marcheurs sur les chemins.</p>
             <p>A la fin des épreuves, il sera proposé aux participants de se réunir pour partager un repas dans la bonne ambiance suivi d'un concert. </p>
             </div>
@@ -112,18 +112,12 @@
                       <p></p>
                     </li>
                     <!--
-                    <li class="event animate-on-scroll" data-date="16h">
-                      <h5>DÉPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
+                    {% for course in courses %}
+                    <li class="event animate-on-scroll" data-date="{{ course.heure_depart }}h">
+                      <h5>DÉPART: <a href="{% url 'course_detail' slug=course.slug %}">{{ course.nom|upper }}</a></h5>
                       <p></p>
                     </li>
-                    <li class="event animate-on-scroll" data-date="17h">
-                      <h5>DÉPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
-                      <p></p>
-                    </li>
-                    <li class="event animate-on-scroll" data-date="18h">
-                      <h5>DÉPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
-                      <p></p>
-                    </li>
+                    {% endfor %}
 
                     <li class="event animate-on-scroll" data-date="19h30">
                       <h5>DÉBUT DE LA SOIRÉE</h5>
@@ -151,18 +145,13 @@
                     <h5>OUVERTURE DES INSCRIPTIONS</h5>
                   </div>
                   <!--
+                  {% for course in courses %}
                   <div class="event-small">
-                    <p>16h</p>
-                    <h5>DÉPART <a href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a></h5>
+                    <p>{{ course.heure_depart }}</p>
+                    <h5>DÉPART: <a href="{% url 'course_detail' slug=course.slug %}">{{ course.nom|upper }}</a></h5>
                   </div>
-                  <div class="event-small">
-                    <p>17h</p>
-                    <h5>DÉPART DE LA <a href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a></h5>
-                  </div>
-                  <div class="event-small">
-                    <p>18h</p>
-                    <h5>DÉPART <a href="{% url 'dix_km' %}">TOUR DES FONTAINES</a></h5>
-                  </div>
+                  {% endfor %}
+                  
                   <div class="event-small">
                     <p>19h30</p>
                     <h5>DÉBUT DE LA SOIRÉE</h5>

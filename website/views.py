@@ -16,23 +16,6 @@ def accueil(request):
 def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     return render(request, 'website/course_template.html', {'course': course})
-
-def dix_km(request):
-    course = Course.objects.all().get(nom='Le tour des fontaines')
-
-    context = {
-        'course': course,
-    }
-    return render(request, 'website/dix_km.html', context)
-def trente_km(request):
-    course = Course.objects.all().get(nom='Les trois clochers')
-
-    context = {
-        'course': course,
-    }
-    return render(request, "website/trente_km.html", context)
-def marche(request):
-	return render(request, "website/marche.html")
 def RGPD(request):
 	return render(request, "website/politique_de_confidentialité.html")
 def CGU(request):
