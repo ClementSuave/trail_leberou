@@ -596,6 +596,7 @@ article {
   --link-icon-translate: -20px;
   --link-icon-opacity: 0;
   --img-light:100%;
+  min-height: 375px;
   position: relative;
 
   box-shadow: none;
