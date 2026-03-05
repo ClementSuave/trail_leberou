@@ -722,7 +722,8 @@ article:has(:hover, :focus) {
   padding-top: 150px;
 }
 #bg_association {
-  background-image: url(../images/HEADER_association.jpg);
+  background-color: pink;
+  min-height: 70px;
 }
 .counter-container {
   counter-reset: num var(--num);
