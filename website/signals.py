@@ -5,13 +5,24 @@ from .models import Benevole
 
 @receiver(post_save, sender=Benevole)
 def send_confirmation_email(sender, instance, created, **kwargs):
-    if created:  # Only send on the first save
+    if created:
         subject = f"TRAIL DU LEBEROU - Confirmation d'inscription en tant que bénévole"
-        message = f"Bonjour {instance.prenom},\n\nMerci de vous être inscrit comme bénévole pour notre course ! Nous reviendrons vers vous bientôt."
-        from_email = 'contact@trailduleberou.fr'
-        recipient_list = [instance.email]
         
-        try:
-            send_mail(subject, message, from_email, recipient_list)
-        except Exception as e:
-            print(f"Erreur d'envoi d'email: {e}")
+        context = {
+            'prenom': instance.prenom,
+        }
+        
+        html_message = render_to_string('emails/confirmation_benevole.html', context)
+        plain_message = strip_tags(html_message)
+        
+        from_email = 'contact@trailduleberou.fr'
+        to = [instance.email]
+
+        send_mail(
+            subject, 
+            plain_message, 
+            from_email, 
+            to, 
+            html_message=html_message,
+            fail_silently=False
+        )

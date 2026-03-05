@@ -19,6 +19,9 @@ class BenevoleForm(ModelForm):
         widgets = {
             'nom': forms.TextInput(attrs={'placeholder': 'Votre nom'}),
             'prenom': forms.TextInput(attrs={'placeholder': 'Votre prénom'}),
+            'adresse': forms.TextInput(attrs={'placeholder': 'Adresse'}),
+            'CP': forms.TextInput(attrs={'placeholder': 'CP'}),
+            'ville': forms.TextInput(attrs={'placeholder': 'Ville'}),
             'email': forms.EmailInput(attrs={'placeholder': 'nom@exemple.com'}),
             'telephone': forms.TextInput(attrs={'placeholder': '06 00 00 00 00'}),
         }
