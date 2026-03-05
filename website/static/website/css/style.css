@@ -649,14 +649,13 @@ article a .icon {
 }
 
 /*----- HOVER ------*/
-#TUILE_les_trois_clochers:has(:hover, :focus) {
-  --title-color: var(--color3);
+.course-tile:has(:hover, :focus) {
+  --title-color: var(--course-color);
 }
-#TUILE_le_tour_des_fontaines:has(:hover, :focus) {
-  --title-color: pink;
-}
-#TUILE_balade_au_clair_de_lune:has(:hover, :focus) {
-  --title-color: var(--color2);
+
+.article_title {
+  color: var(--title-color, grey); /* Fallback to dark grey if not hovered */
+  transition: color 0.3s ease;
 }
 
 article:has(:hover, :focus) {

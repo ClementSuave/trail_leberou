@@ -1,0 +1,92 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron text-center m-0 d-flex justify-content-center align-items-center" style="position: relative; overflow: hidden; min-height: 50vh;">
+  
+  <video autoplay muted playsinline class="bg-video">
+    {% if course.video %}
+      <source src="{{ course.video.url }}" type="video/mp4">
+    {% else %}
+
+    {% endif %}
+  </video>
+
+  <div class="video-overlay"></div>
+
+  <div class="container title_courses" style="z-index: 2; position: relative;">
+    <div class="row justify-content-center">
+      <h1 style="color: {{ course.color }}; text-transform: uppercase;">{{ course.nom }}</h1>
+    </div>
+        <!--<div class="row justify-content-center p-4">
+      <a href="https://sport.ikinoa.com/fr/evt/trailduleberou" target="_blank">
+      <div class="btn-inscription btn-inscription-courses">
+        <span>INSCRIPTION</span>
+      </div>
+      </a>
+    </div>-->
+  </div>
+</div>
+
+<div class="container pt-4">
+  <div class="row p-lg-5 p-md-2 p-sm-2">
+    <div class="col-4 d-flex flex-column align-items-center">
+      <div class="counter-container" data-target="{{ course.distance }}" style="color: {{ course.color }};">0</div>
+      <h3 class="text-center pt-md-4 counter_unit">kilomètres</h3>
+    </div>
+    <div class="col-4 d-flex flex-column align-items-center">
+      <div class="counter-container text-center" data-target="{{ course.deniv }}" style="color: {{ course.color }};">0</div>
+      <h3 class="text-center pt-md-4 counter_unit">mètres de dénivelé</h3>
+    </div>
+    <div class="col-4 d-flex flex-column align-items-center">
+      <div class="counter-container text-center" data-target="{{ course.ravito }}" style="color: {{ course.color }};">0</div>
+      <h3 class="text-center pt-md-4 counter_unit">ravitos</h3>
+    </div>
+  </div>
+
+  <div class="row p-lg-5 p-md-2 p-sm-2">
+    <div class="col-md-5 col-sm-12 pb-4 order-2">
+      <iframe src="{{ course.map_url }}" width="100%" height="480px" allow="geolocation"></iframe>
+      {% if course.gpx_file %}
+      <a href="{{ course.gpx_file.url }}" download>
+        <button type="button" class="btn btn-outline-dark mt-2">TÉLÉCHARGER GPX</button>
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="pt-4 col-md-7 col-sm-12 order-1">
+      <h3>Départ à : {{ course.heure_depart|time:"H:i" }}</h3>
+      <h3>Description du parcours :</h3>
+      <br/>
+      <div class="course-description">
+          {{ course.description|linebreaks }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter-container');
+    const duration = 1500;
+
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            counter.innerText = Math.floor(progress * target);
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        requestAnimationFrame(updateCounter);
+    });
+});
+</script>
+{% endblock %}

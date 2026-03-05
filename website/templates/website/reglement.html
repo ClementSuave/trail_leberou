@@ -20,9 +20,9 @@
     <p>Les participants à ces épreuves déclarent connaître et accepter le règlement et s'engagent à respecter la  charte éthique couvrant l’événement.</p> 
     <p><strong>Épreuves et Parcours</strong></p>
     <ul>
-      <li><strong>LES 3 CLOCHERS :</strong> 31 km – Dénivelé : 720 m</li> 
-      <li><strong>TOUR DES FONTAINES :</strong> 12 km– Dénivelé : 320 m</li>
-      <li><strong>BALADE AU CLAIR DE LUNE :</strong> 8 km</li>
+      {% for course in courses %}
+      <li><strong>{{ course.nom }} :</strong> {{ course.distance }} km – Dénivelé : {{ course.deniv }}  m</li> 
+      {% endfor %}
     </ul>
     <p>Parcours balisé, traversant 5 communes de Dordogne, avec passages en forêt, chemins et routes communales.</p> 
   
@@ -38,29 +38,30 @@
       <thead>
         <tr>
           <th></th>
-          <th>LES TROIS CLOCHERS</th>
-          <th>LE TOUR DES FONTAINES</th>
-          <th>BALADE AU CLAIR DE LUNE</th>
+          {% for course in courses %}
+          <th>{{ course.nom }}</th>
+          {% endfor %}
+
         </tr>
       </thead>
       <tbody>
         <tr>
           <th>Horaires et départs</th>
-          <td>Départ à 16h - arrivée la nuit</td>
-          <td>Départ à 17h - arrivée la nuit</td>
-          <td>Départ à 17h30 - arrivée la nuit</td>
+          {% for course in courses %}
+          <td>Départ à {{ course.heure_depart }} - arrivée la nuit</td>
+          {% endfor %}
         </tr>
         <tr>
           <th>Retrait des dossards</th>
-          <td>De 11h à 15h30 le samedi</td>
-          <td>De 11h à 17h le samedi</td>
-          <td>Non concerné</td>
+          {% for course in courses %}
+          <td>{{ course.retrait_dossard }}</td>
+          {% endfor %}
         </tr>
         <tr>
           <th>Age limite</th>
-          <td>Toute personne née en 2007 et avant</td>
-          <td>Toute personne née en 2009 et avant</td>
-          <td>Pas d'âge limite</td>
+          {% for course in courses %}
+          <td>{{ course.age_limite }}</td>
+          {% endfor %}
         </tr>
       </tbody>
     </table>
@@ -84,34 +85,30 @@
       <thead>
         <tr>
           <th ></th>
+          {% for course in courses %}
           <th>LES TROIS CLOCHERS</th>
-          <th>LE TOUR DES FONTAINES</th>
+          {% endfor %}
         </tr>
       </thead>
       <tbody>
         <tr>
           <th>Matériel obligatoire</th>
-          <td>
-          Une lampe frontale en excellent état de marche
-          Une lampe clignotante rouge de balisage à mettre à l’arrière
-          </td>
-          <td>Une lampe frontale en excellent état de marche</td>
+          {% for course in courses %}
+          <td>{{ course.matos_obligatoire }}</td>
+          {% endfor %}
         </tr>
         <tr>
           <th>Matériel conseillé</th>
-          <td>
-          Une veste imperméable
-          Une réserve d’eau
+          {% for course in courses %}
+          <td>{{ course.matos_conseille }}</td>
           </td>
-          <td>
-          Une veste imperméable
-          Une réserve d’eau
-          </td>
+          {% endfor %}
         </tr>
         <tr>
           <th>Ravitaillements</th>
-          <td>3 postes eau + solide</td>
-          <td>1 poste eau + solide</td>
+          {% for course in courses %}
+          <td>{{ course.ravito }} postes eau + solide</td>
+          {% endfor %}
         </tr>
       </tbody>
     </table>

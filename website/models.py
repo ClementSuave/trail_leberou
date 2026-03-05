@@ -5,7 +5,14 @@ from django.utils import timezone
 from datetime import date, timedelta
 
 class Course(models.Model):
+
+    TYPE = [
+        ('Course', 'Course'),
+        ('Marche', 'Marche'),
+    ]
+
     nom = models.CharField(max_length=200, unique=True, help_text="Nom de la course")
+    slug = models.SlugField(unique=True)
     date_course = models.DateField(help_text="Date")
     description = models.TextField(blank=True, null=True)
     deniv = models.IntegerField(blank=True, null=True, help_text="Dénivelé positif (m)")
@@ -14,6 +21,17 @@ class Course(models.Model):
     dossard_start = models.IntegerField()
     dossard_end = models.IntegerField()
     heure_depart = models.TimeField(null=True, blank=True, help_text="Heure de départ de la course (HH:MM:SS)")
+    type = models.CharField(choices=TYPE,help_text="Type de course")
+    retrait_dossard = models.CharField(blank=True, null=True, max_length=200, help_text="Heure retrait dossards")
+    age_limite = models.CharField(blank=True, null=True, max_length=200, help_text="Age limite")
+    matos_obligatoire = models.CharField(blank=True, null=True, max_length=500, help_text="Matériel obligatoire")
+    matos_conseille = models.CharField(blank=True, null=True, max_length=500, help_text="Matériel conseillé")
+    color = models.CharField(blank=True, null=True, max_length=20, help_text="entrer '#fffff' pour la couleur")
+    
+    map_url = models.URLField(blank=True, null=True)
+    gpx_file = models.FileField(blank=True, null=True, upload_to='courses/gpx/')
+    video = models.FileField(upload_to='courses/videos/', null=True, blank=True,help_text="Video pour le header de la course")
+    thumbnail = models.ImageField(upload_to='courses/thumbnails/', null=True, blank=True)
 
     class Meta:
         verbose_name = "Course"

@@ -12,7 +12,11 @@ from django.contrib import messages
 from .forms import ResultUpdateForm, BenevoleForm
 
 def accueil(request):
-	return render(request, "website/accueil.html")
+    return render(request, "website/accueil.html")
+def course_detail(request, slug):
+    course = get_object_or_404(Course, slug=slug)
+    return render(request, 'website/course_template.html', {'course': course})
+
 def dix_km(request):
     course = Course.objects.all().get(nom='Le tour des fontaines')
 
@@ -36,7 +40,7 @@ def CGU(request):
 def mentions_legales(request):
 	return render(request, "website/mentions_légales.html")
 def reglement(request):
-	return render(request, "website/reglement.html")
+    return render(request, "website/reglement.html")
 def association(request):
 	return render(request, "website/association.html")
 def galerie(request):
@@ -124,7 +128,7 @@ def update_race_result(request):
     })
 
 def resultats(request):
-    courses = Course.objects.all().order_by('-date_course')
+    courses = Course.objects.all().order_by('-date_course').filter(type="Course")
 
     for course in courses:
         course.ordered_participants = Coureur.objects.filter(course=course,temps_course__isnull=False).order_by('temps_course')

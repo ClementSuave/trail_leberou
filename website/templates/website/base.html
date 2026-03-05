@@ -61,12 +61,20 @@
         <a class="nav-link nav-link-click hover-underline" href="{% url 'accueil' %}#programme">Programme</a>
       </li>
       <li class="nav-item nav-item-main-navbar dropdown">
-        <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Les courses</a>
+        <a class="nav-link dropdown-toggle" href="{% url 'accueil' %}#les_courses" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">
+          Les parcours
+        </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item hover-underline" href="{% url 'trente_km' %}">LES TROIS CLOCHERS</a>
-          <a class="dropdown-item hover-underline" href="{% url 'dix_km' %}">TOUR DES FONTAINES</a>
-          <a class="dropdown-item hover-underline" href="{% url 'marche' %}">BALADE AU CLAIR DE LUNE</a>
+          
+          {% for course in courses %}
+            <a class="dropdown-item hover-underline" href="{% url 'course_detail' slug=course.slug %}">
+              {{ course.nom|upper }}
+            </a>
+          {% empty %}
+            <span class="dropdown-item disabled">Aucune course prévue</span>
+          {% endfor %}
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item hover-underline" href="{% url 'reglement' %}">REGLEMENT</a>
           <div class="dropdown-divider"></div>
