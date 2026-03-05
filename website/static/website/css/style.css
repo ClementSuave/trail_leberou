@@ -738,30 +738,7 @@ article:has(:hover, :focus) {
   justify-content: center;
   align-items: center;
 }
-#counter_km_10 {
-  animation: counter_km_10 2s forwards ease-in-out;
-}
-#counter_d_10 {
-  animation: counter_d_10 2s forwards ease-in-out;
-}
-#counter_km_30 {
-  animation: counter_km_30 2s forwards ease-in-out;
-}
-#counter_d_30 {
-  animation: counter_d_30 2s forwards ease-in-out;
-}
-#counter_rav_10 {
-  animation: counter_rav_10 2s forwards ease-in-out;
-}
-#counter_rav_30 {
-  animation: counter_rav_30 2s forwards ease-in-out;
-}
-#counter_km_marche {
-  animation: counter_km_marche 2s forwards ease-in-out;
-}
-.counter-container::after {
-  content: counter(num);
-}
+
 footer {
   background-color: white;
 }

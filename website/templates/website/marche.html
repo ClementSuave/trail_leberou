@@ -31,7 +31,7 @@
 <div class="container pt-4">
   <div class="row p-lg-5 p-md-2 p-sm-2 p-xs-2">
     <div class="col-12 d-flex flex-column align-items-center">
-      <div id="counter_km_marche" class="counter-container" style="color: var(--color2);"></div>
+      <div id="counter_km_marche" class="counter-container" data-target="7" style="color: var(--color2);">0</div>
       <h3 class="text-center pt-4 counter_unit">kilomètres</h3>
     </div>
   </div>
@@ -48,5 +48,34 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter-container');
+    const duration = 1500; // Animation lasts 2 seconds for all
+
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Calculate current number
+            const current = Math.floor(progress * target);
+            counter.innerText = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
+    });
+});
+</script>
 
 {% endblock %}

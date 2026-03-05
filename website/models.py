@@ -10,6 +10,7 @@ class Course(models.Model):
     description = models.TextField(blank=True, null=True)
     deniv = models.IntegerField(blank=True, null=True, help_text="Dénivelé positif (m)")
     distance = models.IntegerField(blank=True, null=True, help_text="Distance (km)")
+    ravito = models.IntegerField(blank=True, null=True, help_text="Nombre de ravitaillements")
     dossard_start = models.IntegerField()
     dossard_end = models.IntegerField()
     heure_depart = models.TimeField(null=True, blank=True, help_text="Heure de départ de la course (HH:MM:SS)")

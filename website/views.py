@@ -14,9 +14,19 @@ from .forms import ResultUpdateForm, BenevoleForm
 def accueil(request):
 	return render(request, "website/accueil.html")
 def dix_km(request):
-	return render(request, "website/dix_km.html")
+    course = Course.objects.all().get(nom='Le tour des fontaines')
+
+    context = {
+        'course': course,
+    }
+    return render(request, 'website/dix_km.html', context)
 def trente_km(request):
-	return render(request, "website/trente_km.html")
+    course = Course.objects.all().get(nom='Les trois clochers')
+
+    context = {
+        'course': course,
+    }
+    return render(request, "website/trente_km.html", context)
 def marche(request):
 	return render(request, "website/marche.html")
 def RGPD(request):

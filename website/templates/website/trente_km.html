@@ -29,17 +29,17 @@
 </div>
 
 <div class="container pt-4">
-  <div class="row pb-4">
+  <div class="row p-lg-5 p-md-2 p-sm-2 p-xs-2">
     <div class="col-4 d-flex flex-column align-items-center">
-      <div id="counter_km_30" class="counter-container" style="color: var(--color3);;"></div>
+      <div id="counter_km_30" class="counter-container" data-target="{{ course.distance }}" style="color: var(--color3);;"></div>
       <h3 class="text-center pt-4 counter_unit">kilomètres</h3>
     </div>
     <div class="col-4 d-flex flex-column align-items-center">
-      <div id="counter_d_30" class="counter-container text-center" style="color: var(--color3);;"></div>
+      <div id="counter_d_30" class="counter-container text-center" data-target="{{ course.deniv }}" style="color: var(--color3);;"></div>
       <h3 class="text-center pt-4 counter_unit">mètres de dénivelé</h3>
     </div>
     <div class="col-4 d-flex flex-column align-items-center">
-      <div id="counter_rav_30" class="counter-container text-center" style="color: var(--color3);;"></div>
+      <div id="counter_rav_30" class="counter-container text-center" data-target="{{ course.ravito }}" style="color: var(--color3);;"></div>
       <h3 class="text-center pt-4 counter_unit">ravitos</h3>
     </div>
   </div>
@@ -61,5 +61,33 @@
   </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter-container');
+    const duration = 1500; // Animation lasts 2 seconds for all
+
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Calculate current number
+            const current = Math.floor(progress * target);
+            counter.innerText = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
+    });
+});
+</script>
 {% endblock %}
    
