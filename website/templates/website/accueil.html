@@ -193,7 +193,11 @@
               <article id="TUILE_{{ course.slug }}" class="course-tile" style="--course-color: {{ course.color }};">
                 <div class="article-wrapper">
                   <figure>
-                    <img src="{{ course.thumbnail.url }}" alt="{{ course.name }}">
+                    {% if course.thumbnail %}
+                        <img src="{{ course.thumbnail.url }}" alt="{{ course.name }}">
+                    {% else %}
+                        <p></p>
+                    {% endif %}
                   </figure>
                   <div class="article-body">
                     <span class="article_title">{{ course.nom|upper }}</span>
