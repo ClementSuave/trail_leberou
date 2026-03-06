@@ -10,11 +10,11 @@
 
         <h1 style="color: #2c3e50;">RESULTATS DES COURSES</h1>
 
-        {% if courses %}
+        {% if courses_chrono %}
             <ul class="nav nav-tabs" id="courseTabs" role="tablist">
-                {% for course in courses %}
+                {% for course in courses_chrono %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link {% if forloop.first %}active{% endif %} themeTab" id="course-tab-{{ course.id }}-link" data-bs-toggle="tab" data-bs-target="#course-tab-{{ course.id }}" type="button" role="tab" aria-controls="course-tab-{{ course.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                        <button class="nav-link {% if forloop.first %}active{% endif %} themeTab" id="course-tab-{{ course.id }}-link" data-bs-toggle="tab" data-bs-target="#course-tab-{{ course.id }}" type="button" role="tab" aria-controls="course-tab-{{ course.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" style="--course-color: {{ course.color }};">
                             {{ course.nom }}
                         </button>
                     </li>
@@ -22,14 +22,13 @@
             </ul>
 
             <div class="tab-content p-3" id="courseTabsContent">
-                {% for course in courses %}
+                {% for course in courses_chrono %}
                     <div class="tab-pane fade {% if forloop.first %}show active{% endif %}"
                             id="course-tab-{{ course.id }}"
                             role="tabpanel"
                             aria-labelledby="course-tab-{{ course.id }}-link"
                             tabindex="0">
 
-                        {# Access coureurs for this course directly from the course object #}
                         {% if course.ordered_participants %}
                             <div class="filter-section mt-3 mb-4">
                                 <div class="mb-3">

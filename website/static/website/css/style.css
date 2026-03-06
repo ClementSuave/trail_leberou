@@ -835,7 +835,7 @@ footer {
   color: white !important;
 }
 .themeTab.active {
-  color: var(--color3) !important;
+  color: var(--course-color) !important;
 }
 
 /* -------------------------- BENEVOLES ------------------------------------ */

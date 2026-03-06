@@ -111,13 +111,13 @@ def update_race_result(request):
     })
 
 def resultats(request):
-    courses = Course.objects.all().order_by('-date_course').filter(type="Course")
+    courses_chrono = Course.objects.all().order_by('-date_course').filter(type="Course")
 
-    for course in courses:
+    for course in courses_chrono:
         course.ordered_participants = Coureur.objects.filter(course=course,temps_course__isnull=False).order_by('temps_course')
 
     context = {
-        'courses': courses,
+        'courses_chrono': courses_chrono,
     }
     
     return render(request, 'website/resultats.html', context)
