@@ -738,6 +738,10 @@ article:has(:hover, :focus) {
   justify-content: center;
   align-items: center;
 }
+#map { height: 400px; }
+#profile-container { height: 150px; }
+.km { color: black; font-weight: bold; font-size: 14px;
+      text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; }
 
 footer {
   background-color: white;

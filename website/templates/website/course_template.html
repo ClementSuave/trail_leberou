@@ -1,5 +1,10 @@
 {% extends 'website/base.html' %}
+
 {% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+{% endblock %}
 
 {% block content %}
 <div class="jumbotron text-center m-0 d-flex justify-content-center align-items-center" style="position: relative; overflow: hidden; min-height: 50vh;">
@@ -46,7 +51,11 @@
 
   <div class="row p-lg-5 p-md-2 p-sm-2">
     <div class="col-md-5 col-sm-12 pb-4 order-2">
-      <iframe src="{{ course.map_url }}" width="100%" height="480px" allow="geolocation"></iframe>
+      <!--<iframe src="{{ course.map_url }}" width="100%" height="480px" allow="geolocation"></iframe>-->
+      <div id="map" style="height: 400px;"></div>
+      <div id="profile-container">
+        <canvas id="profile"></canvas>
+      </div>
       {% if course.gpx_file %}
       <a href="{{ course.gpx_file.url }}" download>
         <button type="button" class="btn btn-outline-dark mt-2">TÉLÉCHARGER GPX</button>
@@ -64,29 +73,145 @@
     </div>
   </div>
 </div>
+{% endblock %}
 
+{% block extra_js %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/togeojson/0.16.0/togeojson.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll('.counter-container');
-    const duration = 1500;
 
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const startTime = performance.now();
+  // ── Compteurs animés ──────────────────────────────────────────
+  const counters = document.querySelectorAll('.counter-container');
+  const duration = 1500;
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const startTime = performance.now();
+    const updateCounter = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      counter.innerText = Math.floor(progress * target);
+      if (progress < 1) requestAnimationFrame(updateCounter);
+      else counter.innerText = target;
+    };
+    requestAnimationFrame(updateCounter);
+  });
 
-        const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            counter.innerText = Math.floor(progress * target);
+  // ── Carte ─────────────────────────────────────────────────────
+  {% if course.gpx_file %}
+  const gpxUrl = "{{ course.gpx_file.url }}";
+  const courseColor = "{{ course.color }}";
 
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.innerText = target;
+  var map = L.map('map');
+  L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenTopoMap',
+    opacity: 0.6
+  }).addTo(map);
+
+  fetch(gpxUrl)
+    .then(r => r.text())
+    .then(function(gpx) {
+      var parser = new DOMParser();
+      var xml = parser.parseFromString(gpx, "text/xml");
+      var geojson = toGeoJSON.gpx(xml);
+      var coords = geojson.features[0].geometry.coordinates;
+
+      var points = [];
+      var dist = 0;
+      points.push({ lat: coords[0][1], lon: coords[0][0], ele: coords[0][2], dist: 0 });
+
+      for (var i = 1; i < coords.length; i++) {
+        var p1 = coords[i - 1], p2 = coords[i];
+        dist += map.distance([p1[1], p1[0]], [p2[1], p2[0]]);
+        points.push({ lat: p2[1], lon: p2[0], ele: p2[2], dist: dist / 1000 });
+      }
+
+      // Tracé
+      var trace = L.polyline(points.map(p => [p.lat, p.lon]), {
+        color: courseColor, weight: 4
+      }).addTo(map);
+      map.fitBounds(trace.getBounds());
+
+      // Points kilométriques
+      var lastKm = 0;
+      points.forEach(p => {
+        if (Math.floor(p.dist) > lastKm) {
+          lastKm = Math.floor(p.dist);
+          L.marker([p.lat, p.lon], {
+            icon: L.divIcon({ className: "km", html: lastKm })
+          }).addTo(map);
+        }
+      });
+
+      // Marqueur emoji
+      var marker = L.marker([points[0].lat, points[0].lon], {
+        icon: L.divIcon({
+          className: "",
+          html: '<span style="font-size:30px;">🐰</span>',
+          iconSize: [30, 30],
+          iconAnchor: [15, 15]
+        })
+      }).addTo(map);
+
+      // Profil d'élévation
+      var verticalLinePlugin = {
+        id: 'verticalLine',
+        afterDraw(chart) {
+          if (chart.tooltip._active?.length) {
+            const ctx = chart.ctx;
+            const x = chart.tooltip._active[0].element.x;
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, chart.chartArea.top);
+            ctx.lineTo(x, chart.chartArea.bottom);
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000";
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      };
+
+      new Chart(document.getElementById('profile'), {
+        type: 'line',
+        data: {
+          datasets: [{
+            data: points.map(p => ({ x: p.dist, y: p.ele })),
+            borderColor: courseColor,
+            backgroundColor: courseColor,   // alpha via hex
+            fill: true,
+            pointRadius: 0,
+            tension: 0.4
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          scales: {
+            x: { type: "linear", title: { display: true, text: "Distance (km)" } },
+            y: { title: { display: true, text: "Altitude (m)" } }
+          },
+          onHover: (event, elements) => {
+            if (elements.length) {
+              const p = points[elements[0].index];
+              marker.setLatLng([p.lat, p.lon]);
             }
-        };
-        requestAnimationFrame(updateCounter);
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `Distance : ${ctx.raw.x.toFixed(1)} km / Alt : ${ctx.raw.y.toFixed(0)} m`
+              }
+            }
+          }
+        },
+        plugins: [verticalLinePlugin]
+      });
     });
+  {% endif %}
+
 });
 </script>
 {% endblock %}

@@ -121,6 +121,24 @@ class Coureur(models.Model):
         return f"{self.dossard or 'N/A'}: {self.prenom} {self.nom}  - {self.course.nom})"
 
     @property
+    def get_gmcap_category(self):
+
+        if not self.date_naissance:
+            return "Inconnu"
+        
+        age = date.today().year - self.date_naissance.year
+        if age < 20: return "JU"
+        if age < 23: return "ES"
+        if age < 35: return "SE"
+        if age < 40: return "M0"
+        if age < 45: return "M1"
+        if age < 50: return "M2"
+        if age < 55: return "M3"
+        if age < 60: return "M4"
+        if age < 65: return "M5"
+        return "M6"
+
+    @property
     def categorie_age(self):
         if not self.date_naissance:
             return "Inconnu"
@@ -141,72 +159,7 @@ class Coureur(models.Model):
         if base_categorie != "N/A" and self.sexe in ['M', 'F']:
             return f"{base_categorie} {self.get_sexe_display()}" # e.g., "ES Homme", "SE Femme"
         return "Inconnu"
-"""
-    def position_generale(self):
-        if self.temps_course is None:
-            return None
 
-        # Get all coureurs for the same course that have a time, ordered by time
-        coureurs_classes = Coureur.objects.filter(
-            course=self.course,
-            temps_course__isnull=False
-        ).order_by('temps_course')
-
-        for i, coureur_in_list in enumerate(coureurs_classes):
-            if coureur_in_list.pk == self.pk:
-                return i + 1
-        return None
-
-    @property
-    def position_par_categorie(self):
-        if self.temps_course is None:
-            return None
-
-        # 1. Calculez la catégorie du coureur actuel
-        categorie_du_coureur = self.categorie_age
-
-        if categorie_du_coureur in ["Inconnu", "N/A"]:
-            return None
-
-        # 2. Récupérez TOUS les coureurs classés de la même course, ordonnés par temps
-        coureurs_classes = Coureur.objects.filter(
-            course=self.course,
-            temps_course__isnull=False
-        ).order_by('temps_course')
-
-        position_in_category = 0
-        # 3. Itérez et comptez SEULEMENT ceux de la même catégorie
-        for coureur_cat in coureurs_classes:
-            # Recalculer la catégorie pour chaque coureur
-            if coureur_cat.categorie_age == categorie_du_coureur:
-                position_in_category += 1
-                # 4. Si c'est NOTRE coureur, on retourne le compte actuel
-                if coureur_cat.pk == self.pk:
-                    return position_in_category
-        return None
-
-
-@receiver(pre_save, sender=Coureur)
-def set_dossard(sender, instance, **kwargs):
-    if instance._state.adding and instance.dossard is None and instance.course:
-        
-        max_dossard_for_course_range = Coureur.objects.filter(
-            course=instance.course,
-            dossard__gte=instance.course.dossard_start,
-            dossard__lte=instance.course.dossard_end
-        ).aggregate(models.Max('dossard'))['dossard__max']
-
-        if max_dossard_for_course_range is None:
-            instance.dossard = instance.course.dossard_start
-        else:
-            next_dossard = max_dossard_for_course_range + 1
-            
-            if next_dossard <= instance.course.dossard_end:
-                instance.dossard = next_dossard
-            else:
-                from django.core.exceptions import ValidationError
-                raise ValidationError(f"La plage de dossards pour la course '{instance.course.nom}' est pleine (Dossard {instance.course.dossard_start} à {instance.course.dossard_end}). Impossible d'attribuer un nouveau dossard automatiquement.")
-"""
 class Extract(models.Model):
     title = models.CharField(max_length=255)
     file = models.FileField(upload_to='extracts/')
