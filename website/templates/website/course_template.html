@@ -4,6 +4,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.css"/>
 {% endblock %}
 
 {% block content %}
@@ -77,6 +78,7 @@
 
 {% block extra_js %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/togeojson/0.16.0/togeojson.min.js"></script>
 <script>
@@ -103,7 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const gpxUrl = "{{ course.gpx_file.url }}";
   const courseColor = "{{ course.color }}";
 
-  var map = L.map('map');
+  var map = L.map('map', {
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+      position: 'topright',
+      title: '<sup>⇱</sup><sub>⇲</sub>',
+      titleCancel: 'Quitter le plein écran'
+    }
+  });
   L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenTopoMap',
     opacity: 0.6
