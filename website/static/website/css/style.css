@@ -712,7 +712,7 @@ article:has(:hover, :focus) {
   initial-value: 0;
   inherits: false;
 }
-#bg_30km, #bg_10km, #bg_marche, #bg_association {
+#bg_30km, #bg_10km, #bg_marche, #bg_association, #bg_engagements {
   position: relative;
   background-attachment: fixed;
   background-position: center;
@@ -723,6 +723,10 @@ article:has(:hover, :focus) {
 }
 #bg_association {
   background-color: pink;
+  min-height: 70px;
+}
+#bg_engagements {
+  background-color: black;
   min-height: 70px;
 }
 .counter-container {

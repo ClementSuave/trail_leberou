@@ -252,7 +252,7 @@
           </div>
           <div class="col-md-6 col-sm-12 animate-on-scroll p-4">
             <h2>OU ?</h2><p><a href="https://maps.app.goo.gl/eqdpgcPpfPjxnFD67" target="_blank" class="a_2">Salle des fêtes d'Audrix (24260).</a></p>
-            <p><a href="https://sport.ikinoa.com/fr/events/trailduleberou/carpooling/routes" target="_blank" class="a_2">Offre de covoiturage</a> dédiée.</p>
+            <p><a href="https://sport.ikinoa.com/fr/events/trailduleberou2026-6715/carpooling/routes" target="_blank" class="a_2">Offre de covoiturage</a> dédiée.</p>
 
             <img id="head_image" class="img-fluid" src="{% static 'website/images/situation.png' %}" alt="carte dordogne simplifiée; Bergerac, Sarlat, Périgueux depuis Audrix">
           </div>
@@ -262,7 +262,63 @@
 
 </div> <!-- Container  -->
 
+  <!--Inqcriptions non ouvertes
+  <div class="modal fade" id="inscriptions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">INSCRIPTIONS</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Les inscriptions ne sont pas encore ouvertes. Elles ouvriront prochainement.
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+<!-- Pop up TRF  -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true" style="z-index: 1050;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg" style="background-color: black; color: #495057;">
+      
+      <div class="modal-header border-0 pb-0 justify-content-end">
+        <button type="button" id="closeModalX" aria-label="Close" style="background: none; border: none; font-size: 1.5rem; color: var(--color3); cursor: pointer;">×</button>
+      </div>
+      
+      <div class="modal-content-body p-4 text-center">
+        <div class="mb-3" style="font-size: 3rem;"><img class="img-fluid mx-auto d-block" src="{% static 'website/images/megaphone.png' %}" alt="NEWS" style="max-width:30%;max-height:30%;min-width:20%;min-height:20%;"></div>
+        <h3 class="modal-title font-weight-bold mb-3" id="welcomeModalLabel" style="color: var(--color3) !important; font-size: 1.5rem !important;">
+          Objectif Éco-Responsable !
+        </h3>
+        <p class="mb-4" style="color: var(--color2);">
+          Pour cette 2ème édition du Trail du Lébérou, nous postulons pour obtenir le label <strong>TRAIL RUNNER FOUNDATION</strong> !
+        </p>
+        <div class="d-flex flex-column gap-2 justify-content-center align-items-center">
+          <div class="box pt-4">
+            <a href="{% url 'engagements' %}">
+              <div class="btn-inscription btn-inscription-courses" style="background: var(--color3); color: white; border-radius: 4px;">
+                <span><strong>Découvrir nos engagements</strong></span>
+              </div>
+            </a>
+          </div>
+
+          <button type="button" id="closeModalLink" class="btn btn-link text-secondary btn-sm mt-3" style="text-decoration: underline; background: none; border: none;">
+            Continuer vers le site
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Gestion automatique de la fermeture des alertes (messages Django)
     setTimeout(function() {
         let alerts = document.querySelectorAll('.alert');
         alerts.forEach(function(alert) {
@@ -270,6 +326,32 @@
             bsAlert.close();
         });
     }, 4000);
+
+
+    let welcomeModalElement = document.getElementById('welcomeModal');
+    let welcomeModal = new bootstrap.Modal(welcomeModalElement);
+
+    // 3. Force la fermeture manuelle au clic sur les boutons pour pallier aux soucis de version Bootstrap
+    function hideModal() {
+        welcomeModal.hide();
+    }
+    document.getElementById('closeModalX').addEventListener('click', hideModal);
+    document.getElementById('closeModalLink').addEventListener('click', hideModal);
+
+    // 4. Gestion du délai de 10 minutes via LocalStorage
+    let now = new Date().getTime();
+    let modalHiddenUntil = localStorage.getItem('welcomeModalHiddenUntil');
+
+    // Si aucune restriction de temps n'existe OU si les 10 minutes sont écoulées
+    if (!modalHiddenUntil || now > parseInt(modalHiddenUntil)) {
+        // On affiche le modal
+        welcomeModal.show();
+        
+        // On calcule le timestamp pour dans 10 minutes (10 min * 60 sec * 1000 ms)
+        let expireTime = now + (10 * 60 * 1000);
+        localStorage.setItem('welcomeModalHiddenUntil', expireTime);
+    }
+  });
 </script>
 
 {% endblock %}

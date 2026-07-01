@@ -1,0 +1,129 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div id="bg_engagements" class="jumbotron text-center m-0 d-flex justify-content-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <h1>ENGAGEMENTS</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-10 text-center animate-on-scroll is-visible">
+      <p class="lead text-dark">
+        Pour valoriser les différentes mesures écologiques mises en place, nous visons cette année le label 
+        <strong>TRAIL RUNNER FOUNDATION</strong>.
+      </p>
+    </div>
+    
+    <div class="col-lg-5 p-4 mx-2 bg-white animate-on-scroll">
+      <h2 class="h4 mb-3 text-center" style="color: var(--color3) !important;">LE LABEL</h2>
+      <div>
+        <img src="https://www.trailrunnerfoundation.com/wp-content/uploads/2015/10/logo_detoure_trf.png" class="img-fluid mx-auto d-block" alt="TRF" class="img-fluid" style="width:20%;">
+      </div>
+      <p>
+        <br/>
+        <strong>Trail Runner Foundation</strong> est une association d’intérêt général. Elle a pour objet de sensibiliser le plus grand nombre à la protection de la nature et d’agir concrètement par un comportement éco-responsable au quotidien.
+      </p>
+      <p class="mb-0">
+        L'obtention du label est basée sur le respect d'une charte rigoureuse consultable directement sur leur 
+        <a href="https://www.trailrunnerfoundation.com/label/" target="_blank" class="text-decoration-underline" style="color: var(--color3); font-weight: bold;">site internet</a>.
+      </p>
+    </div>
+
+    <div class="col-lg-5 p-4 mx-2 text-white animate-on-scroll" style="background-color: pink;">
+      <h2 class="h4 mb-3 text-white text-center">MESURES MISES EN PLACE</h2>
+      <p>En vue de l'obtention du label, nous nous engageons activement sur le terrain :</p>
+      <ul class="list-unstyled list-custom-white">
+        <li>Nettoyage complet des sentiers avant et après course</li>
+        <li>Sensibilisation active auprès des participants</li>
+        <li>Tri sélectif rigoureux des déchets</li>
+        <li>Réduction stricte du nombre d'emballages</li>
+        <li>Balisage réfléchissant 100% réutilisable & fait maison</li>
+        <li>Disqualification immédiate pour tout rejet de déchet</li>
+        <li>Eco-cup obligatoire pour tous</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 text-center mb-4">
+      <h2 style="color: grey !important;" class="text-uppercase tracking-wide">D'autres mesures viennent compléter notre engagement écologique</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm bg-white text-dark">
+        <div class="card-body p-4">
+          <div class="text-center mb-3">
+            <span style="font-size: 2.5rem;"></span>
+            <h3 class="h5 mt-2 text-uppercase font-weight-bold">Zéro Plastique</h3>
+          </div>
+          <ul class="pl-3 text-secondary">
+            <li class="mb-2">Bidons et vrac privilégiés sur tous les ravitaillements.</li>
+            <li class="mb-2">Eau pétillante et sodas produits via Sodastream <em>(en réflexion)</em>.</li>
+            <li class="mb-2">Vaisselle 100% réutilisable pour le repas de fin de course.</li>
+            <li class="mb-2">Aucune impression de flyers physiques.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm bg-white text-dark">
+        <div class="card-body p-4">
+          <div class="text-center mb-3">
+            <span style="font-size: 2.5rem;"></span>
+            <h3 class="h5 mt-2 text-uppercase font-weight-bold">Local & Solidaire</h3>
+          </div>
+          <ul class="pl-3 text-secondary">
+            <li class="mb-2">Ravitaillements composés exclusivement de produits locaux.</li>
+            <li class="mb-2">Repas d'après-course préparé avec des circuits courts.</li>
+            <li class="mb-2">Pas de t-shirts ni de médailles jetables en plastique.</li>
+            <li class="mb-2">Cadeaux finishers 100% consommables.</li>
+            <li class="mb-2">Trophées éco-conçus à la main par nos adhérents.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm bg-white text-dark">
+        <div class="card-body p-4">
+          <div class="text-center mb-3">
+            <span style="font-size: 2.5rem;"></span>
+            <h3 class="h5 mt-2 text-uppercase font-weight-bold">Mobilité Douce</h3>
+          </div>
+          <ul class="pl-3 text-secondary">
+            <li class="mb-2">Incitation forte au covoiturage via notre <a href="https://sport.ikinoa.com/fr/events/trailduleberou2026-6715/carpooling/routes" target="_blank" class="a_2"><u>plateforme dédiée</u></a> intégrée au module d'inscription.</li>
+            <li class="mb-2">Valorisation et priorisation des inscriptions et des participants locaux.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .list-custom-white li {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .list-custom-white li:last-child {
+    border-bottom: none;
+  }
+  .tracking-wide {
+    letter-spacing: 0.1em;
+  }
+</style>
+
+{% endblock %}

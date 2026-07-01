@@ -13,6 +13,8 @@ from .forms import ResultUpdateForm, BenevoleForm
 
 def accueil(request):
     return render(request, "website/accueil.html")
+def engagements(request):
+    return render(request, "website/engagements.html")
 def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     return render(request, 'website/course_template.html', {'course': course})
