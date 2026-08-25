@@ -16,4 +16,4 @@ __pycache__/
 venv/
 
 # Static files (if you collect them into a root folder)
-static/
+/static/
