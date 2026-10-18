@@ -17,6 +17,7 @@ urlpatterns = [
     path('arrivées/', views.update_race_result, name='finish_line'),
     path('benevoles/', views.inscription_benevole, name='inscription_benevole'),
     path('courses/<slug:slug>/', views.course_detail, name='course_detail'),
+    path('envoyer-mail/', views.envoyer_mail_coureurs, name='envoyer_mail_coureurs'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

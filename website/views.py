@@ -10,6 +10,10 @@ from django.contrib.admin.views.decorators import staff_member_required
 from PIL import Image
 from django.contrib import messages
 from .forms import ResultUpdateForm, BenevoleForm
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from .forms import SendEmailForm
 
 def accueil(request):
     return render(request, "website/accueil.html")
@@ -192,7 +196,6 @@ def import_data(request):
                     except Exception as e:
                         print(f"Error processing row: {e} - Row data: {row}")
 
-            #return HttpResponse('Data Uploaded and Updated!!')
             return redirect(reverse('admin:index'))
 
         except FileNotFoundError:
@@ -213,3 +216,53 @@ def inscription_benevole(request):
     else:
         form = BenevoleForm()
     return render(request, 'website/benevoles.html', {'form': form})
+
+@staff_member_required
+def envoyer_mail_coureurs(request):
+    if request.method == 'POST':
+        form = SendEmailForm(request.POST)
+        if form.is_valid():
+            template_path = form.cleaned_data['template_path']
+            course = form.cleaned_data['course']
+            sujet = form.cleaned_data['sujet']
+
+            # Filtrage des coureurs
+            coureurs = Coureur.objects.all()
+            if course:
+                coureurs = coureurs.filter(course=course)
+
+            # Extraire les adresses emails uniques
+            emails = set()
+            for coureur in coureurs:
+                email = coureur.email or coureur.emailcontact
+                if email:
+                    emails.add(email)
+
+            if not emails:
+                messages.error(request, "Aucune adresse email trouvée pour la sélection.")
+                return redirect('envoyer_mail_coureurs')
+
+            # Rendu dynamique du template choisi
+            html_message = render_to_string(template_path)
+            plain_message = strip_tags(html_message)
+
+            from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'contact@trailduleberou.fr')
+
+            msg = EmailMultiAlternatives(
+                subject=sujet,
+                body=plain_message,
+                from_email=from_email,
+                bcc=list(emails)
+            )
+            msg.attach_alternative(html_message, "text/html")
+
+            try:
+                msg.send(fail_silently=False)
+                messages.success(request, f"L'email a été envoyé à {len(emails)} participant(s).")
+                return redirect('admin:index')
+            except Exception as e:
+                messages.error(request, f"Erreur lors de l'envoi : {e}")
+    else:
+        form = SendEmailForm()
+
+    return render(request, 'website/envoyer_mail.html', {'form': form})
