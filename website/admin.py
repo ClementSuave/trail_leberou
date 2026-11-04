@@ -44,10 +44,57 @@ class CoureurAdmin(admin.ModelAdmin):
             'description': "Ces champs sont calculés automatiquement et ne peuvent pas être modifiés."
         }),
     )
-    actions = ['export_csv','export_as_gmcap']
+    actions = ['export_csv', 'export_as_gmcap']
+
+    @admin.action(description="Exporter la sélection au format CSV")
+    def export_csv(self, request, queryset):
+        response = HttpResponse(content_type='text/csv; charset=utf-8-sig')
+        response['Content-Disposition'] = 'attachment; filename="export_coureurs.csv"'
+
+        writer = csv.writer(response, delimiter=';')
+        
+        headers = [
+            'Dossard', 'Nom', 'Prénom', 'Sexe', 'Course', 'Club', 
+            'Temps', 'Pos Général', 'Pos Catégorie', 'Catégorie', 
+            'Email', 'Email Contact', 'Téléphone', 'Date Naissance', 
+            'Adresse', 'Code Postal', 'Ville', 'Pays', 'Date Inscription'
+        ]
+        writer.writerow(headers)
+
+        for c in queryset:
+            temps = ""
+            if c.temps_course:
+                total_seconds = int(c.temps_course.total_seconds())
+                hours, remainder = divmod(total_seconds, 3600)
+                minutes, seconds = divmod(remainder, 60)
+                temps = f"{hours:02}:{minutes:02}:{seconds:02}"
+
+            writer.writerow([
+                c.dossard or "",
+                c.nom,
+                c.prenom,
+                c.get_sexe_display(),
+                c.course.nom if c.course else "",
+                c.club or "",
+                temps,
+                c.position_generale or "",
+                c.position_par_categorie or "",
+                c.categorie_age,
+                c.email or "",
+                c.emailcontact or "",
+                c.telephone or "",
+                c.date_naissance.strftime('%d/%m/%Y') if c.date_naissance else "",
+                c.adresse or "",
+                c.CP or "",
+                c.ville or "",
+                c.pays or "",
+                c.date_inscription.strftime('%d/%m/%Y') if c.date_inscription else "",
+            ])
+
+        return response
 
     @admin.action(description="Exporter la sélection au format GmCap")
-    def export_as_gmcap(modeladmin, request, queryset):
+    def export_as_gmcap(self, request, queryset):
         # Create the response
         response = HttpResponse(content_type='text/plain')
         response['Content-Disposition'] = 'attachment; filename="export_gmcap.txt"'
@@ -79,7 +126,7 @@ class CoureurAdmin(admin.ModelAdmin):
                 "",                             # Qualif
                 c.nom.upper(),                  # Nom
                 c.prenom.capitalize(),          # Prenom
-                c.club,                         # STRCODNUMClubAthlete
+                c.club or "",                   # STRCODNUMClubAthlete
                 c.date_naissance.strftime('%Y-%m-%d') if c.date_naissance else "",
                 c.sexe,                         # Sexe
                 c.get_gmcap_category,           # Categorie
@@ -88,7 +135,7 @@ class CoureurAdmin(admin.ModelAdmin):
                 "",                             # LettreEquipe
                 "",                             # ChallengeEquipe
                 "",                             # CodeAppel
-                c.course.nom,                     # NomEpreuve
+                c.course.nom,                   # NomEpreuve
                 "",                             # OrdreEditionEpreuve
                 "",                             # CategorieEp
                 "",                             # SexeEpreuve
@@ -96,7 +143,6 @@ class CoureurAdmin(admin.ModelAdmin):
                 c.dossard or "",                # CodeAppelSousEpreuve (Dossard)
                 temps,                          # NomSousEpreuve (Temps 1)
                 temps,                          # TypeCross (Temps 2/Réel)
-                # ... fill the rest with empty strings to match header length
             ]
             # Ensure row length matches header length
             while len(row) < len(header):
@@ -104,10 +150,6 @@ class CoureurAdmin(admin.ModelAdmin):
                 
             writer.writerow(row)
         return response
-
-        @admin.action(description="Exporter la sélection au format CSV")
-        def export_csv(modeladmin, request, queryset):
-            return download_csv(request, queryset)
 
 @admin.register(Extract)
 class ExtractAdmin(admin.ModelAdmin):
@@ -118,35 +160,5 @@ class EditionAdmin(admin.ModelAdmin):
     list_display = ('annee','participants','benevoles')
 
 @admin.register(Benevole)
-class EditionAdmin(admin.ModelAdmin):
+class BenevoleAdmin(admin.ModelAdmin):
     list_display = ('nom','prenom','email','ville','telephone','CP','adresse')
-
-def download_csv(request, queryset):
-  if not request.user.is_staff:
-    raise PermissionDenied
-
-  model = queryset.model
-  model_fields = model._meta.fields + model._meta.many_to_many
-  field_names = [field.name for field in model_fields]
-  custom_header_names = ['ID', 'NOM', 'PRENOM', 'EMAIL','EMAIL DE CONTACT', 'DATENAISSANCE', 'SEXE', 'NATION','ADRESSE', 'CP', 'VILLE', 'EPREUVE','CLUB', 'DATE INSCRIPTION', 'TELEPHONE', 'REPAS','DOSSARD', 'TEMPS COURSE']
-
-  response = HttpResponse(content_type='text/csv', charset='utf-8-sig')
-  response['Content-Disposition'] = 'attachment; filename="export.csv"'
-
-  writer = csv.writer(response, delimiter=";")
-  writer.writerow(custom_header_names)
-
-  for row in queryset:
-      values = []
-      for field in field_names:
-          value = getattr(row, field)
-          if callable(value):
-              try:
-                  value = value() or ''
-              except:
-                  value = 'Error retrieving value'
-          if value is None:
-              value = ''
-          values.append(value)
-      writer.writerow(values)
-  return response

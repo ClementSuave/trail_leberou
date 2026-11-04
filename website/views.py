@@ -246,7 +246,7 @@ def envoyer_mail_coureurs(request):
             html_message = render_to_string(template_path)
             plain_message = strip_tags(html_message)
 
-            from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'contact@trailduleberou.fr')
+            from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'Trail du Lébérou <contact@trailduleberou.fr>')
 
             msg = EmailMultiAlternatives(
                 subject=sujet,

@@ -107,6 +107,10 @@
                     <li class="animate-on-scroll">
                       <h2 style="text-align: center;">14 NOVEMBRE 2026</h2></br></br>
                     </li>
+                    <li class="event animate-on-scroll" data-date="15h30">
+                      <h5>DEPART COURSE ENFANTS</h5>
+                      <p>Inscriptions le jour J à la salle des fêtes (GRATUIT).</p>
+                    </li>
                     {% for course in courses %}
                     <li class="event animate-on-scroll" data-date="{{ course.heure_depart }}h">
                       <h5>DÉPART: <a href="{% url 'course_detail' slug=course.slug %}">{{ course.nom|upper }}</a></h5>
@@ -136,7 +140,11 @@
               <div class="card-body">         
                 <div id="content">
                   <h2 style="text-align: center;">14 NOVEMBRE 2026</h2></br>
-
+                  <div class="event-small">
+                    <p>15h30</p>
+                    <h5>DÉPART COURSE ENFANTS</h5>
+                    <p>Inscriptions le jour J à la salle des fêtes (GRATUIT).</p>
+                  </div>
                   {% for course in courses %}
                   <div class="event-small">
                     <p>{{ course.heure_depart }}</p>
