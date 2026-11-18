@@ -79,7 +79,7 @@ class CoureurAdmin(admin.ModelAdmin):
                 temps,
                 c.position_generale or "",
                 c.position_par_categorie or "",
-                c.categorie_age,
+                c.get_gmcap_category,
                 c.email or "",
                 c.emailcontact or "",
                 c.telephone or "",
